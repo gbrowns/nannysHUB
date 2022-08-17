@@ -11,7 +11,7 @@
     }
     .right{
         margin-top: 2rem;
-        padding: 2rem 1rem;
+        padding: 2rem;
         h2{
             font-size: 2rem;
         }
@@ -22,7 +22,7 @@
         form{
             margin-top: .8rem;
             input{
-                @include input-style(100%, 55px, 1.2rem);
+                @include input-style(100%, 55px, 1.1rem);
             }
         }
     }
