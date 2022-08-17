@@ -1,10 +1,11 @@
 import logo from './logo.svg';
-import './App.css';
+import './scss/App.scss';
+import Admin from './views/Admin';
 
 function App() {
   return (
     <div className="App">
-      
+      <Admin />
     </div>
   );
 }
