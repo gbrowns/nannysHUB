@@ -1,11 +1,14 @@
-import React from 'react'
+import React from 'react';
+import { useNavigate } from "react-router-dom";
 
 function AdminLogin() {
+    const navigate = useNavigate();
 
     //handleSubmit is a function that is passed to the form component
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log('submitted')
+        navigate('/dashboard', { replace: true });
     }
 
   return (
