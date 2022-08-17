@@ -1,6 +1,6 @@
 
 //input styles
-@mixin input-style($width, $height) {
+@mixin input-style($width, $height, $size) {
     width: $width;
     height: $height;
     border: none;
@@ -9,5 +9,5 @@
     margin-bottom: 1rem;
     border-radius: 5px;
     padding: 0 1rem;
-    font-size: 1.2rem;
+    font-size: $size;
 }
