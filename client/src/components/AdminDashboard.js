@@ -23,24 +23,24 @@ function AdminDashboard() {
 
         </nav>
         <main>
-            <div class="title">
+            <div className="title">
                 <MdAdminPanelSettings className='icon'/>
                 <h1>Admin Dashboard</h1>
             </div>
-            <div class="cards">
-                <div class="card"> 
+            <div className="cards">
+                <div className="card"> 
                     <FaUsers className='icon'/>
                     <h2>Total Requests</h2>
                     <p>33</p>
                     <span>Last updated today</span>
                 </div>
-                <div class="card">
+                <div className="card">
                     <MdWork className='icon' />
                     <h2>Clients messages</h2>
                     <p>33</p>
                     <span>Last updated today</span>
                 </div>
-                <div class="card">
+                <div className="card">
                     <MdChildFriendly className='icon' />
                     <h2>Available Nannies</h2>
                     <p>33</p>
@@ -100,7 +100,7 @@ function AdminDashboard() {
                                 <td>Nairobi</td>
                                 <td>Full Time</td>
                                 <td>
-                                    <input type="button" value="View details" />
+                                    <input className="approve" type="button" value="Approve" />
                                 </td>
                             </tr>
                             <tr>
