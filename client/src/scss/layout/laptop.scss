@@ -1,0 +1,30 @@
+@use '../utilities/mixins' as *;
+
+@media screen and (min-width: 768px){
+    .admin-login{
+        height: 100vh;
+        display: grid;
+        grid-template-columns: 700px 1fr;
+        .left{
+            img{
+                width: 700px;
+            }
+        }
+        .right{
+            padding: 0 5rem;
+            h2{
+                font-size: 2.5rem;
+            }
+            p{
+                font-size: 1.2rem;
+                padding-bottom: 2rem;
+            }
+            form{
+                margin-top: 1rem;
+                input{
+                    @include input-style(400px, 55px, 1.2rem);
+                }
+            }
+        }
+    }
+}

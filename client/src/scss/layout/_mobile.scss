@@ -1,0 +1,30 @@
+@use '../utilities/mixins' as *;
+//mobile
+@media screen and (max-width: 425px) {
+  .admin-login {
+    display: flex;
+    flex-direction: column;
+    .left{
+        img{
+            width: 300px ;
+        }
+    }
+    .right{
+        margin-top: 2rem;
+        padding: 2rem;
+        h2{
+            font-size: 2rem;
+        }
+        p{
+            font-size: 1.1rem;
+            padding-bottom: 1.5rem;
+        }
+        form{
+            margin-top: .8rem;
+            input{
+                @include input-style(100%, 55px, 1.1rem);
+            }
+        }
+    }
+  }
+}
