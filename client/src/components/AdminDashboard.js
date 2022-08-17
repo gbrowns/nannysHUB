@@ -100,7 +100,7 @@ function AdminDashboard() {
                                 <td>Nairobi</td>
                                 <td>Full Time</td>
                                 <td>
-                                    <input type="button" value="View details" />
+                                    <input className="approve" type="button" value="Approve" />
                                 </td>
                             </tr>
                             <tr>
