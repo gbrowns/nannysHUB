@@ -3,6 +3,123 @@
 @use './layout/' as *;
 @use './utilities/' as *;
 
+//navbar styles
+.navbar{
+    position: relative;
+    width: 100%;
+    height: 10vh;
+    background-color: #fff;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    .logo{
+        img{
+            width: 250px;
+        }
+    }
+    .nav-links{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        a{
+            text-decoration: none;
+            color: $primaryColor;
+            font-size: 1rem;
+            font-family: $bodyText1;
+            padding: .5rem 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all .5s ease-in-out;
+            &:hover{
+                color: $themeColor;
+                transition: all .5s ease-in-out;
+            }
+        }
+            
+    }
+}
+//home page
+.home-page{
+    position: relative;
+    width: 100%;
+    .banner{
+        position: relative;
+        width: 100%;
+        height: 80vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .overlay{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgb(141,119,171);
+            background: rgb(141,119,171);
+            background: linear-gradient(45deg, rgba(141,119,171,0.6474964985994398) 0%, rgba(141,119,171,0.10127801120448177) 100%, rgba(141,119,171,1) 100%);
+        }
+        img{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: rgb(19, 7, 7);
+            object-fit: cover;
+            object-position: right;
+        }
+        h1, p, input{
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+        h1{
+            font-size: 4.5rem;
+            font-family: $headingText1;
+            color: #fff;
+            padding:  0;
+        }
+        p{
+            font-size: 1.8rem;
+            font-family: $bodyText2;
+            color: #fff;
+            width: 40%;
+            line-height: 1.6; 
+            span{
+                color: #c0a7e4;
+                font-weight: bold;
+            } 
+        }
+        input{
+            width: 200px;
+            height: 50px;
+            background: none;
+            border: 1px solid #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2rem;
+            font-size: 1rem;
+            font-family: $buttonText1;
+            border-radius: 2rem;
+            cursor: pointer;
+            color: #fff;
+            transition: all .5s ease-in-out;
+            &:hover{
+                background: #c0a7e4;
+                border: none;
+                transition: all .5s ease-in-out;
+            }
+
+        }
+    }
+    
+}
+
 
 .admin-login{
     position: relative;
@@ -179,6 +296,12 @@
                     }
                     tbody{
                         tr{
+                            cursor: pointer;
+                            transition: all .4s ease-in-out;
+                            &:hover{
+                                background-color: #f5f5f5;
+                                transition: all .4s ease-in-out;
+                            }
                             border-bottom: 1px solid #ccc;
                             td{
                                 font-family: $bodyText4;
@@ -233,6 +356,12 @@
                     tbody{
                         tr{
                             border-bottom: 1px solid #ccc;
+                            cursor: pointer;
+                            transition: all .4s ease-in-out;
+                            &:hover{
+                                background-color: #f5f5f5;
+                                transition: all .4s ease-in-out;
+                            }
                             td{
                                 font-family: $bodyText4;
                                 color: #000;

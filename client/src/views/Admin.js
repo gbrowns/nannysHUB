@@ -1,7 +1,7 @@
 import React from 'react';
-import {Routes, Route} from 'react-router-dom';
-import AdminDashboard from '../components/AdminDashboard';
-import AdminLogin from '../components/AdminLogin';
+//import {Routes, Route} from 'react-router-dom';
+//import AdminDashboard from '../components/AdminDashboard';
+//import AdminLogin from '../components/AdminLogin';
 
 //admin view
 function Admin() {
