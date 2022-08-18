@@ -205,6 +205,9 @@
                     color: $themeColor;
                     padding: .8rem 0;
                 }
+                .icon{
+                    font-size: 3rem;
+                }
                 p{
                     text-align: center;
                     padding: .4rem 0;
@@ -215,7 +218,7 @@
                     width: 150px;
                     height: 40px;
                     background: none;
-                    border: 1px solid #ccc;
+                    border: 1px solid rgb(238, 238, 238);
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -224,7 +227,7 @@
                     font-family: $buttonText1;
                     border-radius: 2rem;
                     cursor: pointer;
-                    color: #c0a7e4;
+                    color: #252525c4;
                     transition: all .5s ease-in-out;
                     &:hover{
                         background: #c0a7e4;
@@ -232,6 +235,15 @@
                         border: none;
                         transition: all .5s ease-in-out;
                     }
+                }
+                &:nth-child(1){
+                    background-color: rgb(228, 228, 89);
+                }
+                &:nth-child(2){
+                    background-color: rgb(142, 221, 252);
+                }
+                &:nth-child(3){
+                    background-color: rgb(255, 165, 251);
                 }
             }
         }

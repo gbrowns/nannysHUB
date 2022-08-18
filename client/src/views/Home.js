@@ -1,5 +1,6 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
+import Navbar from '../components/Navbar';
+import { FcBusinesswoman } from 'react-icons/fc';
 
 function Home() {
   return (
@@ -45,7 +46,7 @@ function Home() {
                 <div className="cards">
                     <div className="card"> 
                         <h3>Live-in Nannies</h3>
-                        <span>icon</span>
+                        < FcBusinesswoman  className='icon'/>
                         <p>
                             Live-in house-helps stay with you at your residence all the time, occasionally taking a day or two, off work to rest. We have a list of select live in house-helps.
                         </p>
@@ -53,7 +54,7 @@ function Home() {
                     </div>
                     <div className="card"> 
                         <h3>Emergency Nannies</h3>
-                        <span>icon</span>
+                        < FcBusinesswoman  className='icon'/>
                         <p>
                             Emergency Nannies come in handy in the event that your regular house-help does not turn up, for whatever reason. They help you for a day or two. Contact us for emergency house-helps.
                         </p>
@@ -61,7 +62,7 @@ function Home() {
                     </div>
                     <div className="card"> 
                         <h3>Live-out Nannies</h3>
-                        <span>icon</span>
+                        < FcBusinesswoman  className='icon'/>
                         <p>
                             Some call them ‘day-bugs’, we have a list of experienced live-out house-helps who will work for you, coming in the morning and leaving in the evening.
                         </p>
