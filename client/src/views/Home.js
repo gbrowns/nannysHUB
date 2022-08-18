@@ -1,11 +1,10 @@
 import React from 'react'
-import Navbar from '../components/Navbar';
 import { FcBusinesswoman } from 'react-icons/fc';
+import Footer from '../components/Footer';
 
 function Home() {
   return (
     <div className='home-page'>
-        <Navbar />
         <div className='banner'>
               <img src={require('../images/nanny2.jpeg')} alt="banner" width="100px" />
             <div className="overlay"></div>
@@ -156,6 +155,7 @@ function Home() {
             </section>
 
         </main>
+        <Footer />
         
 
     </div>

@@ -10,9 +10,9 @@ function Navbar() {
         <div className="nav-links">
             <Link to="/">Home</Link>
             <Link to="/about-us">About us</Link>
-            <Link to="/">Contact us</Link>
-            <Link to="/">Find a nanny</Link>
-            <Link to="/">Apply for job</Link>
+            <Link to="/contact-us">Contact us</Link>
+            <Link to="/find-a-nanny">Find a nanny</Link>
+            <Link to="/apply-for-job">Apply for job</Link>
         </div>
 
     </div>
