@@ -323,7 +323,6 @@ footer{
             margin: 1rem 20rem;
             .card{
                 width: calc(100% / 3 - 1rem);
-                border: 1px solid #ccc;
                 margin: .5rem;
                 padding: 1rem;
                 display: flex;
@@ -494,6 +493,55 @@ footer{
                 transition: all .5s ease-in-out;
             }
 
+        }
+    }
+    
+}
+
+//about page styles
+.about-page{
+    position: relative;
+    .about-content{
+        display: flex;
+        flex-direction: row;
+        margin: 1rem 20rem;
+        .left{
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            h3{
+                font-size: 2rem;
+                font-family: $headingText2;
+                color: $themeColor;
+                padding: .8rem 0;
+            }
+            span{
+                font-size: 1.1rem;
+                font-family: $bodyText1;
+                color: rgba(0, 0, 0, 0.637);
+                padding: .6rem 0;
+                font-style: italic;
+                width: 70%;
+                line-height: 1.5;
+            }
+            p{
+                font-size: 1.2rem;
+                font-family: $bodyText4;
+                color: $primaryColor;
+                padding: .8rem 0;
+                line-height: 1.8;
+                width: 90%;
+            }
+
+
+        }
+        .right{
+            flex: 1;
+            img{
+                width: 100%;
+                margin: 2rem 0;
+                object-fit: cover;
+            }
         }
     }
     
