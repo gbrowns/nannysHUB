@@ -43,7 +43,7 @@
 //page banner
 .page-banner{
     position: relative;
-    height: 20vh;
+    height: 30vh;
     width: 100%;
     background-color: $themeColor;
     display: flex;
@@ -323,7 +323,6 @@ footer{
             margin: 1rem 20rem;
             .card{
                 width: calc(100% / 3 - 1rem);
-                border: 1px solid #ccc;
                 margin: .5rem;
                 padding: 1rem;
                 display: flex;
@@ -497,6 +496,320 @@ footer{
         }
     }
     
+}
+
+//about page styles
+.about-page{
+    position: relative;
+    .about-content{
+        display: flex;
+        flex-direction: row;
+        margin: 1rem 20rem;
+        .left{
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            h3{
+                font-size: 2rem;
+                font-family: $headingText2;
+                color: $themeColor;
+                padding: .8rem 0;
+            }
+            span{
+                font-size: 1.1rem;
+                font-family: $bodyText1;
+                color: rgba(0, 0, 0, 0.637);
+                padding: .6rem 0;
+                font-style: italic;
+                width: 70%;
+                line-height: 1.5;
+            }
+            p{
+                font-size: 1.2rem;
+                font-family: $bodyText4;
+                color: $primaryColor;
+                padding: .8rem 0;
+                line-height: 1.8;
+                width: 90%;
+            }
+
+
+        }
+        .right{
+            flex: 1;
+            img{
+                width: 100%;
+                margin: 2rem 0;
+                object-fit: cover;
+            }
+        }
+    }
+    
+}
+
+//contact-page styles
+.contact-page{
+    position: relative;
+    width: 100%;
+    .contact-content{
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 2.5rem 0;
+        .contact-area{
+            display: flex;
+            flex-direction: row;
+            margin: 0 20rem;
+            .contact-form{
+                flex: .5;
+                padding: 2rem;
+                display: flex;
+                flex-direction: column;
+                .card{
+                    background-color: #fff;
+                    margin-bottom: 1rem;
+                    border: 1px solid rgba(204, 204, 204, 0.493);
+                    box-shadow: 0 0 5px rgba(0, 0, 0, 0.025);
+                    padding: 1rem;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    cursor: pointer;
+                    .icon{
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background-color: #ebf7fc81;
+                        .i{
+                            font-size: 1.3rem;
+                            color: rgba(53, 53, 53, 0.692);
+                        }
+                    }
+                    .card-body{
+                        padding: 0 .6rem;
+                        display: flex;
+                        flex-direction: column;
+                        h5{
+                            font-size: 1rem;
+                            font-family: $bodyText6;
+                            color: $primaryColor;
+                        }
+                        span{
+                            font-size: .8rem;
+                            font-family: $bodyText1;
+                            color: rgba(0, 0, 0, 0.637);
+                            padding-top: .4rem;
+                        }
+                    }
+                }
+            }
+            form{
+                flex: 1;
+                padding: 2rem;
+                width: 100%;
+                h3{
+                    font-size: 2rem;
+                    font-family: $headingText2;
+                    color: $themeColor;
+                    padding: .5rem 0;
+                }
+                p{
+                    font-size: 1.2rem;
+                    font-family: $bodyText1;
+                    color: rgba(0, 0, 0, 0.637);
+                    padding-bottom: .5rem;
+                    line-height: 1.8;
+                }
+                .form-group{
+                    display: flex;
+                    width: 100%;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    margin-bottom: 1rem;
+                    input{
+                        width: 350px;
+                        padding: .9rem .8rem;
+                        font-size: 1.2rem;
+                        outline: none;
+                        border: 1px solid #ccc;
+                    }
+                    textarea{
+                        width: 100%;
+                        height: 150px;
+                        padding: .9rem .8rem;
+                        font-size: 1.2rem;
+                        outline: none;
+                        border: 1px solid #ccc;
+                    }
+                }
+                input{
+                    width: 100%;
+                    height: 60px;
+                    padding: .9rem .6rem;
+                    font-size: 1rem;
+                    outline: none;
+                    border: none;
+                    cursor: pointer;
+                }
+            }
+        }
+        .map{
+            background-color: rgba(238, 238, 248, 0.267);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 0;
+            h3{
+                font-size: 2rem;
+                font-family: $headingText2;
+                color: $themeColor;
+                padding: .6rem 0;
+            }
+            p{
+                font-size: 1.2rem;
+                font-family: $bodyText1;
+                color: rgba(0, 0, 0, 0.637);
+                line-height: 1.5;
+            }
+            img{
+                width: 50%;
+                margin: 2rem 0;
+                object-fit: cover;
+            }
+        }
+        
+    }
+}
+
+//Find nanny page styles
+.find-nanny-container{
+    position: relative;
+    width: 100%;
+    .find-nanny-content{
+        display: flex;
+        flex-direction: column;
+        padding: 2.5rem 20rem;
+        .controls{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            .category-control{
+                display: flex;
+                flex-direction: row;
+                padding: 1rem 0;
+                align-items: center;
+                h3{
+                    font-size: 1.2rem;
+                    font-family: $headingText2;
+                    color: $themeColor;
+                }
+                select{
+                    margin: 0 .8rem;
+                    width: 250px;
+                    height: 40px;
+                    padding: 0 .6rem 0;
+                    font-size: 1.1rem;
+                    outline: none;
+                    border: 1px solid rgba(204, 204, 204, 0.185);
+                    background-color: #fff;
+                }
+            }
+            .search-box{
+                input{
+                    width: 300px;
+                    height: 40px;
+                    padding: .6rem 1rem;
+                    border: 1px solid #ccc;
+                    border-radius: 3rem;
+                    outline: none;
+                    font-size: 16px;
+                }
+            }
+        }
+        .nanny-list{
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            padding: 3rem 0;
+            .nanny-card{
+                border: 1px solid #ccc;
+                display: flex;
+                flex-direction: column;
+                flex-basis: calc(100% / 5 - 1rem);
+                margin-right: .8rem;
+                margin-bottom: 1rem;
+                border-radius: 5px;
+                transition: all .5s ease;
+                img{
+                    width: 100%;
+                    height: 100px;
+                    object-fit: cover;
+                    border-radius: 5px 5px 0 0;
+                }
+                h5{
+                    font-size: 1.1rem;
+                    font-family: $headingText2;
+                    color: $themeColor;
+                    padding: .5rem .6rem
+                }
+                .chores{
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    padding: 0 .6rem;
+                    span{
+                        font-size: 1rem;
+                        font-family: $bodyText1;
+                        color: rgba(0, 0, 0, 0.637);
+                        margin-right: .8rem;
+                        margin-bottom: .4rem;
+                        height: 1.2rem;
+                        background-color: rgb(244, 237, 250);
+                        padding: .6rem .2rem;
+                        border-radius: 2rem;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        
+                    }
+                }
+                .nanny-card-footer{
+                    padding: .3rem .6rem;
+                    p{
+                        font-size: 1rem;
+                        font-family: $bodyText6;
+                        color: rgba(0, 0, 0, 0.795);
+                        margin-bottom: .3rem;
+                        span{
+                            font-family: $bodyText1;
+                        }
+                    }
+                }
+                input{
+                    border: none;
+                    padding: 0.4rem;
+                    margin: .4rem .6rem;
+                    cursor: pointer;
+                    background-color: rgb(251, 223, 255);
+                }
+                &:hover{
+                    transition: all .5s ease;
+                    transform: translateY(-.4rem);
+                }
+            }
+        }
+    }
+
+
 }
 
 
