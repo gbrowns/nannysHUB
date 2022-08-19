@@ -1,6 +1,7 @@
 import React from 'react'
 import Banner from '../components/Banner'
 import Footer from '../components/Footer'
+import Navbar from '../components/Navbar'
 
 function FindNanny() {
     const NANNIES = [
@@ -73,6 +74,7 @@ function FindNanny() {
     ]
   return (
     <div className='find-nanny-container'>
+        <Navbar />
         <Banner title="Find a Nanny" image={require('../images/nanny1.jpeg')} />
         <div className="find-nanny-content">
             <div className="controls">
@@ -95,13 +97,13 @@ function FindNanny() {
                     NANNIES.map((nanny, index) => {
                         const { name, image, location, chores, age, salary, type } = nanny;
                         return (
-                            <div className="nanny-card">
+                            <div className="nanny-card" key={index}>
                                 {/*<img src={image} alt="nanny" width="100px" />*/}
                                 <div className="nanny-card-body">
                                     <h5>{name}</h5>
                                     <div className="chores">
                                         {
-                                            chores.map(chore => <span>{chore}</span>)
+                                            chores.map((chore,i) => <span key={i}>{chore}</span>)
                                         }
                                     </div>
                                     <div className="nanny-card-footer">
