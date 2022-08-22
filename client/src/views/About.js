@@ -1,10 +1,12 @@
 import React from 'react'
 import Banner from '../components/Banner';
 import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
 
 function About() {
   return (
     <div className="about-page">
+        <Navbar />
         <Banner title="About Us" image={require('../images/nanny1.jpeg')}/>
         <div className="about-content">
             <div className="left">
@@ -21,7 +23,8 @@ function About() {
                     Nannies HUb believes that the right fit is the most important thing. The platform helps you to find talented people to help you and your family in your day-to-day activities.
 
                 </p>
-                <p>
+
+                {/*<p>
                     To find the right fit we have to understand your familys unique personality and match it with the right candidates.
 
                     Whether you are looking for a nanny, babysitter or house- help, with our interactive and easy to use website, we can help you get reliable child-carers.
@@ -31,7 +34,7 @@ function About() {
                     You will also find useful information and advice on hiring a child carer within our site.
 
                     Our site is completely free to preview, so you can search out possible child carers before you contact us. If you find someone that you would like to get in touch with, you are welcome to contact us for more details.
-                </p>
+                </p>*/}
 
             </div>
             <div className="right">

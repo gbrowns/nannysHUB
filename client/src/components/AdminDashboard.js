@@ -7,7 +7,7 @@ import { MdChildFriendly, MdWork, MdAdminPanelSettings } from 'react-icons/md';
 
 function AdminDashboard() {
   return (
-    <div class="admin-dashboard">
+    <div className="admin-dashboard">
         <nav>
             <div className="logo">
                 <img src={require('../images/logo.png')} alt="logo" width="150px" />

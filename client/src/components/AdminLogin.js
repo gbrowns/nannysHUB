@@ -22,7 +22,7 @@ function AdminLogin() {
             <h2>Welcome Admin</h2>
             <p>Please login to access the admin area</p>
             <form autoComplete="off" onSubmit={handleSubmit}>
-                <input type="text" placeholder="Enter admin password" />
+                <input type="password" placeholder="Enter admin password" />
                 <input type="submit" value="Login" />
             </form>
 

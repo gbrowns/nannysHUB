@@ -1,10 +1,78 @@
 import React from 'react'
 import { FcBusinesswoman } from 'react-icons/fc';
 import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
 
 function Home() {
+    const STEPS = {
+        client: [
+            {
+                id: 1,
+                title: 'Search',
+                description: 'Find a nanny for your child, household nad garden chores from a trusted Nannies Hub'
+
+            },
+            {
+                id: 2,
+                title: 'Connect',
+                description: 'Find a nanny for your child, household nad garden chores from a trusted Nannies Hub'
+
+            },
+            {
+                id: 3,
+                title: 'Interview',
+                description: 'Find a nanny for your child, household nad garden chores from a trusted Nannies Hub'
+
+            },
+            
+
+        ],
+        nanny: [
+            {
+                id: 1,
+                title: 'Apply',
+                description: 'Find a nanny for your child, household nad garden chores from a trusted Nannies Hub'
+            },
+            {
+                id: 2,
+                title: 'Wait for approval',
+                description: 'Find a nanny for your child, household nad garden chores from a trusted Nannies Hub'
+            },
+            {
+                id: 3,
+                title: 'Get interviewed',
+                description: 'Find a nanny for your child, household nad garden chores from a trusted Nannies Hub'
+            },
+            {
+                id: 4,
+                title: 'Connect with client',
+                description: 'Find a nanny for your child, household nad garden chores from a trusted Nannies Hub'
+            }
+
+        ]
+    }
+
+    const CARDS = [
+        {
+            title: "Live-in Nannies",
+            icon: < FcBusinesswoman className='icon' />,
+            description: "Live-in house-helps stay with you at your residence all the time, occasionally taking a day or two, off work to rest. We have a list of select live in house-helps."
+        },
+        {
+            title: "Emmergency Nannies",
+            icon: < FcBusinesswoman className='icon' />,
+            description: "Emergency Nannies come in handy in the event that your regular house-help does not turn up, for whatever reason. They help you for a day or two. Contact us for emergency house-helps."
+        },
+        {
+            title: "Live-out Nannies",
+            icon: < FcBusinesswoman className='icon' />,
+            description: "Some call them 'day-bugs', we have a list of experienced live-out house-helps who will work for you, coming in the morning and leaving in the evening."
+        },
+
+    ]
   return (
     <div className='home-page'>
+        <Navbar />
         <div className='banner'>
               <img src={require('../images/nanny2.jpeg')} alt="banner" width="100px" />
             <div className="overlay"></div>
@@ -43,30 +111,20 @@ function Home() {
                     Our main business is to help you find domestic workers in the easiest way possible.
                 </p>
                 <div className="cards">
-                    <div className="card"> 
-                        <h3>Live-in Nannies</h3>
-                        < FcBusinesswoman  className='icon'/>
-                        <p>
-                            Live-in house-helps stay with you at your residence all the time, occasionally taking a day or two, off work to rest. We have a list of select live in house-helps.
-                        </p>
-                        <input type="button" value="View available" />
-                    </div>
-                    <div className="card"> 
-                        <h3>Emergency Nannies</h3>
-                        < FcBusinesswoman  className='icon'/>
-                        <p>
-                            Emergency Nannies come in handy in the event that your regular house-help does not turn up, for whatever reason. They help you for a day or two. Contact us for emergency house-helps.
-                        </p>
-                        <input type="button" value="View available" />
-                    </div>
-                    <div className="card"> 
-                        <h3>Live-out Nannies</h3>
-                        < FcBusinesswoman  className='icon'/>
-                        <p>
-                            Some call them ‘day-bugs’, we have a list of experienced live-out house-helps who will work for you, coming in the morning and leaving in the evening.
-                        </p>
-                        <input type="button" value="View available" />
-                    </div>
+                    {
+                        CARDS.map(({title, icon, description}, index) => {
+                            return (
+                                <div className="card" key={index}>
+                                    <h3>{title}</h3>
+                                    {icon}
+                                    <p>
+                                        {description}
+                                    </p>
+                                    <input type="button" value="View available" />
+                                </div>
+                            )
+                        })
+                    }
                 </div>
             </section>
             <section className='section3'>
@@ -74,74 +132,43 @@ function Home() {
                 <div className="unit">
                     <h3>For Clients</h3>
                     <div className="steps">
-                        <div className="step">
-                            <div className="icon-box">
-                               <span>1</span>
-                            </div>
-                            <h3>Search</h3>
-                            <p>
-                                Find a nanny for your child, household nad garden chores from a trusted <span>Nannies Hub</span>
-                            </p>
-                        </div>
-                        <div className="step">
-                            <div className="icon-box">
-                               <span>2</span>
-                            </div>
-                            <h3>Connect</h3>
-                            <p>
-                                Find a nanny for your child, household nad garden chores from a trusted <span>Nannies Hub</span>
-                            </p>
-                        </div>
-                        <div className="step">
-                            <div className="icon-box">
-                               <span>3</span>
-                            </div>
-                            <h3>Interview</h3>
-                            <p>
-                                Find a nanny for your child, household nad garden chores from a trusted <span>Nannies Hub</span>
-                            </p>
-                        </div>
+                        {
+                            STEPS.client.map( client => {
+                                const { id, title, description } = client;
+                                return (
+                                    <div className="step" key={id}>
+                                        <div className="icon-box">
+                                            <span>{id}</span>
+                                        </div>
+                                        <h3>{title}</h3>
+                                        <p>
+                                            {description}
+                                        </p>
+                                    </div>
+                                )
+                            })
+                        }
                     </div>
                 </div>
                 <div className="unit">
                     <h3>For Nannies</h3>
                     <div className="steps">
-                        <div className="step">
-                            <div className="icon-box">
-                                <span>1</span>
-                            </div>
-                            <h3>apply</h3>
-                            <p>
-                                Find a nanny for your child, household nad garden chores from a trusted <span>Nannies Hub</span>
-                            </p>
-                        </div>
-                        <div className="step">
-                            <div className="icon-box">
-                                <span>2</span>
-                            </div>
-                            <h3>Wait for approval</h3>
-                            <p>
-                                Find a nanny for your child, household nad garden chores from a trusted <span>Nannies Hub</span>
-                            </p>
-                        </div>
-                        <div className="step">
-                            <div className="icon-box">
-                               <span>3</span>
-                            </div>
-                            <h3>Get interviewed</h3>
-                            <p>
-                                Find a nanny for your child, household nad garden chores from a trusted <span>Nannies Hub</span>
-                            </p>
-                        </div>
-                        <div className="step">
-                            <div className="icon-box">
-                               <span>4</span>
-                            </div>
-                            <h3>Connected with Client</h3>
-                            <p>
-                                Find a nanny for your child, household nad garden chores from a trusted <span>Nannies Hub</span>
-                            </p>
-                        </div>
+                          {
+                              STEPS.nanny.map(nanny => {
+                                  const { id, title, description } = nanny;
+                                  return (
+                                      <div className="step" key={id}>
+                                          <div className="icon-box">
+                                              <span>{id}</span>
+                                          </div>
+                                          <h3>{title}</h3>
+                                          <p>
+                                              {description}
+                                          </p>
+                                      </div>
+                                  )
+                              })
+                          }
                     </div>
                 </div>
             </section>

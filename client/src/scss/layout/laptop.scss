@@ -1,6 +1,237 @@
 @use '../utilities/mixins' as *;
 
+
 @media screen and (min-width: 768px){
+
+    //independent styles////
+
+    //navbar laptop view
+    .navbar{
+        height: 10vh;
+        flex-direction: row;
+        justify-content: space-around;
+        .logo > img{
+            width: 250px;
+        }
+
+        .nav-links{
+            a{
+                font-size: 1rem;
+                padding: .5rem 1rem;
+            }
+        }
+        
+    }
+
+    //page banner laptop view
+    .page-banner{
+        height: 30vh;
+        h1{
+            font-size: 2.5rem;
+        }
+    }
+
+    //footer laptop view
+    footer{
+        .part1{
+            flex-direction: row;
+            justify-content: space-around;
+            padding: 3rem 0;
+            h3{
+                padding: 0 1rem;
+                font-size: 2.5rem;
+            }
+            input{
+                width: 250px;
+                height: 55px;
+                font-size: 1.1rem;
+            }
+        }
+        .part2{
+            flex-direction: column;
+            padding: 4rem 0;
+            .nav-links{
+                justify-content: center;
+                padding: 2rem 0;
+                width: 100%;
+                a{
+                     margin-right: 2rem;
+                }
+            }
+            .icons{
+                justify-content: center;
+                padding: 1rem 0;
+                .icon{
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 5px;
+                    margin-right: 1.5rem;
+                    .i{
+                        font-size: 1.5rem;
+                    }
+                }
+
+            }
+            
+
+        }
+        .part3{
+            span{
+                font-size: 1.1rem;
+                padding: 1rem 0;
+            }
+        }
+    }
+    //pages laptop view
+    // 1.home page
+    .home-page{
+        .banner{
+            height: 80vh;
+            h1{
+                font-size: 4.5rem;
+            }
+            p{
+                font-size: 1.8rem;
+                width: 40%;
+                line-height: 1.6; 
+            }
+            input{
+                width: 200px;
+                height: 50px;
+                margin-top: 2rem;
+                font-size: 1rem;
+            }
+        }
+        .section1{
+            flex-direction: row;
+            .left{
+                flex: 0 0 50%;
+                .image-tiles{
+                    gap: .6rem;
+                    padding: 8rem 0;
+                    img{
+                        width: 250px;
+                        height: 200px;
+                    }
+                }
+            }
+            .right{
+                flex: 0 0 60%;
+                flex-direction: column;
+                justify-content: center;
+                h2{
+                    font-size: 2.2rem;
+                    padding: 1.5rem 0;
+                }
+                p{
+                    font-size: 1.2rem;
+                    width: 75%;
+                    line-height: 1.85;
+                }
+            }
+        }
+        .section2{
+            padding:  1rem 0;
+            h2{
+                font-size: 2.2rem;
+                padding: 1.5rem 0 .4rem 0;
+            }
+            p{
+                font-size: 1.2rem;
+                line-height: 1.85;
+            }
+            .cards{
+                margin: 1rem 20rem;
+                //flex-direction: row;
+                .card{
+                    width: calc(100% / 3 - 1rem);
+                    margin: .5rem;
+                    padding: 1rem;
+                    h3{
+                        font-size: 1.6rem;
+                        padding: .8rem 0;
+                    }
+                    .icon{
+                        font-size: 3rem;
+                    }
+                    p{
+                        padding: .4rem .6rem;
+                        font-size: 1rem;
+                        line-height: 1.8;
+                    }
+                    input{
+                        width: 150px;
+                        height: 40px;
+                        margin-top: 2rem;
+                        font-size: 1rem; 
+                    }
+                }
+
+            }
+        }
+        .section3{
+            padding: 2rem 0;
+            >h3{
+                font-size: 2.2rem;
+                padding: 1.5rem 0 .4rem 0;
+            }
+            .unit{
+                margin: 2rem 15rem; //
+                h3{
+                    padding: 1rem 0;
+                    font-size: 1.2rem;
+                }
+                .steps{
+                    //flex-direction: row;
+                    justify-content: space-between;
+                    margin-top: 2rem;
+                    .step{
+                        width: calc(100% / 3 - 1rem);
+                        padding: .3rem 1rem; 
+                        align-items: flex-start;
+                        .icon-box{
+                            width: 40px;
+                            height: 40px;
+                            span{
+                                font-size: 1.4rem;
+                            }
+
+                        }
+                        h3{
+                            font-size: 1.4rem;
+                            padding: .8rem 0;
+                        }
+                        p{
+                            padding: .4rem 0;
+                            font-size: 1.2rem;
+                            line-height: 1.8;
+                            width: 85%;
+                        }
+                    }
+                }
+            }
+        }
+        .section4{
+            padding: 4rem 0;
+            h3{
+                font-size: 1.4rem;
+                padding-bottom: 1.5rem;
+            }
+            p{
+                width: 60%;
+                font-size: 1.2rem;
+                line-height: 1.8;
+                padding-bottom: 1rem;
+            }
+            input{
+                width: 200px;
+                height: 50px;
+                font-size: 1rem;
+                margin-top: 1rem;
+            }
+        }
+    }
+
     .admin-login{
         height: 100vh;
         display: grid;

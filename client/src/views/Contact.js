@@ -4,44 +4,51 @@ import Footer from '../components/Footer'
 import { BsFillTelephoneFill } from 'react-icons/bs'
 import { AiOutlineMail } from 'react-icons/ai'
 import { MdLocationOn } from 'react-icons/md'
+import Navbar from '../components/Navbar'
 
 
 function Contact() {
+    const CARDS = [
+        {
+            icon: <BsFillTelephoneFill className="i" />,
+            title: "Phone Number",
+            content: "+254 712345678"
+        },
+        {
+            icon: <AiOutlineMail className="i" />,
+            title: "Email Address",
+            content: "nannyshub@gmail.com"
+        },
+        {
+            icon: <MdLocationOn className="i" />,
+            title: "Location",
+            content: "Nairobi, Kenya"
+        }
+
+    ]
   return (
     <div className='contact-page'>
+        <Navbar />
         <Banner title="Contact Us" image={require('../images/nanny1.jpeg')}/>
         <div className="contact-content">
             <div className="contact-area">
                 <div className="contact-form">
-                    <div className="card">
-                        <div className="icon">
-                            <BsFillTelephoneFill className="i"/>
-                        </div>
-                        <div className="card-body">
-                            <h5>Phone Number</h5>
-                            <span>+254 712345678</span>
-                        </div>
-                    </div>
-                    <div className="card">
-                        <div className="icon">
-                            <AiOutlineMail className="i"/>
-                        </div>
-                        <div className="card-body">
-                            <h5>Email Address</h5>
-                            <span>nannyshub@gmail.com</span>
-                        </div>
-                    </div>
-                    <div className="card">
-                        <div className="icon">
-                            <MdLocationOn className="i"/>
-                        </div>
-                        <div className="card-body">
-                            <h5>Location</h5>
-                            <span>Nairobi, Kenya</span>
-                        </div>
-                    </div>
-
-
+                    {
+                        CARDS.map((card, index) => {
+                            const { icon, title, content } = card;
+                            return (
+                                <div className="card" key={index}>
+                                    <div className="icon">
+                                        {icon}
+                                    </div>
+                                    <div className="card-body">
+                                        <h5>{title}</h5>
+                                        <span>{content}</span>
+                                    </div>
+                                </div>
+                            )
+                        })
+                    }
                 </div>
                 <form autoComplete='off'>
                     <h3>Send Message</h3>
