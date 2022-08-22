@@ -28,6 +28,9 @@ function Footer() {
                 <div className="icon">
                     <FaTwitter className="i"/>
                 </div>
+                <div className="icon">
+                    <FaTiktok className="i"/>
+                </div>
                 
             </div>
         </div>
