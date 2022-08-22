@@ -37,7 +37,7 @@ function Contact() {
                         CARDS.map((card, index) => {
                             const { icon, title, content } = card;
                             return (
-                                <div className="card">
+                                <div className="card" key={index}>
                                     <div className="icon">
                                         {icon}
                                     </div>

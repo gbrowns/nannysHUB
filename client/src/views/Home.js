@@ -114,7 +114,7 @@ function Home() {
                     {
                         CARDS.map(({title, icon, description}, index) => {
                             return (
-                                <div className="card">
+                                <div className="card" key={index}>
                                     <h3>{title}</h3>
                                     {icon}
                                     <p>
