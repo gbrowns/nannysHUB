@@ -446,6 +446,7 @@ footer{
                         font-size: 1.2rem;
                         line-height: 1.8;
                         width: 80%;
+                        font-family: $bodyText1;
                     }
                 }
             }
@@ -811,6 +812,127 @@ footer{
     }
 
 
+}
+
+//application page styles
+.apply-page{
+    position: relative;
+    width: 100%;
+   .apply-container{
+        width: 100%;
+        position: relative;
+        padding: 3rem 25rem;
+        h1{
+            font-size: 2rem;
+            font-family: $headingText1;
+            color: $themeColor;
+            padding: .8rem 0;
+            text-transform: capitalize;
+        }
+        p{
+            font-size: 1.3rem;
+            font-family: $bodyText1;
+            color: rgba(0, 0, 0, 0.637);
+            line-height: 1.5;
+        }
+        form{
+            position: relative;
+            width: 100%;
+            margin: 1rem 0;
+            padding: 3rem 0;
+            .form-group{
+                position: relative;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                margin-bottom: 1rem;
+                select, input[type="text"]{
+                    width: 45%;
+                    height: 55px;
+                    padding: .9rem .9rem;
+                    font-size: 1rem;
+                    outline: none;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+                .inner-group{
+                    display: flex;
+                    flex-direction: column;
+                    span{
+                        font-size: 1rem;
+                        font-family: $bodyText3;
+                        color: rgba(0, 0, 0, 0.637);
+                        margin-bottom: .3rem;
+                    }
+                    div{
+                        display: flex;
+                
+                        justify-content: flex-start;
+                        align-items: center;
+                        padding: 1rem 0;
+                        input{
+                            width: 20px;
+                            height: 20px;
+                            cursor: pointer;
+                            color: $themeColor;
+                        }
+                        label{
+                            font-size: 1rem;
+                            font-family: $bodyText1;
+                            color: rgba(0, 0, 0, 0.637);
+                
+                        }
+                    }
+                }
+                span{
+                    font-size: 1rem;
+                    font-family: $bodyText3;
+                    color: rgba(0, 0, 0, 0.637);
+                    margin-bottom: .3rem;
+                }
+                div{
+                    display: flex;
+                    justify-content: flex-start;
+                    
+                    padding: 1rem 0;
+                    input{
+                        width: 20px;
+                        height: 20px;
+                        cursor: pointer;
+                        color: $themeColor;
+                    }
+                    label{
+                        font-size: 1rem;
+                        font-family: $bodyText1;
+                        color: rgba(0, 0, 0, 0.637);
+                
+                    }
+                }
+                textarea{
+                    width: 100%;
+                    height: 150px;
+                    padding: .9rem .9rem;
+                    font-size: 1rem;
+                    outline: none;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+                
+            }
+            input[type="submit"]{
+                width: 250px;
+                height: 60px;
+                font-size: 1.2rem;
+                border: none;
+                background-color: #562a5c;
+                color: #fff;
+                cursor: pointer;
+            
+            }
+        }
+   }
 }
 
 

@@ -9,19 +9,19 @@ function Home() {
             {
                 id: 1,
                 title: 'Search',
-                description: 'Find a nanny for your child, household nad garden chores from a trusted <span>Nannies Hub</span>'
+                description: 'Find a nanny for your child, household nad garden chores from a trusted Nannies Hub'
 
             },
             {
                 id: 2,
                 title: 'Connect',
-                description: 'Find a nanny for your child, household nad garden chores from a trusted <span>Nannies Hub</span>'
+                description: 'Find a nanny for your child, household nad garden chores from a trusted Nannies Hub'
 
             },
             {
                 id: 3,
                 title: 'Interview',
-                description: 'Find a nanny for your child, household nad garden chores from a trusted <span>Nannies Hub</span>'
+                description: 'Find a nanny for your child, household nad garden chores from a trusted Nannies Hub'
 
             },
             
@@ -31,22 +31,22 @@ function Home() {
             {
                 id: 1,
                 title: 'Apply',
-                description: 'Find a nanny for your child, household nad garden chores from a trusted <span>Nannies Hub</span>'
+                description: 'Find a nanny for your child, household nad garden chores from a trusted Nannies Hub'
             },
             {
                 id: 2,
                 title: 'Wait for approval',
-                description: 'Find a nanny for your child, household nad garden chores from a trusted <span>Nannies Hub</span>'
+                description: 'Find a nanny for your child, household nad garden chores from a trusted Nannies Hub'
             },
             {
                 id: 3,
                 title: 'Get interviewed',
-                description: 'Find a nanny for your child, household nad garden chores from a trusted <span>Nannies Hub</span>'
+                description: 'Find a nanny for your child, household nad garden chores from a trusted Nannies Hub'
             },
             {
                 id: 4,
                 title: 'Connect with client',
-                description: 'Find a nanny for your child, household nad garden chores from a trusted <span>Nannies Hub</span>'
+                description: 'Find a nanny for your child, household nad garden chores from a trusted Nannies Hub'
             }
 
         ]
