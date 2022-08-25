@@ -9,10 +9,11 @@ router.get("/", requestController.getAllRequests);
 
 router.get("/:requestId", requestController.getOneRequest);
 
-router.post("/", requestController.createNewNanny);
+router.post("/", requestController.createNewRequest);
 
 router.put("/:requestId", requestController.updateOneRequest);
 
 router.delete("/:requestId", requestController.deleteOneRequest);
+
 
 module.exports = router;

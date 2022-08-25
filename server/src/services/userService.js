@@ -1,57 +1,58 @@
 const {v4: uuid} = require('uuid');
 //require models
-const Users = require('../database/Users');
+const User = require('../databases/models/User');
 
 //handle users
-const getAllUsers = () => {
+const getAllUsers = async () => {
     try{
-     const allUsers = Users.getAllUsers();
+     const allUsers = await User.find({});
 
      return allUsers;
 
     }catch(error){
-         throw error;
+        throw error;
     }
 }
 
-const getOneUser = (userId) => {
+const getOneUser = async (userId) => {
     try{
-        const oneUser = Users.getOneUser(userId);
+        const oneUser = await User.findById(userId);
         return oneUser;
     }catch(error){
         throw error;
     }
 }
 
-const createNewUser = (newUser) => {
+const createNewUser = async (newUser) => {
     
-    const userToInsert = {
+    /*const userToInsert = {
         ...newUser,
         id: uuid(),
         createdAt: new Date().toLocaleTimeString,
         updatedAt: new Date().toLocaleTimeString
-    }
+    }*/
     
     try{
-        const createdUser = Users.createNewUser(userToInsert);
+        const createdUser = User.create(newUser);
+        await createdUser.save();
         return createdUser;
     }catch(error){
         throw error;
     }
 }
 
-const updateOneUser = (userId, change) => {
+const updateOneUser = async (userId, change) => {
     try{
-        const updatedUser = Users.updateOneUser(userId, change);
+        const updatedUser = await User.updateOne(change).where({id: userId});
         return updatedUser;
     }catch(error){
         throw error;
     }
 }
 
-const deleteOneUser = (userId) => {
+const deleteOneUser = async (userId) => {
     try{
-        const userDeleted = Users.deleteOneUser(userId);
+        const userDeleted = await User.findByIdAndDelete(userId);
         return userDeleted;
     }catch(error){
         throw error;
