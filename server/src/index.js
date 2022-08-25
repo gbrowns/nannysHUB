@@ -1,5 +1,7 @@
 const express = require('express');
+const mongoose = require('mongoose'); 
 const app = express();
+require('dotenv').config();
 
 const PORT = 8000;
 const LOCALHOST = `http://localhost:${PORT}`;
@@ -21,7 +23,12 @@ app.use('/api/users', userRouter);
 
 app.get("/api/nannies", (req, res) => {
     res.send("Nannies server is running");
-})
+});
+
+//connect to mongoose
+mongoose.connect(process.env.DB_CONNECTION , { useNewUrlParser: true }, () => {
+    console.log('connected to mongoose db');
+});
 
 app.listen(PORT, () =>{
     console.log(`Server is running on ${LOCALHOST}`);
