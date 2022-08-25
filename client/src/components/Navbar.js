@@ -5,12 +5,10 @@ import { GrFormClose } from 'react-icons/gr'
 import {useState} from 'react'
 
 function Navbar() {
-    const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
 
-    const handleToggle = () => {
-      setIsOpen(!isOpen)
-      console.log("isOpen", isOpen)
-    }
+  //handle the state of the navbar
+  const handleToggle = () => setIsOpen(!isOpen)
 
 
   return (
@@ -26,8 +24,8 @@ function Navbar() {
             <Link to="/apply-for-job">Apply for job</Link>
         </div>
         <div className="menu-controls">
-            <BiMenuAltRight className="menu-icon" onClick={handleToggle}/>
-            <GrFormClose className="close-icon"/>
+            <BiMenuAltRight className="menu-icon" onClick={handleToggle} style={{display: isOpen ? "block" : "none"}}/>
+            <GrFormClose className="close-icon" style={{ display: isOpen ? "none" : "block" }} onClick={handleToggle}   />
         </div>
 
     </div>
