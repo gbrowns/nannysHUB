@@ -14,3 +14,5 @@ router.post("/", requestController.createNewNanny);
 router.put("/:requestId", requestController.updateOneRequest);
 
 router.delete("/:requestId", requestController.deleteOneRequest);
+
+module.exports = router;
