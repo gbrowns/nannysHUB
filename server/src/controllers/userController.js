@@ -1,5 +1,5 @@
 //require services
-const userService = require("../services/userService");
+const userService = require("../services/messageService");
 
 //handle users
 const getAllUsers = async (req, res) => {

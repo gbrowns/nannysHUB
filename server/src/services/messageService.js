@@ -57,3 +57,11 @@ const deleteOneMessage = (messageId) => {
         throw error;
     }
 }
+
+module.exports = {
+    getAllMessages,
+    getOneMessage,
+    createNewMessage,
+    updateOneMessage,
+    deleteOneMessage
+}
