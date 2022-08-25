@@ -2,25 +2,23 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const messageSchema = new Schema({
-    username: {
+    name: {
         type: String,
         required: true
     },
     email: {
         type: String,
-        required: true
-    },
-    phone: {
-        type: String,
-        required: true
-    },
-    location: {
-        type: String,
-        required: true
+        required: true,
+        lowercase: true
     },
     message: {
         type: String,
         required: true
+    },
+    createAt: {
+        type: Date,
+        immutable: true, //cannot be changed
+        default: () => Date.now()
     }
 })
 
