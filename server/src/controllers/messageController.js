@@ -18,8 +18,9 @@ const getOneMessage = async (req, res) => {
     }
 
     try {
-        const message = await messageService.getOneMessage(messageId);
-        res.send({ status: "ok", data: message });
+        console.log(messageId);
+        const oneMessage = await messageService.getOneMessage(messageId);
+        res.send({ status: "ok", data: oneMessage });
     } catch (err) {
         res.status(500).json({ message: err.message });
     }

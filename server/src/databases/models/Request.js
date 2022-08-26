@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+
 const requestSchema = new Schema({
     firstname: {
         type: String,
@@ -34,13 +35,16 @@ const requestSchema = new Schema({
         type: String,
         required: true
     },
-    employmentStatus: [{ type: String, required: true }],
-    job_type: [{ type: String, required: true }],
+    employment_status: { 
+        type: String, 
+        required: true 
+    },
     agreement_type: [{ type: String, required: true }],
     availableTime: { 
         type: String,
         required: true 
     },
+    work_type: [{ type: String, required: true }],
     message: {
         type: String,
         required: true

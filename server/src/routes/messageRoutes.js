@@ -7,12 +7,12 @@ const messageController = require("../controllers/messageController");
 //crud operations
 router.get("/", messageController.getAllMessages);
 
-router.get("/:textId", messageController.getOneMessage);
+router.get("/:messageId", messageController.getOneMessage);
 
 router.post("/", messageController.createNewMessage);
 
-router.patch("/:textId", messageController.updateOneMessage);
+router.patch("/:messageId", messageController.updateOneMessage);
 
-router.delete("/:textId", messageController.deleteOneMessage);
+router.delete("/:messageId", messageController.deleteOneMessage);
 
 module.exports = router;

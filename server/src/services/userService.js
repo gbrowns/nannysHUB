@@ -3,7 +3,7 @@ const {v4: uuid} = require('uuid');
 const User = require('../databases/models/User');
 
 //handle users
-const getAllUsers = async () => {
+const getUsers = async () => {
     try{
      const allUsers = await User.find({});
 
@@ -25,15 +25,8 @@ const getOneUser = async (userId) => {
 
 const createNewUser = async (newUser) => {
     
-    /*const userToInsert = {
-        ...newUser,
-        id: uuid(),
-        createdAt: new Date().toLocaleTimeString,
-        updatedAt: new Date().toLocaleTimeString
-    }*/
-    
     try{
-        const createdUser = User.create(newUser);
+        const createdUser = await User.create(newUser);
         await createdUser.save();
         return createdUser;
     }catch(error){
@@ -43,7 +36,7 @@ const createNewUser = async (newUser) => {
 
 const updateOneUser = async (userId, change) => {
     try{
-        const updatedUser = await User.updateOne(change).where({id: userId});
+        const updatedUser = await User.findByIdAndUpdate({_id: userId}, change, {new: true});
         return updatedUser;
     }catch(error){
         throw error;
@@ -52,15 +45,14 @@ const updateOneUser = async (userId, change) => {
 
 const deleteOneUser = async (userId) => {
     try{
-        const userDeleted = await User.findByIdAndDelete(userId);
-        return userDeleted;
+        await User.findByIdAndDelete(userId);
     }catch(error){
         throw error;
     }
 }
 
 module.exports = {
-    getAllUsers,
+    getUsers,
     getOneUser,
     createNewUser,
     updateOneUser,

@@ -41,9 +41,9 @@ const createNewMessage = async (newMessage) => {
     }
 }
 
-const updateOneMessage = (messageId, change) => {
+const updateOneMessage = async (messageId, change) => {
     try{
-        const updatedMessage = Message.updateOne(change).where({id: messageId});
+        const updatedMessage = await Message.findOneAndUpdate({_id: messageId}, change, {new: true});
         return updatedMessage;
     }catch(error){
         throw error;
