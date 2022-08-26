@@ -2,6 +2,7 @@
 const requestService = require("../services/requestService");
 //const Request = require("../models/request");
 
+
 //handle requests
 const getAllRequests = async (req, res) => {
     try {
@@ -27,8 +28,8 @@ const getOneRequest = async (req, res) => {
 }
 
 const createNewRequest = async (req, res) => {
-    const {name, email, password} = req.body; //update later to include more fields
-    const newRequest = {name, email, password};
+    const {firstname, lastname, email, phone, city, estate, gender, age, employment_status, work_type, agreement_type, availableTime, message} = req.body; //update later to include more fields
+    const newRequest = { firstname, lastname, email, phone, city, estate, gender, age, employment_status, agreement_type, availableTime,work_type, message};
     try {
         const createdRequest = await requestService.createNewRequest(newRequest);
         res.status(201).send({ status: "ok", data: createdRequest });
