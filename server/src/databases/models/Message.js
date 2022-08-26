@@ -19,6 +19,10 @@ const messageSchema = new Schema({
         type: Date,
         immutable: true, //cannot be changed
         default: () => Date.now()
+    },
+    updatedAt: {
+        type: Date,
+        default: () => Date.now()
     }
 })
 
