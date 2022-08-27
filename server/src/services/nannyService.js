@@ -46,7 +46,7 @@ const updateOneNanny = async (nannyId, change) => {
 
 const deleteOneNanny = async (nannyId) => {
     try{
-        await User.findByIdAndDelete(nannyId);
+        await Nanny.findByIdAndDelete(nannyId);
     }catch(error){
         throw error;
     }
