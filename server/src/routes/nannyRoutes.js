@@ -9,7 +9,7 @@ router.get("/", nannyController.getAllNannies);
 
 router.get("/:nannyId", nannyController.getOneNanny);
 
-router.post("/", nannyController.createNewNanny);
+//router.post("/", nannyController.createNewNanny);
 
 router.patch("/:nannyId", nannyController.updateOneNanny);
 

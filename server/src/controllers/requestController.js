@@ -29,7 +29,7 @@ const getOneRequest = async (req, res) => {
 
 const createNewRequest = async (req, res) => {
     const {firstname, lastname, email, phone, city, estate, gender, age, employment_status, work_type, agreement_type, availableTime, message} = req.body; //update later to include more fields
-    const newRequest = { firstname, lastname, email, phone, city, estate, gender, age, employment_status, agreement_type, availableTime,work_type, message};
+    const newRequest = { firstname, lastname, email, phone, city, estate, gender, age, employment_status, agreement_type, availableTime,work_type, message, status: "pending"};
     try {
         const createdRequest = await requestService.createNewRequest(newRequest);
         res.status(201).send({ status: "ok", data: createdRequest });

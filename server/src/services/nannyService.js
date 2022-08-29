@@ -1,11 +1,11 @@
 const {v4: uuid} = require('uuid');
 //require models
-const Nanny = require('../databases/models/nanny');
+const Request = require('../databases/models/Request');
 
 //handle users
 const getAllNannies = async () => {
     try{
-     const nannies = await Nanny.find({});
+     const nannies = await Request.find({status: "active"});
 
      return nannies;
 
@@ -16,17 +16,17 @@ const getAllNannies = async () => {
 
 const getOneNanny = async (nannyId) => {
     try{
-        const nanny = await Nanny.findById(nannyId);
+        const nanny = await Request.findById(nannyId);
         return nanny;
     }catch(error){
         throw error;
     }
 }
-
+/*
 const createNewNanny = async (newNanny) => {
     
     try{
-        const createdNanny = await Nanny.create(newNanny);
+        const createdNanny = await Request.create(newNanny);
         await createdNanny.save();
         return createdNanny;
         
@@ -34,10 +34,11 @@ const createNewNanny = async (newNanny) => {
         throw error;
     }
 }
+*/
 
 const updateOneNanny = async (nannyId, change) => {
     try{
-        const updatedNanny = await Nanny.findByIdAndUpdate({_id: nannyId}, change, {new: true});
+        const updatedNanny = await Request.findByIdAndUpdate({_id: nannyId}, change, {new: true});
         return updatedNanny;
     }catch(error){
         throw error;
@@ -46,7 +47,7 @@ const updateOneNanny = async (nannyId, change) => {
 
 const deleteOneNanny = async (nannyId) => {
     try{
-        await Nanny.findByIdAndDelete(nannyId);
+        await Request.findByIdAndDelete(nannyId);
     }catch(error){
         throw error;
     }
@@ -55,7 +56,7 @@ const deleteOneNanny = async (nannyId) => {
 module.exports = {
     getAllNannies,
     getOneNanny,
-    createNewNanny,
+    /*createNewNanny,*/
     updateOneNanny,
     deleteOneNanny
 }
