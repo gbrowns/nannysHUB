@@ -25,7 +25,7 @@ const getOneNanny = async (req, res) => {
         res.status(500).json({ message: err.message });
     }
 }
-
+/*
 const createNewNanny = async (req, res) => {
     const {username, email, location} = req.body; //update later to include more fields
 
@@ -44,7 +44,7 @@ const createNewNanny = async (req, res) => {
         console.log(err)
     }
 }
-
+*/
 const updateOneNanny = async (req, res) => {
     const {body, params: {nannyId}} = req
 
@@ -78,7 +78,7 @@ const deleteOneNanny = async (req, res) => {
 module.exports = {
     getAllNannies,
     getOneNanny,
-    createNewNanny,
+    /*createNewNanny,*/
     updateOneNanny,
     deleteOneNanny
 }
