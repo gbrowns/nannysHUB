@@ -14,7 +14,7 @@ const bodyParser = require('body-parser');
 const requestRouter = require('./routes/requestRoutes');
 const messageRouter = require('./routes/messageRoutes');
 const nannyRouter = require('./routes/nannyRoutes');
-//const adminRouter = require('./routes/adminRoutes');
+const adminRouter = require('./routes/adminRoutes');
 
 //middleware
 app.use(cors());
@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 app.use('/api/requests', requestRouter);
 app.use('/api/messages', messageRouter);
 app.use('/api/nannies', nannyRouter);
-//app.use('/api/admin', adminRouter);
+app.use('/api/admin', adminRouter);
 
 
 app.get("/api/service", (req, res) => {

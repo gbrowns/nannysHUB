@@ -38,7 +38,6 @@ const createNewAmin = async (req, res) => {
 
     //new user object
     const password = hashPassword(req.body.password);
-    console.log(password);
     const newAdmin = { 
         username, 
         password,
