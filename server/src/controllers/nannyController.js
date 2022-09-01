@@ -25,16 +25,15 @@ const getOneNanny = async (req, res) => {
         res.status(500).json({ message: err.message });
     }
 }
-/*
+
 const createNewNanny = async (req, res) => {
-    const {username, email, location} = req.body; //update later to include more fields
+    const { firstname, lastname, email, phone, city, location, gender, age, employment_status, agreement_type, availableTime, work_type, message} = req.body; //update later to include more fields
+    const newNanny = { firstname, lastname, email, phone, city, location, gender, age, employment_status, agreement_type, availableTime,work_type, message, status: "pending"};
 
     //check inputs are in place
-    if (!username || !email || !location) {
+    if (!firstname || !lastname || !email || !phone || !city || !estate || !gender || !age || !employment_status || !work_type || !agreement_type || !availableTime || !message, status) {
         res.status(400).json({ status: "FAILED", message: "Please fill out all fields" });
     }
-    //new user object
-    const newNanny = {username, email, location};
     
     try {
         const createdNanny = await nannyService.createNewNanny(newNanny);
@@ -44,7 +43,7 @@ const createNewNanny = async (req, res) => {
         console.log(err)
     }
 }
-*/
+
 const updateOneNanny = async (req, res) => {
     const {body, params: {nannyId}} = req
 
@@ -78,7 +77,7 @@ const deleteOneNanny = async (req, res) => {
 module.exports = {
     getAllNannies,
     getOneNanny,
-    /*createNewNanny,*/
+    createNewNanny,
     updateOneNanny,
     deleteOneNanny
 }

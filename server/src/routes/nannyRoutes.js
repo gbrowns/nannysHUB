@@ -13,7 +13,9 @@ router.get("/:nannyId", nannyController.getOneNanny);
 
 router.patch("/:nannyId", nannyController.updateOneNanny);
 
+router.put("/:nannyId", nannyController.updateOneNanny);
+
 router.delete("/:nannyId", nannyController.deleteOneNanny);
 
 
-module.exports = router;
+module.exports = router; //twilio

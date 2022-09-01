@@ -2,15 +2,53 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const nannySchema = new Schema({
-    username: { 
+    firstname: {
         type: String,
         required: true
     },
-    email: { 
+    lastname: {
         type: String,
         required: true
     },
-    location: { 
+    email: {
+        type: String,
+        required: true
+    },
+    phone: {
+        type: String,
+        required: true
+    },
+    city: {
+        type: String,
+        required: true
+    },
+    location: {
+        type: Object,
+        required: true
+    },
+    gender: {
+        type: String,
+        required: true
+    },
+    age: {
+        type: String,
+        required: true
+    },
+    employment_status: {
+        type: String,
+        required: true
+    },
+    agreement_type: [{ type: String, required: true }],
+    availableTime: {
+        type: String,
+        required: true
+    },
+    work_type: [{ type: String, required: true }],
+    message: {
+        type: String,
+        required: true
+    },
+    status: {
         type: String,
         required: true
     }

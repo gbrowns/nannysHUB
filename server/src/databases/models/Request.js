@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 
 const requestSchema = new Schema({
+    nannyId: {
+        type: String,
+        required: true
+    },
     firstname: {
         type: String,
         required: true
@@ -19,35 +23,13 @@ const requestSchema = new Schema({
         type: String,
         required: true
     },
-    city: {
-        type: String,
-        required: true
-    },
-    estate: {
-        type: String,
-        required: true
-    },
-    gender: {
-        type: String,
-        required: true
-    },
-    age: {
-        type: String,
-        required: true
-    },
-    employment_status: { 
-        type: String, 
-        required: true 
-    },
-    agreement_type: [{ type: String, required: true }],
-    availableTime: { 
-        type: String,
-        required: true 
-    },
-    work_type: [{ type: String, required: true }],
     message: {
         type: String,
         required: true
+    },
+    paid: {
+        type: Boolean
+        //required: true
     },
     status: {
         type: String,
@@ -55,6 +37,7 @@ const requestSchema = new Schema({
     }
 
 })
+
 
 
 module.exports = mongoose.model('Request', requestSchema);
