@@ -1,6 +1,5 @@
 //require services
 const requestService = require("../services/requestService");
-//const Request = require("../models/request");
 
 
 //handle requests
@@ -28,8 +27,8 @@ const getOneRequest = async (req, res) => {
 }
 
 const createNewRequest = async (req, res) => {
-    const {firstname, lastname, email, phone, city, estate, gender, age, employment_status, work_type, agreement_type, availableTime, message} = req.body; //update later to include more fields
-    const newRequest = { firstname, lastname, email, phone, city, estate, gender, age, employment_status, agreement_type, availableTime,work_type, message, status: "pending"};
+    const {nannyId, firstname, lastname, email, phone, message} = req.body;
+    const newRequest = {nannyId, firstname, lastname, email, phone, message, status: "pending"};
     try {
         const createdRequest = await requestService.createNewRequest(newRequest);
         res.status(201).send({ status: "ok", data: createdRequest });
@@ -37,6 +36,7 @@ const createNewRequest = async (req, res) => {
         res.status(500).json({ message: err.message });
     }
 }
+
 
 const updateOneRequest = async (req, res) => {
     const {body, params: {requestId}} = req

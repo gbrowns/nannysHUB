@@ -40,3 +40,9 @@ mongoose.connect(MONGODB_URI , options, (err) => {
 app.listen(PORT, () =>{
     console.log(`Server is running on ${LOCALHOST}`);
 });
+
+/*
+nanny -> application -> receive email 
+admin -> approve all requests
+client -> find a nanny (location) -> payment
+*/

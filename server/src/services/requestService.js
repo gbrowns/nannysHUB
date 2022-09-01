@@ -24,12 +24,6 @@ const getOneRequest = async (requestId) => {
 }
 
 const createNewRequest = async (newRequest) => {
-    /*const requestToInsert = {
-        ...newRequest,
-        id: uuid(),
-        createdAt: new Date().toLocaleTimeString,
-        updatedAt: new Date().toLocaleTimeString
-    }*/
     try{
         const createdRequest = await Request.create(newRequest);
         await createdRequest.save();
