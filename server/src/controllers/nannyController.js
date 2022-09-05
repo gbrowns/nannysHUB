@@ -4,7 +4,7 @@ const nannyService = require("../services/nannyService");
 //handle users
 const getAllNannies = async (req, res) => {
     try {
-        const nannies = await nannyService.getAllNannies();
+        //const nannies = await nannyService.getAllNannies();
         res.send({ status: "ok", data: res.paginatedResults });
         //res.json(res.paginatedResults)
     } catch (err) {
@@ -23,6 +23,7 @@ const getOneNanny = async (req, res) => {
         const nanny = await nannyService.getOneNanny(nannyId);
         res.send({ status: "ok", data: nanny });
     } catch (err) {
+
         res.status(500).json({ message: err.message });
     }
 }

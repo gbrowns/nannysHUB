@@ -54,14 +54,15 @@ const createNewAmin = async (req, res) => {
 }
 
 const updateOneAdmin = async (req, res) => {
-    const { body, params: { adminId } } = req
-
+    const { params: { adminId } } = req
+    const password = hashPassword(req.body.password);
+    const newBody = { ...req.body, password };
     if (!adminId) {
         res.status(400).json({ status: "FAILED", message: "nanny Id is missing" });
     }
 
     try {
-        const updatedAdmin = await adminService.updateOneAdmin(adminId, body);
+        const updatedAdmin = await adminService.updateOneAdmin(adminId, newBody);
         res.json({ status: "ok", data: updatedAdmin });
     } catch (err) {
         res.status(500).json({ message: err.message });

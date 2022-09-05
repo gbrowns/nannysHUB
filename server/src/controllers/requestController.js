@@ -28,7 +28,7 @@ const getOneRequest = async (req, res) => {
 
 const createNewRequest = async (req, res) => {
     const {nannyId, firstname, lastname, email, phone, message} = req.body;
-    const newRequest = {nannyId, firstname, lastname, email, phone, message, status: "pending"};
+    const newRequest = {nannyId, firstname, lastname, email, phone, message, paid: false /*, status: "pending"*/};
     try {
         const createdRequest = await requestService.createNewRequest(newRequest);
         res.status(201).send({ status: "ok", data: createdRequest });
