@@ -29,3 +29,5 @@ function paginatedResults(model){
         }
     }
 }
+
+module.exports = paginatedResults;

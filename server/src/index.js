@@ -16,13 +16,14 @@ const messageRouter = require('./routes/messageRoutes');
 const nannyRouter = require('./routes/nannyRoutes');
 const adminRouter = require('./routes/adminRoutes');
 
+const Nanny = require("./databases/models/Nanny");
+const paginatedResults = require("./middlewares/paginatedResults");
 //middleware
 app.use(cors());
 app.use(bodyParser.json());
-
 app.use('/api/requests', requestRouter);
 app.use('/api/messages', messageRouter);
-app.use('/api/nannies', nannyRouter);
+app.use('/api/nannies', paginatedResults(Nanny), nannyRouter);
 app.use('/api/admin', adminRouter);
 
 
