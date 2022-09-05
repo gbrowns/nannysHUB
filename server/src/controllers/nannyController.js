@@ -4,8 +4,10 @@ const nannyService = require("../services/nannyService");
 //handle users
 const getAllNannies = async (req, res) => {
     try {
-        const nannies = await nannyService.getAllNannies();
-        res.json({ status: "ok", data: nannies });
+        //const nannies = await nannyService.getAllNannies(filter);
+        res.send({ status: "ok", data: res.paginatedResults  });
+        
+        //res.send({ status: "ok", data: nannies });
     } catch (err) {
         res.status(500).json({ message: err.message });
         console.log(err)
@@ -22,16 +24,17 @@ const getOneNanny = async (req, res) => {
         const nanny = await nannyService.getOneNanny(nannyId);
         res.send({ status: "ok", data: nanny });
     } catch (err) {
+
         res.status(500).json({ message: err.message });
     }
 }
 
 const createNewNanny = async (req, res) => {
     const { firstname, lastname, email, phone, city, location, gender, age, employment_status, agreement_type, availableTime, work_type, message} = req.body; //update later to include more fields
-    const newNanny = { firstname, lastname, email, phone, city, location, gender, age, employment_status, agreement_type, availableTime,work_type, message, status: "pending"};
+    const newNanny = { firstname, lastname, email, phone, city, location, gender, age, employment_status, agreement_type, availableTime,work_type, message, state: "pending"};
 
     //check inputs are in place
-    if (!firstname || !lastname || !email || !phone || !city || !estate || !gender || !age || !employment_status || !work_type || !agreement_type || !availableTime || !message, status) {
+    if (!firstname || !lastname || !email || !phone || !city || !location || !gender || !age || !employment_status || !work_type || !agreement_type || !availableTime || !message) {
         res.status(400).json({ status: "FAILED", message: "Please fill out all fields" });
     }
     

@@ -5,8 +5,8 @@ const requestService = require("../services/requestService");
 //handle requests
 const getAllRequests = async (req, res) => {
     try {
-        const requests = await requestService.getAllRequests();
-        res.send({ status: "ok", data: requests });
+        //const requests = await requestService.getAllRequests();
+        res.send({ status: "ok", data: res.paginatedResults  });
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
@@ -28,7 +28,7 @@ const getOneRequest = async (req, res) => {
 
 const createNewRequest = async (req, res) => {
     const {nannyId, firstname, lastname, email, phone, message} = req.body;
-    const newRequest = {nannyId, firstname, lastname, email, phone, message, status: "pending"};
+    const newRequest = {nannyId, firstname, lastname, email, phone, message, paid: false /*, status: "pending"*/};
     try {
         const createdRequest = await requestService.createNewRequest(newRequest);
         res.status(201).send({ status: "ok", data: createdRequest });

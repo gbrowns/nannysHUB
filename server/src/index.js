@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const app = express();
 require('dotenv').config();
 
-const PORT = 8000;
+const PORT = 8001;
 const LOCALHOST = `http://localhost:${PORT}`;
 const MONGODB_URI = process.env.DB_CONNECTION;
 const options = { useNewUrlParser: true};
@@ -12,17 +12,20 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const requestRouter = require('./routes/requestRoutes');
-const messageRouter = require('./routes/messageRoutes');
+//const messageRouter = require('./routes/messageRoutes');
 const nannyRouter = require('./routes/nannyRoutes');
 const adminRouter = require('./routes/adminRoutes');
+
+const Nanny = require("./databases/models/Nanny");
+const Request = require("./databases/models/Request");
+const paginatedResults = require("./middlewares/paginatedResults");
 
 //middleware
 app.use(cors());
 app.use(bodyParser.json());
-
-app.use('/api/requests', requestRouter);
-app.use('/api/messages', messageRouter);
-app.use('/api/nannies', nannyRouter);
+app.use('/api/requests',paginatedResults(Request), requestRouter);
+//app.use('/api/messages', messageRouter);
+app.use('/api/nannies', paginatedResults(Nanny), nannyRouter);
 app.use('/api/admin', adminRouter);
 
 

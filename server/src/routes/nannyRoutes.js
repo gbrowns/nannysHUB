@@ -9,7 +9,7 @@ router.get("/", nannyController.getAllNannies);
 
 router.get("/:nannyId", nannyController.getOneNanny);
 
-//router.post("/", nannyController.createNewNanny);
+router.post("/", nannyController.createNewNanny);
 
 router.patch("/:nannyId", nannyController.updateOneNanny);
 
@@ -18,4 +18,4 @@ router.put("/:nannyId", nannyController.updateOneNanny);
 router.delete("/:nannyId", nannyController.deleteOneNanny);
 
 
-module.exports = router; //twilio
+module.exports = router;

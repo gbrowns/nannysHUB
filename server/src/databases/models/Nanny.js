@@ -48,7 +48,7 @@ const nannySchema = new Schema({
         type: String,
         required: true
     },
-    status: {
+    state: {
         type: String,
         required: true
     }
