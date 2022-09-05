@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const app = express();
 require('dotenv').config();
 
-const PORT = 8000;
+const PORT = 8001;
 const LOCALHOST = `http://localhost:${PORT}`;
 const MONGODB_URI = process.env.DB_CONNECTION;
 const options = { useNewUrlParser: true};
@@ -19,6 +19,7 @@ const adminRouter = require('./routes/adminRoutes');
 const Nanny = require("./databases/models/Nanny");
 const Request = require("./databases/models/Request");
 const paginatedResults = require("./middlewares/paginatedResults");
+
 //middleware
 app.use(cors());
 app.use(bodyParser.json());

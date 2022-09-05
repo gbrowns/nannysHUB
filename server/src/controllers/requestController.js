@@ -6,7 +6,7 @@ const requestService = require("../services/requestService");
 const getAllRequests = async (req, res) => {
     try {
         //const requests = await requestService.getAllRequests();
-        res.send({ status: "ok", data: res.paginatedResults });
+        res.send({ status: "ok", data: res.paginatedResults  });
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
