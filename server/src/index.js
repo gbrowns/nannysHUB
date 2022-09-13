@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const app = express();
 require('dotenv').config();
 
-const PORT = 8001;
+const PORT = 8000;
 const LOCALHOST = `http://localhost:${PORT}`;
 const MONGODB_URI = process.env.DB_CONNECTION;
 const options = { useNewUrlParser: true};
