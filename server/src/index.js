@@ -2,11 +2,12 @@ const express = require('express');
 const mongoose = require('mongoose'); 
 const app = express();
 require('dotenv').config();
+//const request = require('request'); //deprecated
 
 const PORT = 8000;
-const LOCALHOST = `http://localhost:${PORT}`;
+const LOCALHOST = `http://localhost:${PORT}/api`;
 const MONGODB_URI = process.env.DB_CONNECTION;
-const options = { useNewUrlParser: true};
+const options = { useNewUrlParser: true, useUnifiedTopology: true};
 
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -28,10 +29,6 @@ app.use('/api/requests',paginatedResults(Request), requestRouter);
 app.use('/api/nannies', paginatedResults(Nanny), nannyRouter);
 app.use('/api/admin', adminRouter);
 
-
-app.get("/api/service", (req, res) => {
-    res.send("Nannies server is running");
-});
 
 
 //connect to mongoose
