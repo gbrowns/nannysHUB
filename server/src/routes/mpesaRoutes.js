@@ -7,9 +7,9 @@ const mpesa = require('../controllers/mpesaController');
 router.get('/access_token', mpesa.getAccessToken);
 
 //lipa na mpesa online
-router.post('/lipa-na-mpesa', mpesa.lipaNaMpesa);
+router.post('/lipa_na_mpesa', mpesa.lipaNaMpesa);
 
 //lipa na mpesa online callback
-router.post('/lipa-na-mpesa-callback', mpesa.lipaNaMpesaCallback);
+router.post('/lipa_na_mpesa_callback', mpesa.lipaNaMpesaCallback);
 
 module.exports = router;

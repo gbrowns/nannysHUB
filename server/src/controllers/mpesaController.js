@@ -1,7 +1,9 @@
+const { response } = require('express');
+
 const axios = require('axios').default;
 require('dotenv').config();
 
-const getAccessToken = async () => {
+const getAccessToken = async (req, res, next) => {
     const consumer_key = process.env.CONSUMER_KEY;
     const consumer_secret = process.env.CONSUMER_SECRET;
 
@@ -18,13 +20,12 @@ const getAccessToken = async () => {
         });
 
         req.token = data["access_token"];
-
+        //res.send(req.token);
         return next();
 
     }catch(err){
-        return resizeBy.send({
+        return res.send({
             success: false,
-            status: "FAILED",
             message: err['response']['statusText']
         });
     }
@@ -34,6 +35,10 @@ const lipaNaMpesa = async (req, res) => {
     let token = req.token;
     let auth = `Bearer ${token}`;
 
+    ////////////////////////////////////
+    console.log("lipa na mpesa token: ", token);
+    console.log("Auth: ", auth);
+
     let timestamp = new Date().toISOString().replace(/[^0-9]/g, "").slice(0, -3);
 
     let url = process.env.STK_PUSH_URL; //update
@@ -42,13 +47,13 @@ const lipaNaMpesa = async (req, res) => {
 
     let password = new Buffer.from(`${bs_short_code}${pass_key}${timestamp}`).toString("base64");
     let transaction_type = "CustomerPayBillOnline";
-    let amount = "1";
+    let amount = req.body.amount;// amount sent from client
     let partyA = req.body.phone; //person sending money\
     let partyB = bs_short_code;
     let phone_number = partyA; //same as partyA
     let callback_url = process.env.CALLBACK_URL; //update -localhost:8000/api/mpesa/lipa-na-mpesa-callback
-    let account_reference = "Nanny Hub";
-    let transaction_desc = "Payment for Nanny Hub services";
+    let account_reference = "NannyHubLtd"; //should not exceed 12 characters
+    let transaction_desc = "Client Payment";
 
     try{
         let {data} = await axios.post(url, {
@@ -64,22 +69,26 @@ const lipaNaMpesa = async (req, res) => {
             "AccountReference": account_reference,
             "TransactionDesc": transaction_desc
         }, {
-            headers: {
+            "headers": {
                 "Authorization": auth
             }
-        }).catch(console.log);
+        }).catch(error => {
+            console.log(error.response.data);
+        })
 
+        console.log(data);
+        
         return res.send({
             success: true,
-            status: "SUCCESS",
-            message: "Payment request sent successfully",
-            data: data
+            message: data
         });
 
+
     }catch(err){
+
         return res.send({
-            success: false,
             status: "FAILED",
+            success: false,
             message: err['response']['statusText']
         });
 
