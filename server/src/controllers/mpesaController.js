@@ -1,6 +1,7 @@
 const { response } = require('express');
 
 const axios = require('axios').default;
+const paymentService = require('../services/paymentService');
 require('dotenv').config();
 
 const getAccessToken = async (req, res, next) => {
@@ -97,14 +98,73 @@ const lipaNaMpesa = async (req, res) => {
 
 }
 
-const lipaNaMpesaCallback = async (req, res) => {
-    let message = req.body.Body.stkCallback["ResultDesc"];
+//get all payments
+const getPayments = async (req, res) => {
+    try{
+        let payments = await paymentService.getPayments();
 
-    console.log(body);
-    return res.send({
-        success: true,
-        message
-    })
+        return res.send({
+            success: true,
+            data: payments
+        });
+
+    }catch(err){
+        return res.send({
+            success: false,
+            message: err
+        });
+    }
+}
+
+//get payment by id
+const getPaymentById = async (req, res) => {
+    let id = req.params.id;
+
+    try{
+        let payment = await paymentService.getPaymentById(id);
+
+        return res.send({
+            success: true,
+            data: payment
+        });
+
+    }catch(err){
+        return res.send({
+            success: false,
+            message: err
+        });
+    }
+}
+
+//save payment data to database
+const lipaNaMpesaCallback = async (req, res) => {
+    let message = req.body.Body.stkCallback["ResultDesc"]; //success or failed
+    let items = req.body.Body.stkCallback.CallbackMetadata.Item; //array of items
+
+    const paymentData = {
+        receiptNumber: items[1].Value,
+        amount: items[0].Value,
+        phone: items[4].Value,
+        date: items[3].Value
+    }
+
+    try{
+        //save payment data
+        let paymentInfo = await paymentService.createPayment(paymentData);
+
+        return res.status(201).send({
+            success: true,
+            data: paymentInfo,
+            message
+        });
+
+    }catch(err){
+        return res.send({
+            success: false,
+            message: err
+        });
+    }
+
 }
 
 module.exports = {
