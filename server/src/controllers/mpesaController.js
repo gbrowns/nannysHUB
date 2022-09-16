@@ -98,12 +98,13 @@ const lipaNaMpesa = async (req, res) => {
 }
 
 const lipaNaMpesaCallback = async (req, res) => {
-    let message = req.body.Body.stkCallback["ResultDesc"];
+    //let message = req.body.Body.stkCallback["ResultDesc"];
 
-    console.log(body);
+    //save transaction details to model
+    console.log(res.body);
     return res.send({
         success: true,
-        message
+        message: res.body
     })
 }
 
