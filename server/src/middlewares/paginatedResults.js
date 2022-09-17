@@ -20,7 +20,7 @@ function paginateResults(model) {
         if (paid) {
             filterPaid.paid = paid === true;
         }
-        console.log({...filterState, ...filterPaid})
+        //console.log({...filterState, ...filterPaid})
         const page = parseInt(req.query.page)
         const limit = parseInt(req.query.limit)
         const startIndex = (page - 1) * limit
