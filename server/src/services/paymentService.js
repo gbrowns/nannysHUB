@@ -55,3 +55,11 @@ const deleteOnePayment = async (clientId) => {
         throw error;
     }
 }*/
+
+module.exports = {
+    getAllPayments,
+    getOnePayment,
+    createNewPayment
+    //updatePayment,
+    //deleteOnePayment
+};
