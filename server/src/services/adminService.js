@@ -52,11 +52,22 @@ const deleteOneAdmin = async (adminId) => {
     }
 }
 
+const loginAdmin = async (email) => {
+     
+    try {
+        const admin = await Admin.findOne({ email });
+        return admin;
+    } catch (error) {
+        throw error;
+    }
+}
+
 
 module.exports = {
     getAllAdmins,
     getOneAdmin,
     createNewAdmin,
     updateOneAdmin,
-    deleteOneAdmin
+    deleteOneAdmin,
+    loginAdmin
 }

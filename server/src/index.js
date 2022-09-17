@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const app = express();
 require('dotenv').config();
 //const request = require('request'); //deprecated
-const mpesaAuth = require('./utils/mpesaOAuth');
 
 const PORT = 8000;
 const LOCALHOST = `http://localhost:${PORT}`;
@@ -22,13 +21,17 @@ const mpesaRouter = require('./routes/mpesaRoutes');
 const Nanny = require("./databases/models/Nanny");
 const Request = require("./databases/models/Request");
 const paginatedResults = require("./middlewares/paginatedResults");
+const auth = require("./middlewares/auth");
+const mpesaAuth = require('./utils/mpesaOAuth');
 
 //middleware
 app.use(cors());
 app.use(bodyParser.json());
+app.use(paginatedResults(Request)); //pagination middleware
+
 
 //routes
-app.use('/api/requests',paginatedResults(Request), requestRouter);
+app.use('/api/requests', requestRouter);
 //app.use('/api/messages', messageRouter);
 app.use('/api/nannies', paginatedResults(Nanny), nannyRouter);
 app.use('/api/admin', adminRouter);
