@@ -4,17 +4,31 @@ const Schema = mongoose.Schema;
 const adminSchema = new Schema({
     username: {
         type: String,
-        required: true
+        required: [true, "username not provided"]
 
+    },
+    email: {
+        type: String,
+        required: [true, "email not provided"],
+        unique: true
     },
     password: {
         type: String,
         required: true
     },
-    ROLE: {
+    role: {
         type: String,
+        default: "admin",
         required: true
+    },
+    token: {
+        type: String,
+    },
+    createAt: {
+        type: Date,
+        default: Date.now,
+        immutable: true
     }
-})
+});
 
 module.exports = mongoose.model('Admin', adminSchema);
