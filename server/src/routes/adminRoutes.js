@@ -9,7 +9,9 @@ router.get("/", adminController.getAllAdmins);
 
 router.get("/:adminId", adminController.getOneAdmin);
 
-router.post("/", adminController.createNewAmin);
+router.post("/register", adminController.createNewAmin);
+
+router.post("/login", adminController.loginAdmin);
 
 router.patch("/:adminId", adminController.updateOneAdmin);
 
