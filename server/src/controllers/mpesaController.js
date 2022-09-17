@@ -39,13 +39,13 @@ const lipaNaMpesa = async (req, res) => {
     ////////////////////////////////////
     console.log("lipa na mpesa token: ", token);
     console.log("Auth: ", auth);
+    //////////////////////////////////////
 
     let timestamp = new Date().toISOString().replace(/[^0-9]/g, "").slice(0, -3);
 
     let url = process.env.STK_PUSH_URL; //update
     let bs_short_code = process.env.BUSINESS_SHORT_CODE; //update
     let pass_key = process.env.PASSKEY; //update
-
     let password = new Buffer.from(`${bs_short_code}${pass_key}${timestamp}`).toString("base64");
     let transaction_type = "CustomerPayBillOnline";
     let amount = req.body.amount;// amount sent from client
@@ -170,5 +170,7 @@ const lipaNaMpesaCallback = async (req, res) => {
 module.exports = {
     getAccessToken,
     lipaNaMpesa,
-    lipaNaMpesaCallback
+    lipaNaMpesaCallback,
+    getPayments,
+    getPaymentById
 }

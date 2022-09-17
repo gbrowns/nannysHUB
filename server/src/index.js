@@ -26,6 +26,8 @@ const paginatedResults = require("./middlewares/paginatedResults");
 //middleware
 app.use(cors());
 app.use(bodyParser.json());
+
+//routes
 app.use('/api/requests',paginatedResults(Request), requestRouter);
 //app.use('/api/messages', messageRouter);
 app.use('/api/nannies', paginatedResults(Nanny), nannyRouter);

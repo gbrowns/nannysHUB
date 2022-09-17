@@ -1,6 +1,7 @@
 //require services
 const nannyService = require("../services/nannyService");
-const sendEmail = require('../utils/sendEmail')
+const sendEmail = require('../utils/sendEmail');
+const reverseGeocode = require('../utils/reverseGeocodes');
 //handle users
 const getAllNannies = async (req, res) => {
     try {
@@ -30,7 +31,8 @@ const getOneNanny = async (req, res) => {
 }
 
 const createNewNanny = async (req, res) => {
-    const { firstname, lastname, email, phone, city, location, gender, age, employment_status, agreement_type, availableTime, work_type, message} = req.body; //update later to include more fields
+    const { firstname, lastname, email, phone, city, locationCood, gender, age, employment_status, agreement_type, availableTime, work_type, message} = req.body; //update later to include more fields
+    const location = await reverseGeocode(locationCood); //reverse geocodes the lat/long pair to a human readable address
     const newNanny = { firstname, lastname, email, phone, city, location, gender, age, employment_status, agreement_type, availableTime,work_type, message, state: "pending"};
 
     const nannyEmail = {

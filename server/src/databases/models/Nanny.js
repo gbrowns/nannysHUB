@@ -23,7 +23,7 @@ const nannySchema = new Schema({
         required: true
     },
     location: {
-        type: Object,
+        type: String,
         required: true
     },
     gender: {
