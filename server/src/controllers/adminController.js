@@ -1,6 +1,8 @@
 //require services
+require('dotenv').config();
+const jwt = require('jsonwebtoken');
 const adminService = require("../services/adminService");
-const {hashPassword} = require('../utils/helper');
+const {hashPassword, comparePassword} = require('../utils/helper');
 
 //handle users
 const getAllAdmins = async (req, res) => {
@@ -28,28 +30,49 @@ const getOneAdmin = async (req, res) => {
 }
 
 const createNewAmin = async (req, res) => {
-    //createNewAdmin
-    const { username } = req.body; //update later to include more fields
-
-    /*check inputs are in place
-    if (!username || !password) {
-        res.status(400).json({ status: "FAILED", message: "Please fill out all fields" });
-    }*/
-
-    //new user object
-    const password = hashPassword(req.body.password);
-    const newAdmin = { 
-        username, 
-        password,
-        ROLE: "admin" 
-    };
 
     try {
+        //createNewAdmin
+        const { username, email, password } = req.body; //update later to include more fields
+
+        //check inputs are in place
+        if (!(username && email && password)) {
+            res.status(400).json({ status: "FAILED", message: "Please fill out all fields" });
+        }
+
+        //check if user exists
+        const oldAdmin = await adminService.loginAdmin(email);
+
+        if (oldAdmin) {
+            return res.status(409).json({ status: "FAILED", message: "Admin already exists" });
+        }
+
+        //new user object
+        const encryptedPassword = hashPassword(req.body.password);
+        // new admin object
+        const newAdmin = {
+            username,
+            email: email.toLowerCase(), // sanitize: convert email to lowercase
+            password: encryptedPassword,
+            role: "admin"
+        };
+        
         const createdAdmin = await adminService.createNewAdmin(newAdmin);
+
+        //create tokens
+        const token = jwt.sign(
+            {admin_id: createdAdmin._id, email },
+            process.env.TOKEN_SECRET,
+            { expiresIn: '2h' }
+        );
+
+        //save admin tokens
+        createdAdmin.token = token;
+
         res.status(201).send({ status: "ok", data: createdAdmin });
     } catch (err) {
         res.status(500).json({ message: err.message });
-        console.log(err)
+        console.log(err.message)
     }
 }
 
@@ -69,6 +92,7 @@ const updateOneAdmin = async (req, res) => {
     }
 }
 
+
 const deleteOneAdmin = async (req, res) => {
     const { adminId } = req.params;
 
@@ -84,10 +108,47 @@ const deleteOneAdmin = async (req, res) => {
     }
 }
 
+const loginAdmin = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        //check inputs are in place
+        if (!(email && password)) {
+            res.status(400).json({ status: "FAILED", message: "Please fill out all fields" });
+        }
+        //check if user exists
+        const admin = await adminService.loginAdmin(email);
+
+        if (admin && admin.password === comparePassword(password, admin.password)) { //change this to compare password
+            //create tokens
+            const token = jwt.sign(
+                {admin_id: admin._id, email }, //replace with email
+                process.env.TOKEN_SECRET,
+                { expiresIn: '2h' }
+            );
+            //refreshToken //TODO: add refresh token later
+            const refreshToken = jwt.sign(
+                {username: admin.username,role: admin.role },
+                process.env.TOKEN_SECRET,
+                { expiresIn: '7d' }
+            );
+
+            //save user tokens
+            admin.token = token;
+
+            res.json({ status: "OK", data: admin, message: "Login Successful" });
+        }
+        res.json({ status: "FAILED", message: "Invalid Credentials" });
+        
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+}
+
 module.exports = {
     getAllAdmins,
     getOneAdmin,
     createNewAmin,
     updateOneAdmin,
-    deleteOneAdmin
+    deleteOneAdmin,
+    loginAdmin
 }
