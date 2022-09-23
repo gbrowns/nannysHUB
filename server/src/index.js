@@ -32,10 +32,13 @@ app.use(paginatedResults(Request)); //pagination middleware
 
 //routes
 app.use('/api/requests', requestRouter);
-//app.use('/api/messages', messageRouter);
 app.use('/api/nannies', paginatedResults(Nanny), nannyRouter);
 app.use('/api/admin', adminRouter);
 app.use('/api/mpesa',mpesaAuth, mpesaRouter);
+//api documentation
+app.get('/api', (req, res) => {
+    res.send('<h2>Welcome to Nanny App API Documentation</h2><br><hr><br><h3>API Endpoints</h3><br><ul><li><a href="/api/requests">Requests</a></li><li><a href="/api/nannies">Nannies</a></li><li><a href="/api/admin">Admin</a></li></ul>');
+});
 
 
 
