@@ -1,12 +1,11 @@
 {
-  "name": "server",
+  "name": "server-nanny-hub",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/index.js",
-    "start": "node src/index.js",
-    "ngrok": "ngrok http 5000"
+    "start": "node src/index.js"
   },
   "keywords": [
     "nanny",

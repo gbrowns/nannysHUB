@@ -4,7 +4,7 @@ const app = express();
 require('dotenv').config();
 //const request = require('request'); //deprecated
 
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 const LOCALHOST = `http://localhost:${PORT}`;
 const MONGODB_URI = process.env.DB_CONNECTION;
 const options = { useNewUrlParser: true, useUnifiedTopology: true};
