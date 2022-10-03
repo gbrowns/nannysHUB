@@ -1,5 +1,6 @@
 const express = require('express');
-const mongoose = require('mongoose'); 
+const mongoose = require('mongoose');
+const path = require("path");
 const app = express();
 require('dotenv').config();
 //const request = require('request'); //deprecated
@@ -11,6 +12,8 @@ const options = { useNewUrlParser: true, useUnifiedTopology: true};
 
 const cors = require('cors');
 const bodyParser = require('body-parser');
+
+app.use("/", express.static(path.join(__dirname, "../client/build")));
 
 const requestRouter = require('./src/routes/requestRoutes');
 //const messageRouter = require('./routes/messageRoutes');
@@ -46,6 +49,10 @@ app.get('/api', (req, res) => {
 mongoose.connect(MONGODB_URI , options, (err) => {
     if (err) console.log(err)
     else console.log("Connected to mongoose");
+});
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
 app.listen(PORT, () =>{
