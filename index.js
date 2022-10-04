@@ -13,7 +13,7 @@ const options = { useNewUrlParser: true, useUnifiedTopology: true};
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-app.use("/", express.static(path.join(__dirname, "../client/build")));
+app.use("/", express.static(path.join(__dirname, "client/build")));
 
 const requestRouter = require('./src/routes/requestRoutes');
 //const messageRouter = require('./routes/messageRoutes');
@@ -52,7 +52,7 @@ mongoose.connect(MONGODB_URI , options, (err) => {
 });
 
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../client/build/index.html"));
+    res.sendFile(path.join(__dirname, "client/build/index.html"));
 });
 
 app.listen(PORT, () =>{
