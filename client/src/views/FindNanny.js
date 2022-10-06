@@ -2,8 +2,13 @@ import React from 'react'
 import Banner from '../components/Banner'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
+import {useNavigate, useLocation} from 'react-router-dom';
 
 function FindNanny() {
+
+    const navigate = useNavigate();
+
+    
     const NANNIES = [
         {
             name: "Tina Kales",
@@ -97,7 +102,7 @@ function FindNanny() {
                     NANNIES.map((nanny, index) => {
                         const { name, image, location, chores, age, salary, type } = nanny;
                         return (
-                            <div className="nanny-card" key={index}>
+                            <div className="nanny-card" key={index} onClick={() => navigate(`details/${name}`) }>
                                 {/*<img src={image} alt="nanny" width="100px" />*/}
                                 <div className="nanny-card-body">
                                     <h5>{name}</h5>

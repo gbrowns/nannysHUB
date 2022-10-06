@@ -1,13 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { FaFacebookF, FaTwitter, FaTiktok } from 'react-icons/fa';
+import {useNavigate} from 'react-router-dom';
 
 function Footer() {
+    const navigate = useNavigate();
   return (
     <footer>
         <div className='part1'>
             <h3>Reach out to the Admin</h3>
-            <input type="button" value="Get a Nanny"/>
+            <input type="button" value="Get a Nanny" onClick={() => navigate('/find-a-nanny') }/>
 
         </div>
         <div className='part2'>

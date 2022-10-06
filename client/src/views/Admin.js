@@ -1,14 +1,21 @@
 import React from 'react';
-//import {Routes, Route} from 'react-router-dom';
-//import AdminDashboard from '../components/AdminDashboard';
-//import AdminLogin from '../components/AdminLogin';
+
+import {useNavigate} from 'react-router-dom';
 
 //admin view
 function Admin() {
+    const navigate = useNavigate();
+    //const {login} = useParams();
+
+    const handleClick = (e) => {
+      e.preventDefault();
+      navigate('/admin/login');
+    }
 
   return (
     <div className="admin-view">
-      <h1>Hello Admin</h1>
+      <h2>Admin Page</h2>
+      <button onClick={handleClick}>Navigate to Dashboard</button>
     </div>
   )
 }

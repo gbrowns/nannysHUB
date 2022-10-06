@@ -9,19 +9,30 @@ import About from './views/About';
 import Contact from './views/Contact';
 import FindNanny from './views/FindNanny';
 import Application from './views/Application';
+import NannyDetails from './views/NannyDetails';
+import Error from './views/Error';
+import Payment from './views/Payment';
+import {useLocation} from 'react-router-dom';
 
 function App() {
+
+  const {pathname} = useLocation();
+  console.log(pathname);
+
   return (
     <div className="App">
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path="admin" element={<Admin />}/>
-        <Route path="login" element={<AdminLogin />} />
-        <Route path="dashboard" element={<AdminDashboard />} />
         <Route path="about-us" element={<About />} />
         <Route path="contact-us" element={<Contact />} />
-        <Route path="find-a-nanny" element={<FindNanny />} />
+        <Route path="find-a-nanny" element={<FindNanny />}/>
+        <Route path="find-a-nanny/details/:id" element={<NannyDetails />} />
         <Route path="apply-for-job" element={<Application />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="admin/login" element={<AdminLogin />} />
+        <Route path="/dashboard" element={<AdminDashboard />} />
+        <Route path="make-payment" element={<Payment />} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </div>
   );
