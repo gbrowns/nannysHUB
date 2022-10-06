@@ -1,0 +1,42 @@
+.nanny-details-page{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    height: 40vh;
+    padding: 2rem 15rem;
+    .left{
+        p{
+            font-size: 1.3rem;
+            margin: .3rem 0;
+            span{
+                font-weight: 700;
+            }
+        }
+    }
+    .right{
+        display: flex;
+        flex-direction: column;
+        h3{
+            padding: 1rem 0;
+            font-size: 2rem;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            textarea{
+                margin: .5rem 0;
+                padding: 1rem;
+                font-size: 1.3rem;
+                height: 15vh;
+                border: #ccc solid 1px;
+                outline: none;
+            }
+            input{
+                margin: .5rem 0;
+                padding: 1rem;
+                font-size: 1.3rem;
+                
+            }
+        }
+
+    }
+}
