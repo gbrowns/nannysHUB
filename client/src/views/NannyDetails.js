@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react'
-import {useParams} from 'react-router-dom';
+import {useParams, useNavigate} from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import {useNavigate} from 'react-router-dom';
 
 function NannyDetails() {
     const {id} = useParams();
@@ -10,7 +9,7 @@ function NannyDetails() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`https://nannies-hub-ke.herokuapp.com/api/nannies/${id}`)
+        fetch(`/api/nannies/${id}`)
         .then(res => res.json())
         .then(data => setNanny(data))
     });

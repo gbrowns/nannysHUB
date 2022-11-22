@@ -62,7 +62,7 @@ function Application() {
       availability, agreementOptions, message
     }
     //post request
-    axios.post('/api/nanny/apply', nannyData)
+    axios.post('/api/nannies/apply', nannyData)
     .then((res) => {
       console.log(res)
       //if response is successful, show success message
