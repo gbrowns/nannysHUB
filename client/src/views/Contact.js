@@ -70,6 +70,17 @@ function Contact() {
                 </form>
 
             </div>
+            {
+                
+                /*
+                add map function here
+                - search for locations of nannies
+                - add markers
+                - add info window
+                - add custom marker
+                - plot nannies location on map
+                */
+            }
             <div className="map">
                 <h3>Find Us on Google Map</h3>
                 <p>

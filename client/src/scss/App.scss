@@ -627,6 +627,13 @@ footer{
             font-family: $bodyText1;
             color: rgba(0, 0, 0, 0.637);
         }
+        >span{
+            font-family: $bodyText1;
+            color: rgba(0, 0, 0, 0.637);
+            background: orange;
+            padding: .3rem;
+            margin-top: .5rem;
+        }
         form{
             position: relative;
             .form-group{

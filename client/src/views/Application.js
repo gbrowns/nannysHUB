@@ -25,33 +25,42 @@ function Application() {
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
       const { latitude, longitude } = position.coords;
-      console.log(latitude, longitude);
+      //console.log(latitude, longitude);
       setCoords({ latitude, longitude });
       //axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=
       //${process.env.REACT_APP_WEATHER_API_KEY}`)
     });
-  });
+  }, [coords]);
 
-  const handleOnChangeEvent = (e) => {
+  const handleOnChangeEvent1 = (e) => {
     const {value, checked} = e.target;
 
     if (checked) {
       //user selected a job
       setJobOptions([...jobOptions, value]);
-      setAgreementOptions([...agreementOptions, value]);
     }else {
       //user unchecks the box
       setJobOptions(jobOptions.filter((option) => option !== value));
+    }
+  }
+
+  const handleOnChangeEvent2 = (e) => {
+    const {value, checked} = e.target;
+
+    if (checked) {
+      setAgreementOptions([...agreementOptions, value]);
+    }else {
+      //user unchecks the box
       setAgreementOptions(agreementOptions.filter((option) => option !== value));
     }
   }
-  
+
   //post data to DB
   const handleSubmit = (e) => { 
     e.preventDefault();
     
     //validate inputs
-    if ( !firstName || !lastName || !email || !phone || !address ){
+    if ( !firstName || !lastName || !email || !phone || !address || !coords || !gender || !age || !empStatus || !salary || !jobOptions || !availability || !agreementOptions || !message) {
       setError('Please fill in all fields');
     }
     //nanny object
@@ -61,24 +70,22 @@ function Application() {
       age, empStatus, salary, jobOptions,
       availability, agreementOptions, message
     }
+    console.log(nannyData);
     //post request
-    axios.post('/api/nannies/apply', nannyData)
+    axios.post('http://localhost:8000/api/nannies/apply', nannyData)
     .then((res) => {
-      console.log(res)
       //if response is successful, show success message
-      if (response.status === 200) {
+      if (res.status === 200) {
         setError("Application submitted successfully");
-
+        console.log(res.data)
       } else {
         setError("Application failed to submit");
       }
     })
     .catch((err) => {
       setError(err.message)
-    })
+    });
   }
-
-
 
   return (
     <div className="apply-page">
@@ -136,41 +143,17 @@ function Application() {
                     value={address}
                   />
                   {
-                    //change
+                    //change|<input type="text" placeholder="Location" className="form-control" />
                   }
-                  <input type="text" placeholder="Location" className="form-control" />
                 </div>
 
                 <div className="form-group">
-                  <div className="inner-group">
-                    <span>Your gender</span>
-                    <div>
-                      <label>Male</label>
-                      <input
-                        type="radio" 
-                        value="male" 
-                        name="gender"
-                        checked={setGender("male")}
-                        onChange = {(e) => setGender(e.target.value)}
-                      />
-                      <label>Female</label>
-                      <input
-                        type="radio" 
-                        value="female" 
-                        name="gender" 
-                        checked={setGender("female")}
-                        onChange = {(e) => setGender(e.target.value)}
-                      />
-                      <label>Other</label>
-                      <input
-                        type="radio" 
-                        value="other" 
-                        name="gender"
-                        checked={setGender("other")}
-                        onChange = {(e) => setGender(e.target.value)}
-                      />
-                    </div>
-                  </div>
+                  <select value={gender} onChange={(e) => setGender(e.target.value)}>
+                    <option value="">Your gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                  </select>
                   <input
                     type="text"
                     placeholder="Enter your age" 
@@ -181,13 +164,13 @@ function Application() {
                 </div>
 
                 <div className="form-group">
-                   <select value={empStatus} onChange={(e) => setEmpStatus(e.target.value)}>
-                      <option value="">Your employment status</option>
-                      <option value="unemployed">Unemployed</option>
-                      <option value="employed">Employed</option>
-                      <option value="self- employed">Self employed</option>
-                      <option value="contract">Contract</option>
-                      <option value="other">Other</option>
+                  <select value={empStatus} onChange={(e) => setEmpStatus(e.target.value)}>
+                    <option value="">Your employment status</option>
+                    <option value="unemployed">Unemployed</option>
+                    <option value="employed">Employed</option>
+                    <option value="self- employed">Self employed</option>
+                    <option value="contract">Contract</option>
+                    <option value="other">Other</option>
                   </select>
                   <input
                     type="text"
@@ -205,44 +188,44 @@ function Application() {
                       <label>Night nanny</label>
                       <input 
                         type="checkbox" 
-                        value="night nanny" 
+                        value="Maiden" 
                         name="job option"
-                        onChange={handleOnChangeEvent}
+                        onChange={handleOnChangeEvent1}
                       />
                       <label>Part time</label>
                       <input
                         type="checkbox" 
-                        value="part time" 
+                        value="Messenger" 
                         name="job option"
-                        onChange={handleOnChangeEvent}
+                        onChange={handleOnChangeEvent1}
                       />
                       <label>Domestic</label>
                       <input
                         type="checkbox" 
-                        value="domestic" 
+                        value="domestic"
                         name="job option"
-                        onChange={handleOnChangeEvent}
+                        onChange={handleOnChangeEvent1}
                       />
                       <label>Childcare</label>
                       <input 
                         type="checkbox" 
                         value="child care" 
                         name="job option"
-                        onChange={handleOnChangeEvent}
+                        onChange={handleOnChangeEvent1}
                       />
                       <label>Gardener</label>
                       <input
                         type="checkbox"
                         value="gardener" 
                         name="job option"
-                        onChange={handleOnChangeEvent}
+                        onChange={handleOnChangeEvent1}
                       />
                       <label>Homecleaner</label>
                       <input 
                         type="checkbox" 
                         value="home cleaner" 
                         name="job option"
-                        onChange={handleOnChangeEvent}
+                        onChange={handleOnChangeEvent1}
                       />
 
                     </div>
@@ -264,21 +247,21 @@ function Application() {
                       type="checkbox" 
                       value="night nanny"
                       name="agreement option"
-                      onChange={handleOnChangeEvent}
+                      onChange={handleOnChangeEvent2}
                     />
                     <label>Live out</label>
                     <input 
                       type="checkbox" 
                       value="part time" 
                       name="agreement option"
-                      onChange={handleOnChangeEvent}
+                      onChange={handleOnChangeEvent2}
                     />
                     <label>Contract</label>
                     <input 
                       type="checkbox" 
                       value="domestic" 
                       name="agreement option"
-                      onChange={handleOnChangeEvent}
+                      onChange={handleOnChangeEvent2}
                     />
 
                   </div>

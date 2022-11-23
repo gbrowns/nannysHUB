@@ -1,82 +1,38 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Banner from '../components/Banner'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import {useNavigate, useLocation} from 'react-router-dom';
+import axios from 'axios';
 
 function FindNanny() {
 
     const navigate = useNavigate();
+    const [nannies, setNannies] = useState([]);
+    const [errorMsg, setErrorMsg] = useState(null);
 
     
-    const NANNIES = [
-        {
-            name: "Tina Kales",
-            image: require('../images/nanny1.jpeg'),
-            location: "Nairobi, Kenya",
-            phone: "+254 712345678",
-            email: "tinakales@gmail.com",
-            chores: ["wash dishes", "cooking", "clean kitchen", "baby-sit"],
-            age: 25,
-            salary: "500/hour",
-            type: ["full time", "part time"]
-        },
-        {
-            name: "James Karanja",
-            image: require('../images/nanny1.jpeg'),
-            location: "Nairobi, Kenya",
-            phone: "+254 712345678",
-            email: "jamesk@gmail.com",
-            chores: ["Gardener", "House Cleaning", "Car wash"],
-            age: 25,
-            salary: "1000/hour",
-            type: ["full time",]
-        },
-        {
-            name: "Tina Kales",
-            image: require('../images/nanny1.jpeg'),
-            location: "Nairobi, Kenya",
-            phone: "+254 712345678",
-            email: "tinakales@gmail.com",
-            chores: ["wash dishes", "cook", "clean kitchen", "cook food"],
-            age: 25,
-            salary: "500/hour",
-            type: ["full time", "part time", "emergency"]
-        },
-        {
-            name: "Tina Kales",
-            image: require('../images/nanny1.jpeg'),
-            location: "Nairobi, Kenya",
-            phone: "+254 712345678",
-            email: "tinakales@gmail.com",
-            chores: ["wash dishes", "cook", "clean kitchen", "cook food"],
-            age: 25,
-            salary: "500/hour",
-            type: ["full time", "part time"]
-        },
-        {
-            name: "Tina Kales",
-            image: require('../images/nanny1.jpeg'),
-            location: "Nairobi, Kenya",
-            phone: "+254 712345678",
-            email: "tinakales@gmail.com",
-            chores: ["wash dishes", "cook", "clean kitchen", "cook food"],
-            age: 25,
-            salary: "500/hour",
-            type: ["part time"]
-        },
-        {
-            name: "Tina Kales",
-            image: require('../images/nanny1.jpeg'),
-            location: "Nairobi, Kenya",
-            phone: "+254 712345678",
-            email: "tinakales@gmail.com",
-            chores: ["wash dishes", "cook", "clean kitchen", "cook food"],
-            age: 25,
-            salary: "500/hour",
-            type: ["emergency"]
-        }
-    ]
+
+    //fetch nannies data from application
+    const fetchNanniesData = async () => {
+        const res = await axios.get('http://localhost:8000/api/nannies').catch(err => setErrorMsg(err.message) );
+        setNannies(res.data);
+    }
+
+    useEffect(() => {
+        fetchNanniesData();
+    }, [nannies]);
+
+    //const nanny = nannies.map(nanny => nanny)
+    const location = useLocation();
+    const {state} = location;
+    const {chores, type} = state;
+
+    const filteredNannies = NANNIES.filter(nanny => {
+        return nanny.chores.includes(chores) && nanny.type.includes(type);
+    });
+
+
   return (
     <div className='find-nanny-container'>
         <Navbar />
@@ -100,24 +56,24 @@ function FindNanny() {
             <div className="nanny-list">
                 {
                     NANNIES.map((nanny, index) => {
-                        const { name, image, location, chores, age, salary, type } = nanny;
+                        const { _id:id, firstName, lastName, address, location, jobOptions, availability, agreementOptions, salary } = nanny;
                         return (
-                            <div className="nanny-card" key={index} onClick={() => navigate(`details/${name}`) }>
+                            <div className="nanny-card" key={index} onClick={() => navigate(`details/${id}`) }>
                                 {/*<img src={image} alt="nanny" width="100px" />*/}
                                 <div className="nanny-card-body">
-                                    <h5>{name}</h5>
+                                    <h5>{`${firstName} ${lastName}`}</h5>
                                     <div className="chores">
                                         {
-                                            chores.map((chore,i) => <span key={i}>{chore}</span>)
+                                            jobOptions.map((chore,i) => <span key={i}>{chore}</span>)
                                         }
                                     </div>
                                     <div className="nanny-card-footer">
                                         <p>Age: <span>{age}</span></p>
-                                        <p>Type: <span>{type.join(", ")}</span></p>
-                                        <p>Location: <span>{location}</span></p>
+                                        <p>Type: <span>{agreementOptions.join(", ")}</span></p>
+                                        <p>Location: <span>{`${address} | ${location}`}</span></p>
                                         <p>Expected Salary: <span>{salary}</span></p>
                                     </div>
-                                    <input type="button" value={`Ask for ${name}`} />
+                                    <input type="button" value={`Ask for ${firstName}`} />
                                 </div>
                             </div>
                         )
