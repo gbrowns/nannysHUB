@@ -12,13 +12,14 @@ const nannySchema = new Schema({
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     phone: {
         type: String,
         required: true
     },
-    city: {
+    address: {
         type: String,
         required: true
     },
@@ -34,23 +35,28 @@ const nannySchema = new Schema({
         type: String,
         required: true
     },
-    employment_status: {
+    empStatus: {
         type: String,
         required: true
     },
-    agreement_type: [{ type: String, required: true }],
-    availableTime: {
+    salary:{
         type: String,
         required: true
     },
-    work_type: [{ type: String, required: true }],
+    jobOptions: [{ type: String, required: true }],
+    availability: {
+        type: String,
+        required: true
+    },
+    agreementOptions: [{ type: String, required: true }],
     message: {
         type: String,
         required: true
     },
-    state: {
-        type: String,
-        required: true
+    isApproved: {
+        type: Boolean,
+        required: true,
+        default: false
     }
 });
 

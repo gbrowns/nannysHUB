@@ -31,9 +31,9 @@ const getOneNanny = async (req, res) => {
 }
 
 const createNewNanny = async (req, res) => {
-    const { firstname, lastname, email, phone, city, locationCood, gender, age, employment_status, agreement_type, availableTime, work_type, message} = req.body; //update later to include more fields
-    const location = await reverseGeocode(locationCood); //reverse geocodes the lat/long pair to a human readable address
-    const newNanny = { firstname, lastname, email, phone, city, location, gender, age, employment_status, agreement_type, availableTime,work_type, message, state: "pending"};
+    const { firstname, lastname, email, phone, address, coords, gender, age, empStatus, salary, jobOptions, availability,agreementOptions, message} = req.body; //update later to include more fields
+    const location = await reverseGeocode(coords); //reverse geocodes the lat/long pair to a human readable address
+    const newNanny = { firstname, lastname, email, phone, address, location, gender, age, empStatus, salary, jobOptions, availability,agreementOptions, message, isApproved: false};
 
     const nannyEmail = {
         email: email,
@@ -42,9 +42,8 @@ const createNewNanny = async (req, res) => {
         Your request to become a nanny has been received. We will get back to you shortly.
         Thank you!`
     }
-
     //check inputs are in place
-    if (!firstname || !lastname || !email || !phone || !city || !location || !gender || !age || !employment_status || !work_type || !agreement_type || !availableTime || !message) {
+    if (!firstname || !lastname || !email || !phone || !address || !location || !gender || !age || !empStatus || !salary || !jobOptions || !availability || !agreementOptions || !message) {
         res.status(400).json({ status: "FAILED", message: "Please fill out all fields" });
     }
     
@@ -55,7 +54,7 @@ const createNewNanny = async (req, res) => {
         sendEmail(nannyEmail);
     } catch (err) {
         res.status(500).json({ message: err.message });
-        console.log(err)
+        console.log(err.message)
     }
 }
 
