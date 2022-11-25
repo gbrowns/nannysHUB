@@ -5,8 +5,8 @@ import Navbar from '../components/Navbar';
 import axios from 'axios';
 
 function Application() {
-  const [firstName, setFirstName] = useState(null);
-  const [lastName, setLastName] = useState(null);
+  const [firstname, setFirstName] = useState(null);
+  const [lastname, setLastName] = useState(null);
   const [email, setEmail] = useState(null);
   const [phone, setPhone] = useState(null);
   const [address, setAddress] = useState(null);
@@ -59,23 +59,35 @@ function Application() {
   const handleSubmit = (e) => { 
     e.preventDefault();
     
+
     //validate inputs
-    if ( !firstName || !lastName || !email || !phone || !address || !coords || !gender || !age || !empStatus || !salary || !jobOptions || !availability || !agreementOptions || !message) {
+    if ( !firstname || !lastname || !email || !phone || !address || !coords || !gender || !age || !empStatus || !salary || !jobOptions || !availability || !agreementOptions || !message) {
       setError('Please fill in all fields');
     }
     //nanny object
     const nannyData = {
-      firstName, lastName, email,
+      firstname, lastname, email,
       phone, address, coords, gender,
       age, empStatus, salary, jobOptions,
       availability, agreementOptions, message
     }
-    console.log(nannyData);
+
+    //console.log(nannyData);
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: JSON.stringify(nannyData),
+      url: 'http://localhost:8000/api/nannies/apply'
+    }
+
     //post request
-    axios.post('http://localhost:8000/api/nannies/apply', nannyData)
+    axios(options)
     .then((res) => {
       //if response is successful, show success message
-      if (res.status === 200) {
+
+      if (res.status === 201) {
         setError("Application submitted successfully");
         console.log(res.data)
       } else {
@@ -83,7 +95,8 @@ function Application() {
       }
     })
     .catch((err) => {
-      setError(err.message)
+      //setError(err.message)
+      console.log(err)
     });
   }
 
@@ -106,14 +119,14 @@ function Application() {
                     placeholder="First Name" 
                     className="form-control"
                     onChange={(e) => setFirstName(e.target.value)}
-                    value={firstName}
+                    value={firstname}
                   />
                   <input
                     type="text"
                     placeholder="Last Name" 
                     className="form-control"
                     onChange={(e) => setLastName(e.target.value)}
-                    value={lastName}
+                    value={lastname}
                   />
                 </div>
 

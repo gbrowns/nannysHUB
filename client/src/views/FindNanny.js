@@ -23,12 +23,19 @@ function FindNanny() {
         fetchNanniesData();
     }, [nannies]);
 
+    //handle click on nanny card
+    const handleNannyCardClick = (nannyId) => {
+        navigate(`/nanny/${nannyId}`);
+
+    }
+
+    
     //const nanny = nannies.map(nanny => nanny)
     const location = useLocation();
     const {state} = location;
     const {chores, type} = state;
 
-    const filteredNannies = NANNIES.filter(nanny => {
+    const filteredNannies = nannies.filter(nanny => {
         return nanny.chores.includes(chores) && nanny.type.includes(type);
     });
 
