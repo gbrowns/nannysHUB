@@ -50,7 +50,7 @@ const createNewNanny = async (req, res) => {
     try {
 
         const createdNanny = await nannyService.createNewNanny(newNanny);
-        res.status(201).send({ status: "ok", data: createdNanny });
+        res.status(201).json({ status: "ok", data: createdNanny });
         sendEmail(nannyEmail);
     } catch (err) {
         res.status(500).json({ message: err.message });
