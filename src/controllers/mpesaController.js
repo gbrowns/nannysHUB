@@ -48,7 +48,7 @@ const lipaNaMpesa = async (req, res) => {
     let pass_key = process.env.PASSKEY; //update
     let password = new Buffer.from(`${bs_short_code}${pass_key}${timestamp}`).toString("base64");
     let transaction_type = "CustomerPayBillOnline";
-    let amount = req.body.amount;// amount sent from client
+    let amount = req.body.salary;// amount sent from client
     let partyA = req.body.phone; //person sending money\
     let partyB = bs_short_code;
     let phone_number = partyA; //same as partyA

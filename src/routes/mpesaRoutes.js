@@ -4,7 +4,7 @@ const router = express.Router();
 const mpesa = require('../controllers/mpesaController');
 
 //lipa na mpesa online (trigger payment processing to safaricom)
-router.post('/lipa_na_mpesa', mpesa.lipaNaMpesa);
+router.post('/pay', mpesa.lipaNaMpesa);
 
 //lipa na mpesa online callback (save payment results to database)
 router.post('/mpesa_callback', mpesa.lipaNaMpesaCallback);
