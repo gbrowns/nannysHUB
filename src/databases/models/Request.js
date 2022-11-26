@@ -3,24 +3,25 @@ const Schema = mongoose.Schema;
 const Nanny = require('./Nanny');
 
 const requestSchema = new Schema({
-    nanny: {
+    nannyId: {
         type: Schema.Types.ObjectId,
-        ref: Nanny
-        //required: true
-    },
-    firstname: {
-        type: String,
+        ref: Nanny,
         required: true
     },
-    lastname: {
+    fullName: {
         type: String,
         required: true
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     phone: {
+        type: String,
+        required: true
+    },
+    location: {
         type: String,
         required: true
     },
@@ -29,18 +30,15 @@ const requestSchema = new Schema({
         required: true
     },
     paid: {
-        type: Boolean
+        type: Boolean,
+        default: false
         //required: true
     },
     createAt: {
         type: Date,
         immutable: true, //cannot be changed
         default: () => Date.now()
-    },/*,
-    status: {
-        type: String
-        //required: true
-    }*/
+    }
 
 })
 

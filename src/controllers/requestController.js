@@ -1,6 +1,7 @@
 //require services
 const requestService = require("../services/requestService");
-const sendEmail = require('../utils/sendEmail')
+const sendEmail = require('../utils/sendEmail');
+const reverseGeocode = require('../utils/reverseGeocodes');
 
 
 //handle requests
@@ -30,13 +31,14 @@ const getOneRequest = async (req, res) => {
 const createNewRequest = async (req, res) => {
     
     try {
-        const { nannyId, firstname, lastname, email, phone, message } = req.body;
-        const newRequest = { nannyId, firstname, lastname, email, phone, message, paid: false /*, status: "pending"*/ };
+        const { nannyId, fullName, email, phone, coords, message } = req.body;
+        const location = await reverseGeocode(coords);
+        const newRequest = { nannyId, fullName, email, phone,location, message, paid: false };
 
         const requestEmail = {
             email: email,
             subject: "Request for Nanny",
-            message: `Hello ${firstname}, your request for a nanny has been received. We will get back to you shortly.`
+            message: `Hello ${fullName}, your request for a nanny has been received. We will get back to you shortly.`
         }
         const createdRequest = await requestService.createNewRequest(newRequest);
         res.status(201).send({ status: "ok", data: createdRequest });

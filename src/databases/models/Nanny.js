@@ -57,6 +57,11 @@ const nannySchema = new Schema({
         type: Boolean,
         required: true,
         default: false
+    },
+    createAt: {
+        type: Date,
+        immutable: true, //cannot be changed
+        default: () => Date.now()
     }
 });
 
