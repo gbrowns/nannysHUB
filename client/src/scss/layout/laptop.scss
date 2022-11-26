@@ -357,7 +357,7 @@
     //find nanny page
     .find-nanny-container{
         .find-nanny-content{
-            padding: 2.5rem 20rem;
+            padding: 2.5rem 15rem;
             .controls{
                 margin-bottom: 1rem;
                 .category-control{
@@ -385,7 +385,7 @@
             .nanny-list{
                 padding: 3rem 0;
                 .nanny-card{
-                    flex-basis: calc(100% / 5 - 1rem);
+                    flex-basis: calc(100% / 4 - 1rem);
                     margin-right: .8rem;
                     margin-bottom: 1rem;
                     border-radius: 5px;

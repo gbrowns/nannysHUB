@@ -26,7 +26,7 @@ function App() {
         <Route path="about-us" element={<About />} />
         <Route path="contact-us" element={<Contact />} />
         <Route path="find-a-nanny" element={<FindNanny />}/>
-        <Route path="find-a-nanny/details/:id" element={<NannyDetails />} />
+        <Route path="find-a-nanny/details/:nannyId" element={<NannyDetails />} />
         <Route path="apply-for-job" element={<Application />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="admin/login" element={<AdminLogin />} />

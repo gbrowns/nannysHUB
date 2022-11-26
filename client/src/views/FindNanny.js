@@ -11,35 +11,38 @@ function FindNanny() {
     const [nannies, setNannies] = useState([]);
     const [errorMsg, setErrorMsg] = useState(null);
 
-    
-
-    //fetch nannies data from application
-    const fetchNanniesData = async () => {
-        const res = await axios.get('http://localhost:8000/api/nannies').catch(err => setErrorMsg(err.message) );
-        setNannies(res.data);
+    const options = {
+        method: 'GET',
+        url: 'http://localhost:8000/api/nannies',
+        headers: {
+            'Content-Type': 'application/json'
+        }   
     }
 
     useEffect(() => {
+        //fetch nannies data from application
+        const fetchNanniesData = async () => {
+            const res = await axios(options).catch(err => setErrorMsg(err.message));
+            //console.log(res);
+            setNannies([...res.data.data.results]);
+           // console.log(nannies);
+        }
         fetchNanniesData();
     }, [nannies]);
 
+    //
     //handle click on nanny card
     const handleNannyCardClick = (nannyId) => {
         navigate(`/nanny/${nannyId}`);
 
     }
+    //console.log("nannies",nannies);
 
     
-    //const nanny = nannies.map(nanny => nanny)
-    const location = useLocation();
-    const {state} = location;
-    const {chores, type} = state;
+    //filter nannies by isApproved
+    const approvedNannies = nannies.filter(nanny => nanny.isApproved === false);
 
-    const filteredNannies = nannies.filter(nanny => {
-        return nanny.chores.includes(chores) && nanny.type.includes(type);
-    });
-
-
+    //console.log(approvedNannies);
   return (
     <div className='find-nanny-container'>
         <Navbar />
@@ -62,13 +65,13 @@ function FindNanny() {
             </div>
             <div className="nanny-list">
                 {
-                    NANNIES.map((nanny, index) => {
-                        const { _id:id, firstName, lastName, address, location, jobOptions, availability, agreementOptions, salary } = nanny;
+                    approvedNannies.map((nanny) => {
+                        const { _id:id, firstname, lastname, age, address, location, jobOptions, availability, agreementOptions, salary } = nanny;
                         return (
-                            <div className="nanny-card" key={index} onClick={() => navigate(`details/${id}`) }>
+                            <div className="nanny-card" key={id} onClick={() => navigate(`details/${id}`) }>
                                 {/*<img src={image} alt="nanny" width="100px" />*/}
                                 <div className="nanny-card-body">
-                                    <h5>{`${firstName} ${lastName}`}</h5>
+                                    <h5>{`${firstname} ${lastname}`}</h5>
                                     <div className="chores">
                                         {
                                             jobOptions.map((chore,i) => <span key={i}>{chore}</span>)
@@ -80,7 +83,7 @@ function FindNanny() {
                                         <p>Location: <span>{`${address} | ${location}`}</span></p>
                                         <p>Expected Salary: <span>{salary}</span></p>
                                     </div>
-                                    <input type="button" value={`Ask for ${firstName}`} />
+                                    <input type="button" value={`Ask for ${firstname}`} />
                                 </div>
                             </div>
                         )
