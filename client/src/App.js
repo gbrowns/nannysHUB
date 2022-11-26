@@ -12,6 +12,7 @@ import Application from './views/Application';
 import NannyDetails from './views/NannyDetails';
 import Error from './views/Error';
 import Payment from './views/Payment';
+import SuccessPayment from './views/SuccessPayment';
 import {useLocation} from 'react-router-dom';
 
 function App() {
@@ -31,7 +32,8 @@ function App() {
         <Route path="/admin" element={<Admin />} />
         <Route path="admin/login" element={<AdminLogin />} />
         <Route path="/dashboard" element={<AdminDashboard />} />
-        <Route path="make-payment/:nannyID" element={<Payment />} />
+        <Route path="mpesa/pay/:nannyID" element={<Payment />} />
+        <Route path="payment-success" element={<SuccessPayment />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </div>
