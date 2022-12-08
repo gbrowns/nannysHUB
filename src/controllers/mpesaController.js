@@ -175,3 +175,23 @@ module.exports = {
     getAllPayments,
     getOnePayment
 }
+
+//fetch geolocation data from ipstack
+const getGeolocation = async (req, res) => {
+    let ip = req.params.ip;
+
+    try{
+        let {data} = await axios.get(`http://api.ipstack.com/${ip}?access_key=${process.env.IPSTACK_API_KEY}`);
+
+        return res.send({
+            success: true,
+            data: data
+        });
+
+    }catch(err){
+        return res.send({
+            success: false,
+            message: err
+        });
+    }
+}
