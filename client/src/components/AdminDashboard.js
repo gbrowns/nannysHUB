@@ -3,9 +3,18 @@ import { FaUsers } from 'react-icons/fa';
 import { TbChevronDown } from 'react-icons/tb';
 import { RiAdminFill } from 'react-icons/ri';
 import { MdChildFriendly, MdWork, MdAdminPanelSettings } from 'react-icons/md';
+import {useParams, useNavigate} from 'react-router-dom';
 
 
 function AdminDashboard() {
+
+    const {id} = useParams();
+    const navigate = useNavigate();
+    //handle admin logout
+    const handleLogout = () => {
+        localStorage.clear();
+        navigate('/admin/login');
+    }
   return (
     <div className="admin-dashboard">
         <nav>
@@ -14,9 +23,9 @@ function AdminDashboard() {
             </div>
 
             <div className="nav-links">
-                <div className="profile">
+                <div className="profile" onClick={handleLogout}>
                     <RiAdminFill className='admin-icon' />
-                    <span>Admin</span>
+                    <span>Logout</span>
                     <TbChevronDown className='icon'/>
                 </div> 
             </div>
@@ -28,23 +37,24 @@ function AdminDashboard() {
                 <h1>Admin Dashboard</h1>
             </div>
             <div className="cards">
-                <div className="card"> 
-                    <FaUsers className='icon'/>
-                    <h2>Total Requests</h2>
-                    <p>33</p>
-                    <span>Last updated today</span>
-                </div>
-                <div className="card">
-                    <MdWork className='icon' />
-                    <h2>Clients messages</h2>
-                    <p>33</p>
-                    <span>Last updated today</span>
-                </div>
-                <div className="card">
+                <div className="card" onClick={() => navigate('/nannies-requests')}> 
                     <MdChildFriendly className='icon' />
-                    <h2>Available Nannies</h2>
+                    <h2>Nannies Requests</h2>
                     <p>33</p>
                     <span>Last updated today</span>
+                </div>
+                <div className="card" onClick={() => navigate('/clients-request')}>
+                    <FaUsers className='icon'/>
+                    <h2>Clients Requests</h2>
+                    <p>33</p>
+                    <span>Last updated today</span>
+                </div>
+                <div className="card" onClick={() => navigate('/payments')}>
+                    <MdWork className='icon' />
+                    <h2>Payments</h2>
+                    <p>33</p>
+                    <span>Last updated today</span>
+                    
                 </div>
 
             </div>
@@ -55,7 +65,7 @@ function AdminDashboard() {
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Phone</th>
+                                <th>Email</th>
                                 <th>Email</th>
                                 <th>Location</th>
                                 <th>Contract</th>
@@ -116,37 +126,7 @@ function AdminDashboard() {
                         </tbody>
                     </table>
                 </div>
-                <div className='right'>
-                    <h2>Clients List</h2>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Location</th>
-                                <th>Message</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>John Doe</td>
-                                <td>johndoe@gmail.com</td>
-                                <td>Lavington</td>
-                                <td>
-                                    <input type="button" value="Message" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>John Doe</td>
-                                <td>johndoe@gmail.com</td>
-                                <td>Syokimau</td>
-                                <td>
-                                    <input type="button" value="Message" />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                
             </section>
         </main>
 

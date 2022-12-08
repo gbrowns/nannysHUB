@@ -13,6 +13,9 @@ import NannyDetails from './views/NannyDetails';
 import Error from './views/Error';
 import Payment from './views/Payment';
 import SuccessPayment from './views/SuccessPayment';
+import NannyRequests from './components/NannyRequests';
+import ClientRequests from './components/ClientRequests';
+import PaymentData from './components/PaymentData';
 import {useLocation} from 'react-router-dom';
 
 function App() {
@@ -29,11 +32,14 @@ function App() {
         <Route path="find-a-nanny" element={<FindNanny />}/>
         <Route path="find-a-nanny/details/:nannyId" element={<NannyDetails />} />
         <Route path="apply-for-job" element={<Application />} />
+        <Route path="mpesa/pay/:nannyID" element={<Payment />} />
+        <Route path="payment-success" element={<SuccessPayment />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="admin/login" element={<AdminLogin />} />
         <Route path="/dashboard" element={<AdminDashboard />} />
-        <Route path="mpesa/pay/:nannyID" element={<Payment />} />
-        <Route path="payment-success" element={<SuccessPayment />} />
+        <Route path="/nannies-requests" element={<NannyRequests />} />
+        <Route path="/clients-request" element={<ClientRequests />} />
+        <Route path="/payments" element={<PaymentData />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </div>
