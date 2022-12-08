@@ -1,0 +1,16 @@
+{
+     "version": 2,
+     "type": "FeatureCollection",
+     "builds": [
+          {
+               "src": "./index.js",
+               "use": "@vercel/node"
+          }
+     ],
+     "routes": [
+          {
+               "src": "/(.*)",
+               "dest": "/"
+          }
+     ]
+}

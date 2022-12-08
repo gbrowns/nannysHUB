@@ -43,24 +43,25 @@ app.get('/api', (req, res) => {
     res.send('<h2>Welcome to Nanny App API Documentation</h2><br><hr><br><h3>API Endpoints</h3><br><ul><li><a href="/api/requests">Requests</a></li><li><a href="/api/nannies">Nannies</a></li><li><a href="/api/admin">Admin</a></li></ul>');
 });
 
+app.use(express.static(path.join(__dirname, "./client/build")));
 
+app.get("*", (_, res) => {
+    res.sendFile(
+        path.join(__dirname, "./client/build/index.html"),
+        (err) => {
+            if (err) {
+                res.status(500).send(err);
+            }
+        }
+    );
+});
 
 //connect to mongoose
 mongoose.connect(MONGODB_URI , options, (err) => {
-    if (err) console.log(err)
+    if (err) console.log(err.message)
     else console.log("Connected to mongoose");
-});
-
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client/build/index.html"));
 });
 
 app.listen(PORT, () =>{
     console.log(`Server is running on ${LOCALHOST}`);
 });
-
-/*
-nanny -> application -> receive email 
-admin -> approve all requests
-client -> find a nanny (location) -> payment
-*/
