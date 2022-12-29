@@ -8,6 +8,109 @@
 //admins dashboard styles
 
 //side nav
+.sidebar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(76, 30, 114);
+
+  padding: 2rem;
+  
+
+  h1{
+    padding: 2.5rem 0;
+    color: #fff
+  }
+
+  a{
+    flex: 0 0 1;
+    margin: 1.2rem 0;
+    color: rgb(232, 232, 232);
+    text-decoration: none;
+    font-weight: 600;
+    &:hover{
+      color: #000;
+    }
+  }
+
+  button{
+    flex: 0 0 1;
+    margin-top: 3rem;
+    width: 200px;
+    height: 40px;
+    border: none;
+
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  span{
+    flex: 0 0 1;
+    margin-top: auto;
+    font-weight: 600;
+    color: rgb(15, 11, 11);
+  }
+}
+
+//dashboard
+.dashboard{
+  background-color: rgb(253, 253, 253);
+  float: right;
+  width: 80vw;
+  height: 100vh;
+
+  padding: 5rem;
+  
+  h1{
+    font-size: 2.5rem;
+  }
+
+  &_content{
+    margin-top: 3rem;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    //grid-template-rows: repeat(3, );
+    grid-gap: 1rem;
+
+    .card{
+      background-color: #ccc;
+      border-radius: 5px;
+      height: 20vh;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 0 2rem;got
+      &:nth-of-type(1){
+        grid-column: 1/3;
+        grid-row: 1/4;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        font-size: 2rem;
+        padding: 0 1rem;
+        height: 40vh;
+      }
+
+      &:nth-of-type(2){
+        grid-column: 3/3;
+        grid-row: 1/4;
+
+        height: 40vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+}
 
 //top nav
 
