@@ -16,17 +16,17 @@ function AdminDashboard() {
         </div>
         <div className='card'>
           <span>Icon</span>
+          <h4>Nannies</h4>
+          <h1>{25}</h1>
+        </div>
+        <div className='card'>
+          <span>Icon</span>
           <h4>Requests</h4>
           <h1>{25}</h1>
         </div>
         <div className='card'>
           <span>Icon</span>
-          <h4>Nannies</h4>
-          <h1>{25}</h1>
-        </div>
-        <div className='card'>
-          <span>Icon</span>
-          <h4>Nannies</h4>
+          <h4>Payments</h4>
           <h1>{25}</h1>
         </div>
 
