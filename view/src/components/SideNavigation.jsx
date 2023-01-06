@@ -8,7 +8,7 @@ function SideNavigation() {
      const year = new Date().getFullYear();
   return (
     <div className='sidebar'>
-     <h1>LOGO</h1>
+     <h1>Nannies</h1>
 
      <Link to='/'>Dashboard</Link>
      <Link to='/nanny-board'>Nannies</Link>
