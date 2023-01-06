@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 //logo
 //side navigation
@@ -9,14 +10,12 @@ function SideNavigation() {
     <div className='sidebar'>
      <h1>LOGO</h1>
 
-     
-     <a href="#">Dashboard</a>
-     <a href="#">Nannies</a>
-     <a href="#">Applications</a>
-     <a href="#">Requests</a>     
-     <a href="#">Payments</a>     
-     <a href="#">Notifications</a>
-
+     <Link to='/'>Dashboard</Link>
+     <Link to='/nanny-board'>Nannies</Link>
+     <Link to='/applications'>Applications</Link>
+     <Link to='/requests'>Requests</Link>
+     <Link to='/payments'>Payments</Link>
+     <Link to='/notifications'>Notifiactions</Link>
 
      <button>Logout</button>
      <span>&copy; {year} | Nannies Hub </span>
