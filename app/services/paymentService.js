@@ -1,4 +1,4 @@
-const Payment = require('../databases/models/Payment');
+const Payment = require('../models/Payment');
 
 //get all payments
 const getAllPayments = () => {

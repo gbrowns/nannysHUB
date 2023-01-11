@@ -1,9 +1,7 @@
-const db = require('../models');
-const ROLES = db.ROLES; //import the roles array
-const User = db.user; //import the user model
+const User = require("../models/user.model"); //import user model
 
 //check for dublicate keys
-checkDuplicateUsernameOrEmail = async (req, res, next) => {
+const checkDuplicateUsernameOrEmail = async (req, res, next) => {
 
      //username
      User.findOne({
@@ -35,21 +33,10 @@ checkDuplicateUsernameOrEmail = async (req, res, next) => {
    
 }
 
-checkRolesExisted = (req, res, next) => {
-     if (req.body.roles){
-          for (let i = 0; i < req.body.roles.length; i++){
-               if (!ROLES.includes(req.body.roles[i])){
-                    return res.status(400).send({message: `Role ${req.body.roles[i]} does not exist`});
-               }
-          }
-     }
-     
-     next();
-}
+
 
 const verifySignUp = {
-     checkDuplicateUsernameOrEmail,
-     checkRolesExisted
+     checkDuplicateUsernameOrEmail
 };
 
 module.exports = verifySignUp;

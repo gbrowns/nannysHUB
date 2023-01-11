@@ -1,6 +1,6 @@
 const {v4: uuid} = require('uuid');
 //require models
-const Request = require('../databases/models/Request')
+const Request = require('../models/Request')
 
 //handle requests
 const getAllRequests = () => {

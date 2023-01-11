@@ -1,6 +1,6 @@
 const { v4: uuid } = require('uuid');
 //require models
-const Admin = require('../databases/models/Admin');
+const Admin = require('../models/Admin');
 
 //handle users
 const getAllAdmins = async () => {

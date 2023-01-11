@@ -1,6 +1,6 @@
 const {v4: uuid} = require('uuid');
 //require models
-const Nanny = require('../databases/models/Nanny');
+const Nanny = require('../models/Nanny');
 
 //handle users
 const getAllNannies = async () => {

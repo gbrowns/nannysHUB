@@ -12,16 +12,10 @@ module.exports = function(app){
           next();
      });
 
-     app.get('/api/test/all', controller.allAccess);
+     app.get('/api/all-access', controller.allAccess);
 
-     app.get("/api/test/user", [authJwt.verifyToken], controller.userBoard);
+     app.get("/api/users", [authJwt.verifyToken], controller.userBoard);
 
-     app.get(
-          "/api/test/admin", 
-          [
-               authJwt.verifyToken,
-               authJwt.isAdmin,
-          ],
-          controller.adminBoard
-     );
+     app.get( "/api/admin", [ authJwt.verifyToken], controller.adminBoard);
+
 }
