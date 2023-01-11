@@ -68,7 +68,14 @@ exports.login = async (req, res) => {
                     expiresIn: 86400 //24 hours
                });
 
-               res.status(200).send({ status: "ok", data: {user, accessToken: token}, message: "User logged in successfully" });
+               const authUser = { //authenticated user
+                    id: user._id,
+                    username: user.username,
+                    email: user.email,
+                    accessToken: token
+               }
+
+               res.status(200).send({ status: "ok", data: authUser, message: "User logged in successfully" });
           })
 
      }
