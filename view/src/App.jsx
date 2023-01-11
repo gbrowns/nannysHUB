@@ -4,12 +4,13 @@ import SideNavigation from './components/SideNavigation'
 import AdminDashboard from './pages/AdminDashboard'
 import ApplicationDash from './pages/ApplicationDash'
 import NannyDash from './pages/NannyDash'
-import NotificationDash from './pages/NotificationDash'
 import PaymentsDash from './pages/PaymentsDash'
 import RequestsDash from './pages/RequestsDash'
 import ErrorPage from './pages/ErrorPage'
 
-import {Routes, Route} from 'react-router-dom';
+import {Routes, Route, Navigate} from 'react-router-dom';
+import AdminLoginPage from './pages/AdminLoginPage'
+import { AdminProtectedRoutes } from './auth/AdminProtectedRoutes'
 
 function App() {
   /**
@@ -19,15 +20,21 @@ function App() {
 
   return (
     <div className="App">
-      <SideNavigation />
+      
       
       <Routes>
-        <Route path="/" element={<AdminDashboard />} />
-        <Route path="/nanny-board" element={<NannyDash />} />
-        <Route path="/applications" element={<ApplicationDash />} />
-        <Route path="/requests" element={<RequestsDash />} />
-        <Route path="/payments" element={<PaymentsDash />} />
-        <Route path="/notifications" element={<NotificationDash />} />
+        <Route path="/login" element={<AdminLoginPage />} />
+        <Route path="/" element={<SideNavigation />} />
+
+        <Route path='/admin' element={<AdminProtectedRoutes />} >
+          <Route path="/admin" element={<Navigate replace to='dashboard' />} />
+          <Route path='/admin/dashboard' element={<AdminDashboard />} />
+          <Route path="/admin/nanny-board" element={<NannyDash />} />
+          <Route path="/admin/applications" element={<ApplicationDash />} />
+          <Route path="/admin/requests" element={<RequestsDash />} />
+          <Route path="/admin/payments" element={<PaymentsDash />} />
+        </Route>
+
         <Route path="*" element={<ErrorPage />} />
       </Routes>
 
