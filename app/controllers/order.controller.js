@@ -51,20 +51,14 @@ exports.createOrder = (req, res) => {
       }
 }
 
-exports.updateOrder = (req, res) => {
+exports.updateOrder = async (req, res) => {
             
       try{
-            const orderData = req.body;
-            const id = req.params.id;
+            //const orderData = req.body;
+            //const id = req.params.id;
 
-            Order.findByIdAndUpdate(id, orderData, {new: true}, (err, order) => {
-                  if(err){
-                        res.status(500).send({message: err});
-                        return;
-                  }
-                  
-                  res.status(200).send({status: "ok", data: order, message: "Order updated successfully"});
-            })
+            const order = await Order.findByIdAndUpdate(req.params.id, req.body, {new: true})
+            res.status(200).send({ status: "ok", data: order, message: "Order updated successfully" });
       }catch(err){
             res.status(500).send({message: err});
       }
