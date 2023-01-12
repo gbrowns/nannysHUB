@@ -25,10 +25,6 @@ const orderSchema = new Schema({
             type: String,
             required: true
       },
-      location: {
-            type: String,
-            required: true
-      },
       message: {
             type: String,
             required: true

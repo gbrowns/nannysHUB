@@ -31,6 +31,7 @@ require('./app/routes/auth.routes')(app);
 require('./app/routes/mail.routes')(app);
 require('./app/routes/user.routes')(app);
 require('./app/routes/nanny.routes')(app);
+require('./app/routes/order.routes')(app);
 
 
 
