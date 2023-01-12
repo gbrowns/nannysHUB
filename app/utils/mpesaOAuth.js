@@ -1,7 +1,7 @@
 const axios = require('axios').default;
 require('dotenv').config();
 
-const mpesaOAuth = async (req, res, next) => {
+module.exports = async (req, res, next) => {
     const consumer_key = process.env.CONSUMER_KEY;
     const consumer_secret = process.env.CONSUMER_SECRET;
 
@@ -29,4 +29,3 @@ const mpesaOAuth = async (req, res, next) => {
     }
 }
 
-module.exports = mpesaOAuth;

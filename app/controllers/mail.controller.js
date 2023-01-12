@@ -1,10 +1,9 @@
-const sendEmail = require('../utils/sendEmail');
+const {sendEmail} = require('../utils');
 exports.send = async (req, res) => {
       const {email, subject, message} = req.body;
       if (!email || !subject || !message) return res.status(400).send({ message: "Email, Subject, Message are required" });
 
       try{
-
             await sendEmail({
                   email,
                   subject,
