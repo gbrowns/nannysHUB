@@ -1,0 +1,188 @@
+//mobile view sm
+@media only screen and (max-width: 375px) {
+  
+      footer{
+            display: flex;
+            flex-direction: column;
+
+            .section-a{
+                  padding: 2rem 1rem;
+                  h3{
+                        font-size: 2rem;
+                        line-height: 1.2;
+                        margin-bottom: .8rem;
+                  }
+
+                  input{
+                        font-size: .9rem;
+                        padding: 1rem 1.5rem;
+                        font-size: .9rem;
+                        
+                  }
+            }
+
+            .section-b{
+                  padding: 1.5rem 1rem;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  align-items: center;
+                 
+                  .copy{
+                        order: 3;
+                        span{
+                              font-size: .9rem;
+                              margin: 0 .4rem;
+                              margin-bottom: 1rem;
+                        }
+                  }
+                  .icons{
+                        order: 2;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-bottom: 1rem;
+                        a{
+                              margin-right: 1rem;
+                        }
+                  }
+
+                  .nav{
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 1rem;
+                        a{
+                              margin-left: .5rem;
+                              font-size: .9rem;
+                        }
+                  }
+            }
+      }
+}
+
+//mobile view - md
+@media only screen and (min-width: 375px) and (max-width: 425px) {
+  
+      footer{
+            display: flex;
+            flex-direction: column;
+
+            .section-a{
+                  padding: 2rem 2rem;
+                  h3{
+                        font-size: 2.5rem;
+                        line-height: 1.2;
+                        margin-bottom: .8rem;
+                  }
+
+                  input{
+                        font-size: .9rem;
+                        padding: 1rem 2rem;
+                        font-size: .9rem;
+                        
+                  }
+            }
+
+            .section-b{
+                  padding: 1.5rem 2rem;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  align-items: center;
+                 
+                  .copy{
+                        order: 3;
+                        span{
+                              font-size: .9rem;
+                              margin: 0 .4rem;
+                              margin-bottom: 1rem;
+                        }
+                  }
+                  .icons{
+                        order: 2;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-bottom: 1rem;
+                        a{
+                              margin-right: 1rem;
+                        }
+                  }
+
+                  .nav{
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 1rem;
+                        a{
+                              margin-left: .5rem;
+                              font-size: .9rem;
+                        }
+                  }
+            }
+      }
+}
+
+//mobile view - lg
+@media only screen and (min-width: 425px) and (max-width: 768px) {
+  
+      footer{
+            display: flex;
+            flex-direction: column;
+
+            .section-a{
+                  padding: 2rem 2.5rem;
+                  h3{
+                        font-size: 2.6rem;
+                        line-height: 1.2;
+                        margin-bottom: .8rem;
+                  }
+
+                  input{
+                        font-size: .9rem;
+                        padding: 1rem 2.3rem;
+                        font-size: .9rem;
+                        
+                  }
+            }
+
+            .section-b{
+                  padding: 1.5rem 2.5rem;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  align-items: center;
+                 
+                  .copy{
+                        order: 3;
+                        span{
+                              font-size: .9rem;
+                              margin: 0 .4rem;
+                              margin-bottom: 1rem;
+                        }
+                  }
+                  .icons{
+                        order: 2;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-bottom: 1rem;
+                        a{
+                              margin-right: 1rem;
+                        }
+                  }
+
+                  .nav{
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 1rem;
+                        a{
+                              margin-left: .5rem;
+                              font-size: 1rem;
+                        }
+                  }
+            }
+      }
+}

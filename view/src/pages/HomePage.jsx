@@ -3,7 +3,7 @@ import { FcBusinesswoman } from 'react-icons/fc';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 
-function Home() {
+function HomePage() {
     const STEPS = {
         client: [
             {
@@ -71,7 +71,7 @@ function Home() {
 
     ]
   return (
-    <div className='home-page'>
+    <div className='HomePage'>
         <Navbar />
         <div className='banner'>
               <img src={require('../images/nanny2.jpeg')} alt="banner" width="100px" />
@@ -189,4 +189,4 @@ function Home() {
   )
 }
 
-export default Home
+export default HomePage

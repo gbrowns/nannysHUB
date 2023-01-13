@@ -8,6 +8,9 @@ import PaymentsDash from './pages/PaymentsDash'
 import RequestsDash from './pages/RequestsDash'
 import ErrorPage from './pages/ErrorPage'
 
+//import HomePage from './pages/HomePage'
+import Navbar from './components/Navbar';
+
 import {Routes, Route, Navigate} from 'react-router-dom';
 import AdminLoginPage from './pages/AdminLoginPage'
 import { AdminProtectedRoutes } from './auth/AdminProtectedRoutes'
@@ -23,6 +26,7 @@ function App() {
       
       
       <Routes>
+        <Route path="/" element={<Navbar  />} />
         <Route path="/auth/login" element={<AdminLoginPage />} />  
 
         <Route path='/admin' element={<AdminProtectedRoutes />} >

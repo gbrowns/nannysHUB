@@ -5,9 +5,11 @@ import {useNavigate} from 'react-router-dom'
 function ErrorPage() {
 
   const navigate = useNavigate();
+
   const handleClick = () => {
-    navigate('/auth/login');
+    navigate('/');
   }
+  
   return (
     <div className="Errorpage">
       <img src={errorImg} alt="error" />
