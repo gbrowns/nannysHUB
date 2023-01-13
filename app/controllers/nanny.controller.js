@@ -47,7 +47,7 @@ exports.createNanny = async (req, res) => {
 
                   sendEmail(mail);
             
-                  res.status(200).send({status: "ok", data: nanny, message: "Nanny created successfully"});
+                  res.status(201).send({status: "ok", data: nanny, message: "Nanny created successfully"});
             });
       }catch(err){
             res.status(500).send({message: err.message});

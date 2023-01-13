@@ -4,8 +4,7 @@ const Schema = mongoose.Schema;
 const paymentSchema = new Schema({
       clientId: {
             type: Schema.Types.ObjectId,
-            ref: 'Request',
-            required: true
+            ref: 'Order',
       },
       receiptNumber: {
             type: String,

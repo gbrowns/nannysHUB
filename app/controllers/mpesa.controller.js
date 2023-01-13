@@ -1,10 +1,11 @@
 const { response } = require('express');
-
 const axios = require('axios').default;
-const paymentService = require('../services/paymentService');
 require('dotenv').config();
 
-const getAccessToken = async (req, res, next) => {
+const Payment = require('../models/payment.model');
+
+
+exports.getAccessToken = async (req, res, next) => {
       const consumer_key = process.env.CONSUMER_KEY;
       const consumer_secret = process.env.CONSUMER_SECRET;
 
@@ -21,24 +22,25 @@ const getAccessToken = async (req, res, next) => {
             });
 
             req.token = data["access_token"];
-            //res.send(req.token);
+            res.send(req.token);
             return next();
 
       } catch (err) {
-            return res.send({
+            return res.status(500).send({
                   success: false,
                   message: err['response']['statusText']
             });
       }
 }
 
-const lipaNaMpesa = async (req, res) => {
+exports.lipaNaMpesa = async (req, res) => {
+
       let token = req.token;
       let auth = `Bearer ${token}`;
 
       ////////////////////////////////////
-      console.log("lipa na mpesa token: ", token);
-      console.log("Auth: ", auth);
+      //console.log("lipa na mpesa token: ", token);
+      //console.log("Auth: ", auth);
       //////////////////////////////////////
 
       let timestamp = new Date().toISOString().replace(/[^0-9]/g, "").slice(0, -3);
@@ -56,7 +58,12 @@ const lipaNaMpesa = async (req, res) => {
       let account_reference = "NannyHubLtd"; //should not exceed 12 characters
       let transaction_desc = "Client Payment";
 
+      //const xData = {url, bs_short_code, pass_key, password, transaction_type, amount, partyA, partyB, phone_number, callback_url, account_reference, transaction_desc};
+      //console.table(xData);
+      //res.status(200).send({status: "ok", data: req.body});
+      
       try {
+
             let { data } = await axios.post(url, {
                   "BusinessShortCode": bs_short_code,
                   "Password": password,
@@ -73,24 +80,18 @@ const lipaNaMpesa = async (req, res) => {
                   "headers": {
                         "Authorization": auth
                   }
-            }).catch(error => {
-                  console.log(error.response.data);
-            })
+            }).catch(console.log);
 
-            console.log(data);
-
-            return res.send({
-                  success: true,
-                  message: data
-            });
+            //console.log(data);
+            
+            return res.status(201).send( {status: "ok" ,message: data} );
 
 
       } catch (err) {
 
-            return res.send({
+            return res.status(500).send({
                   status: "FAILED",
-                  success: false,
-                  message: err['response']['statusText']
+                  message: err
             });
 
       }
@@ -99,14 +100,16 @@ const lipaNaMpesa = async (req, res) => {
 }
 
 //get all payments
-const getAllPayments = async (req, res) => {
+exports.getAllPayments = async (req, res) => {
       try {
-            let payments = await paymentService.getAllPayments();
 
-            return res.send({
-                  success: true,
-                  data: payments
-            });
+            Payment.find({}, (err, payments) => {
+                  if(err){
+                        res.status(500).send({message: err.message});
+                  }
+
+                  res.status(200).send({status: "ok", data: payments})
+            })
 
       } catch (err) {
             return res.send({
@@ -117,15 +120,15 @@ const getAllPayments = async (req, res) => {
 }
 
 //get payment by id
-const getOnePayment = async (req, res) => {
-      let id = req.params.id;
+exports.getOnePayment = async (req, res) => {
 
       try {
-            let payment = await paymentService.getOnePayment(id);
+            Payment.findById(req.params.id, (err, payment) => {
+                  if(err){
+                        res.status(500).send({message: err.message});
+                  }
 
-            return res.send({
-                  success: true,
-                  data: payment
+                  res.status(200).send({status: "ok", data: payment});
             });
 
       } catch (err) {
@@ -137,27 +140,31 @@ const getOnePayment = async (req, res) => {
 }
 
 //save payment data to database
-const lipaNaMpesaCallback = async (req, res) => {
-      //let message = req.body.Body.stkCallback["ResultDesc"]; //success or failed
-      let items = req.body.Body.stkCallback.CallbackMetadata.Item; //array of items
-
-      const paymentData = {
-            receiptNumber: items[1].Value,
-            amount: items[0].Value,
-            phone: items[4].Value,
-            date: items[3].Value
-      }
-
-
+exports.lipaNaMpesaCallback = async (req, res) => {
+     
       try {
+            let message = req.body.Body.stkCallback["ResultDesc"]; //success or failed
+            let items = req.body.Body.stkCallback.CallbackMetadata.Item; //array of items
+
+            const paymentData = {
+                  receiptNumber: items[1].Value,
+                  amount: items[0].Value,
+                  phone: items[4].Value,
+                  date: items[3].Value
+            }
+            console.log("callback", message);
             //save payment data
-            let paymentInfo = await paymentService.createNewPayment(paymentData);
+            const payment =  new Payment(paymentData);
 
-            return res.status(201).send({
-                  success: true,
-                  data: paymentInfo,
-                  message: "payment made successfully"
+            payment.save((err, payment) => {
+                  if(err){
+                        res.status(500).send({message: err.message});
+                  }
+
+                  res.status(201).send({status: "ok", data: payment, message: "payment made successfully"});
             });
+
+            
 
       } catch (err) {
             return res.send({
@@ -168,30 +175,19 @@ const lipaNaMpesaCallback = async (req, res) => {
 
 }
 
-module.exports = {
-      getAccessToken,
-      lipaNaMpesa,
-      lipaNaMpesaCallback,
-      getAllPayments,
-      getOnePayment
-}
+//testing callback
+exports.testCallback =  (req, res) => {
 
-//fetch geolocation data from ipstack
-const getGeolocation = async (req, res) => {
-      let ip = req.params.ip;
-
-      try {
-            let { data } = await axios.get(`http://api.ipstack.com/${ip}?access_key=${process.env.IPSTACK_API_KEY}`);
-
-            return res.send({
-                  success: true,
-                  data: data
+      console.table(req.body);
+      //res.status(201).send({status: "ok", data: req.body});
+      /*try {
+      
+            res.status(201).send({
+                  data: req.body.Body,
+                  message: "callback received"
             });
-
       } catch (err) {
-            return res.send({
-                  success: false,
-                  message: err
-            });
-      }
+            res.status(500).send({ message: err });
+      }*/
 }
+
