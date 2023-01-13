@@ -53,9 +53,12 @@ const nannySchema = new Schema({
             type: String,
             required: true
       },
-      isApproved: {
+      approved: {
             type: Boolean,
-            required: true,
+            default: false
+      },
+      booked: {
+            type: Boolean,
             default: false
       },
       createAt: {

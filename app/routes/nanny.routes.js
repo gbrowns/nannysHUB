@@ -14,7 +14,7 @@ module.exports = function(app){
       
       app.get('/api/nannies', controller.allNannies);
       app.get('/api/nannies/:id', controller.nannyById);
-      app.post('/api/nannies', controller.createNanny);
+      app.post('/api/nannies/apply', controller.createNanny);
       app.patch('/api/nannies/:id', [authJwt.verifyToken], controller.updateNanny);
       app.delete('/api/nannies/:id', [authJwt.verifyToken], controller.deleteNanny);
 }
