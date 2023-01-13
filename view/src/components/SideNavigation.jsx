@@ -1,11 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 //logo
 //side navigation
 
 function SideNavigation() {
-     const year = new Date().getFullYear();
+  const year = new Date().getFullYear();
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    navigate('/auth/login');
+  }
+
   return (
     <div className='sidebar'>
      <h1>Nannies</h1>
@@ -16,7 +24,7 @@ function SideNavigation() {
      <Link to='/admin/requests'>Requests</Link>
      <Link to='/admin/payments'>Payments</Link>
 
-     <button>Logout</button>
+     <button onClick={handleLogout}>Logout</button>
      <span>&copy; {year} | Nannies Hub </span>
     </div>
   )

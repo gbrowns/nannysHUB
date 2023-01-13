@@ -23,8 +23,7 @@ function App() {
       
       
       <Routes>
-        <Route path="/login" element={<AdminLoginPage />} />
-        <Route path="/" element={<SideNavigation />} />
+        <Route path="/auth/login" element={<AdminLoginPage />} />  
 
         <Route path='/admin' element={<AdminProtectedRoutes />} >
           <Route path="/admin" element={<Navigate replace to='dashboard' />} />
