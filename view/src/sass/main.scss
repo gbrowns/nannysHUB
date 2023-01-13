@@ -1,7 +1,9 @@
 nav{
-      position: relative;
+      position: fixed;
       background-color: #fff;
       height: 10vh;
+      width: 100%;
+      z-index: 10;
       box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.074);
 
       display: flex;
