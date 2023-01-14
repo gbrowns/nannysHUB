@@ -15,4 +15,4 @@ This is a project that automates the process of physically finding nannies by pr
  5. Open a new terminal and navigate to the client/view app to start.
 `cd view && npm run dev`
 
-> Application hosted on [Nannies Hub Ke](https://github.com/Godwin254/nannysHUB)
+> Application hosted on [nannyshubke.vercel.app)
