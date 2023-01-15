@@ -11,7 +11,38 @@
             }
 
             .links{
-                  display: none !important; ;
+                  display: flex;
+                  flex-direction: column;
+                  position: absolute;
+                  background-color: #fff;
+
+                  top: 100%;
+                  left: 0;
+                  width: 100%;
+                  padding: 1rem;
+
+
+                  justify-content: flex-start;
+                  align-items: flex-start;
+                  z-index: 3;
+
+
+                  a{
+                        font-size: 1.2rem;
+                        font-weight: 600;
+                        width: 100%;
+                        border-bottom: 1px solid #ccc;
+                        margin: 0 0 1rem 0;
+                        padding: 1rem 0;
+                        margin-bottom: .4rem;
+
+
+                        &:last-child{
+                            margin-top: .7rem;
+                            width: 50%;
+                            text-align: center
+                        }
+                  }
             }
 
             .menu{
@@ -94,6 +125,68 @@
 
 //mobile view - md
 @media only screen and (min-width: 375px) and (max-width: 425px) {
+
+            nav{
+           padding: 0 1rem;
+           
+           .logo{
+                  h1{
+                        font-size: 1.5rem;
+                  }
+            }
+
+            .links{
+                  display: flex;
+                  flex-direction: column;
+                  position: absolute;
+                  background-color: #fff;
+
+                  top: 100%;
+                  left: 0;
+                  width: 100%;
+                  padding: 1rem;
+
+
+                  justify-content: flex-start;
+                  align-items: flex-start;
+                  z-index: 3;
+
+
+                  a{
+                        font-size: 1.2rem;
+                        font-weight: 600;
+                        width: 100%;
+                        border-bottom: 1px solid #ccc;
+                        margin: 0 0 1rem 0;
+                        padding: 1rem 0;
+                        margin-bottom: .4rem;
+
+
+                        &:last-child{
+                            margin-top: .7rem;
+                            width: 50%;
+                            text-align: center
+                        }
+                  }
+            }
+
+            .menu{
+                  display: block;
+                  font-size: 1.5rem;
+                  color: rgb(42, 40, 40);
+                  cursor: pointer;
+
+                  border: 1px solid rgb(235, 235, 235);
+                  padding: .4rem;
+                  border-radius: 5px;
+                  background-color: #fff;
+
+                  .icon{
+                        font-size: 1.6rem;
+                  }
+                  
+            }
+      }
   
       footer{
             display: flex;
@@ -157,7 +250,69 @@
 
 //mobile view - lg
 @media only screen and (min-width: 425px) and (max-width: 768px) {
-  
+      
+      nav{
+           padding: 0 1rem;
+           
+           .logo{
+                  h1{
+                        font-size: 2rem;
+                  }
+            }
+
+            .links{
+                  display: flex;
+                  flex-direction: column;
+                  position: absolute;
+                  background-color: #fff;
+
+                  top: 100%;
+                  left: 0;
+                  width: 100%;
+                  padding: 1.5rem;
+
+
+                  justify-content: flex-start;
+                  align-items: flex-start;
+                  z-index: 3;
+
+
+                  a{
+                        font-size: 1.2rem;
+                        font-weight: 600;
+                        width: 100%;
+                        border-bottom: 1px solid #ccc;
+                        margin: 0 0 1rem 0;
+                        padding: 1rem 0;
+                        margin-bottom: .4rem;
+
+
+                        &:last-child{
+                            margin-top: .7rem;
+                            width: 50%;
+                            text-align: center;
+                            padding: .7rem 1rem;
+                        }
+                  }
+            }
+
+            .menu{
+                  display: block;
+                  font-size: 1.5rem;
+                  color: rgb(42, 40, 40);
+                  cursor: pointer;
+
+                  border: 1px solid rgb(235, 235, 235);
+                  padding: .4rem;
+                  border-radius: 5px;
+                  background-color: #fff;
+
+                  .icon{
+                        font-size: 2rem;
+                  }
+                  
+            }
+      }
       footer{
             display: flex;
             flex-direction: column;

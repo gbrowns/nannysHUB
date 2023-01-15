@@ -4,9 +4,6 @@ import { Link, useNavigate } from 'react-router-dom'
 //logo
 //side navigation
 function SideNavigation() {
-<<<<<<< HEAD
-    const year = new Date().getFullYear();
-=======
   const year = new Date().getFullYear();
 
   const navigate = useNavigate();
@@ -16,7 +13,6 @@ function SideNavigation() {
     navigate('/auth/login');
   }
 
->>>>>>> d6271fd50118b93dcf257383e90c6c93788a7531
   return (
     <div className='sidebar'>
      <h1>Nannies</h1>
