@@ -1,47 +1,77 @@
 const express = require('express');
-const mongoose = require('mongoose');
-const path = require("path");
-const app = express();
-require('dotenv').config();
-//const request = require('request'); //deprecated
-
-const PORT = process.env.PORT || 8000;
-const LOCALHOST = `http://localhost:${PORT}`;
-const MONGODB_URI = process.env.DB_CONNECTION;
-const options = { useNewUrlParser: true, useUnifiedTopology: true};
-
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const path = require("path");
+const morgan = require('morgan');
+const cookieSession = require('cookie-session');
+require('dotenv').config();
 
-app.use("/", express.static(path.join(__dirname, "client/build")));
+const app = express();
 
-const requestRouter = require('./src/routes/requestRoutes');
-//const messageRouter = require('./routes/messageRoutes');
-const nannyRouter = require('./src/routes/nannyRoutes');
-const adminRouter = require('./src/routes/adminRoutes');
-const mpesaRouter = require('./src/routes/mpesaRoutes');
-
-const Nanny = require("./src/databases/models/Nanny");
-const Request = require("./src/databases/models/Request");
-const paginatedResults = require("./src/middlewares/paginatedResults");
-const auth = require("./src/middlewares/auth");
-const mpesaAuth = require('./src/utils/mpesaOAuth');
-
-//middleware
 app.use(cors());
+
+app.use(morgan('combined'));
+
 app.use(bodyParser.json());
-app.use(paginatedResults(Request)); //pagination middleware
+
+app.use(express.urlencoded({extended: true})); //parse requests of content-type - application/x-www-form-urlencoded
+
+app.use(
+    cookieSession({
+        name: 'session',
+        secret: process.env.COOKIE_SECRET,
+        httpOnly: true,
+        maxAge: 24 * 60 * 60 * 1000 // 24 hours
+    })
+);
 
 
 //routes
-app.use('/api/requests', requestRouter);
-app.use('/api/nannies', paginatedResults(Nanny), nannyRouter);
-app.use('/api/admin', adminRouter);
-app.use('/api/mpesa',mpesaAuth, mpesaRouter);
-//api documentation
-app.get('/api', (req, res) => {
-    res.send('<h2>Welcome to Nanny App API Documentation</h2><br><hr><br><h3>API Endpoints</h3><br><ul><li><a href="/api/requests">Requests</a></li><li><a href="/api/nannies">Nannies</a></li><li><a href="/api/admin">Admin</a></li></ul>');
+require('./app/routes/auth.routes')(app);
+require('./app/routes/mail.routes')(app);
+require('./app/routes/user.routes')(app);
+require('./app/routes/nanny.routes')(app);
+require('./app/routes/order.routes')(app);
+require('./app/routes/mpesa.routes')(app);
+
+
+
+const dbConfig = require('./app/config/db.config');
+
+//connect to mongo db
+dbConfig.mongoose
+    .connect(`${dbConfig.URL}`, dbConfig.OPTIONS)
+    .then(() => {
+        console.log("Successfully connected to MongoDB.");
+    })
+    .catch(err => {
+        console.error("Connection error", err);
+        process.exit();
+    });
+
+const PORT = process.env.PORT || 8000;
+const LOCALHOST = `http://localhost:${PORT}`;
+
+app.listen(PORT, () => {
+    console.log(`Server is running on ${LOCALHOST}`);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+/*
+
+
 
 app.use(express.static(path.join(__dirname, "./client/build")));
 
@@ -55,13 +85,4 @@ app.get("*", (_, res) => {
         }
     );
 });
-
-//connect to mongoose
-mongoose.connect(MONGODB_URI , options, (err) => {
-    if (err) console.log(err.message)
-    else console.log("Connected to mongoose");
-});
-
-app.listen(PORT, () =>{
-    console.log(`Server is running on ${LOCALHOST}`);
-});
+*/
