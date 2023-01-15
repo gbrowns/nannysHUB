@@ -2,9 +2,8 @@ import React from 'react';
 
 //logo
 //side navigation
-
 function SideNavigation() {
-     const year = new Date().getFullYear();
+    const year = new Date().getFullYear();
   return (
     <div className='sidebar'>
      <h1>Nannies</h1>
