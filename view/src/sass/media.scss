@@ -121,12 +121,26 @@
                   }
             }
       }
+
+      .VerifyUserPage{
+            padding: .6rem;
+            &__title{
+                  font-size: 1.3rem;
+                  line-height: 1.3;
+            }
+            &__text{
+                  font-size: 1.1rem;
+                  width: 90%;
+                  line-height: 1.4;
+            }
+      }     
+      
 }
 
 //mobile view - md
 @media only screen and (min-width: 375px) and (max-width: 425px) {
 
-            nav{
+      nav{
            padding: 0 1rem;
            
            .logo{
@@ -246,6 +260,19 @@
                   }
             }
       }
+
+      .VerifyUserPage{
+            padding: .5rem;
+            &__title{
+                  font-size: 1.4rem;
+                  line-height: 1.3;
+            }
+            &__text{
+                  font-size: 1.1rem;
+                  width: 80%;
+                  line-height: 1.4;
+            }
+      }     
 }
 
 //mobile view - lg
@@ -371,4 +398,16 @@
                   }
             }
       }
+
+      .VerifyUserPage{
+            &__title{
+                  font-size: 1.4rem;
+                  line-height: 1.3;
+            }
+            &__text{
+                  font-size: 1.1rem;
+                  width: 60%;
+                  line-height: 1.5;
+            }
+      }     
 }

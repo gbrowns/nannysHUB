@@ -133,3 +133,37 @@ footer{
             }
       }
 }
+
+
+//verified user page
+
+.VerifyUserPage{
+      background-color: rgb(245, 245, 245);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      
+      &__icon{
+            margin-top: 5rem;
+            font-size: 5rem;
+            color: rgb(221, 205, 36);
+      }
+
+      &__title{
+            margin-top: 1rem;
+            font-size: 1.5rem;
+            color: rgb(42, 40, 40);
+            text-align: center;
+      }
+
+      &__text{
+            margin-top: .5rem;
+            font-size: 1.2rem;
+            color: rgb(42, 40, 40);
+            text-align: center;
+            width: 40%;
+      }
+
+}
