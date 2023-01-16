@@ -399,6 +399,7 @@
             }
       }
 
+      //verify user page
       .VerifyUserPage{
             &__title{
                   font-size: 1.4rem;
@@ -409,5 +410,18 @@
                   width: 60%;
                   line-height: 1.5;
             }
-      }     
+      }  
+      
+      //payment success page
+      .successPayment{
+            justify-content: center;
+            &_icon{
+                  font-size: 4rem;
+            }
+            h2{
+                  font-size: 1.4rem;
+                  line-height: 1.3;
+    
+            }
+      }
 }

@@ -9,7 +9,7 @@ import RequestsDash from './pages/RequestsDash'
 import ErrorPage from './pages/ErrorPage'
 
 //import HomePage from './pages/HomePage'
-import VerifyUserPage from './pages/VerifyUserPage';
+import SuccessPaymentPage from './pages/SuccessPaymentPage';
 
 import {Routes, Route, Navigate} from 'react-router-dom';
 import AdminLoginPage from './pages/AdminLoginPage'
@@ -26,7 +26,7 @@ function App() {
       
       
       <Routes>
-        <Route path="/" element={<VerifyUserPage  />} />
+        <Route path="/" element={<SuccessPaymentPage  />} />
         <Route path="/auth/login" element={<AdminLoginPage />} />  
 
         <Route path='/admin' element={<AdminProtectedRoutes />} >

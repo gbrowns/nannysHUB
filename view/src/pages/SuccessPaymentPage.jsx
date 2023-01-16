@@ -1,14 +1,17 @@
 import React from 'react'
+import {RiMoneyDollarCircleFill} from 'react-icons/ri';
+import {BiCopyAlt} from 'react-icons/bi';
 
-function SuccessPayment() {
+function SuccessPaymentPage() {
   return (
-    <div className="success-payment">
-          <h1>Thank you for using Nannies HUb KE</h1>
+    <div className="successPayment">
+          <RiMoneyDollarCircleFill className='successPayment_icon' />
           <h2>Payment Successful</h2>
-          <h3>Redirecting to home page...</h3>
+          <p>Thank you for using <a href='/'>Nannies HUb KE</a></p>
+          <p>Mpesa Reference: <span>123456789 <BiCopyAlt className="icon" /></span></p>
 
     </div>
   )
 }
 
-export default SuccessPayment
+export default SuccessPaymentPage;

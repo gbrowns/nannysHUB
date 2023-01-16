@@ -167,3 +167,44 @@ footer{
       }
 
 }
+
+//success payment
+.successPayment{
+      background-color: rgb(245, 245, 245);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      
+      &_icon{
+            margin-top: 5rem;
+            font-size: 6rem;
+            color: rgb(221, 205, 36);
+      }
+      h2{
+            margin: 1.5rem 0;
+            font-size: 2.5rem;
+            color: rgb(42, 40, 40);
+            text-align: center;
+      }
+      p{
+            margin-bottom: .8rem;
+            font-size: 1.4rem;
+            color: rgb(42, 40, 40);
+            text-align: center;
+            width: 40%;
+            span{
+                  background-color: rgb(236, 236, 236);
+                  padding: .4rem 1rem;
+                  border-radius: 2rem;
+                  cursor: pointer;
+                  color: rgb(42, 40, 40);
+                
+    
+            }
+      }
+
+     
+
+}
