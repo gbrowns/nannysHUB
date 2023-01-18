@@ -6,7 +6,7 @@ import axios from 'axios';
 //get payment details
 //display payment details
 
-function Payment() {
+function PaymentPage() {
     const [phone, setPhone] = useState("");
     const [error, setError] = useState(null);
     const [nanny, setNanny] = useState({});
@@ -100,4 +100,4 @@ function Payment() {
     )
 }
 
-export default Payment
+export default PaymentPage;
