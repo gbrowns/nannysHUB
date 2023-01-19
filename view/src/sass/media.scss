@@ -155,7 +155,29 @@
   
                   }
             }
-      }    
+      }  
+      .ErrotPage{
+            padding: .6rem;
+            img{
+                  width: 100%;
+            }
+            h2{
+                  font-size: 1.8rem;
+                  line-height: 1.3;
+            }
+            p{
+                  width: 70%;
+                  line-height: 1.4;
+                  span{
+                        font-size: 1.1rem;
+  
+                  }
+                  a{
+                        font-size: 1.1rem;
+  
+                  }
+            }
+      }  
       
 }
 

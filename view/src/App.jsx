@@ -9,7 +9,7 @@ import RequestsDash from './pages/RequestsDash'
 import ErrorPage from './pages/ErrorPage'
 
 //import HomePage from './pages/HomePage'
-import PaymentPage from './pages/PaymentPage';
+import PaymentPage from './pages/ErrorPage';
 
 import {Routes, Route, Navigate} from 'react-router-dom';
 import AdminLoginPage from './pages/AdminLoginPage'
