@@ -10,16 +10,8 @@ on:
 jobs:
   Deploy-React-App-To-Production:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [14.x, 16.x, 18.x]
     steps:
       - uses: actions/checkout@v3
-      - name: Check Node.js version ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
       - name: Check Node version
         run: node --version
       - name: Change to view directory
