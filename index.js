@@ -56,7 +56,7 @@ app.listen(PORT, () => {
     console.log(`Server is running on ${LOCALHOST}`);
 });
 
-
+module.exports = app;
 
 
 

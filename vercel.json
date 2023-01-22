@@ -1,6 +1,5 @@
 {
      "version": 2,
-     "type": "FeatureCollection",
      "builds": [
           {
                "src": "./index.js",
