@@ -171,7 +171,18 @@
                   line-height: 1.4;
                  
             }
-      }  
+      }
+
+      //pages
+      .HomePage{
+            header{
+                  .banner{
+                        h1{
+                              font-size: 1.1rem!important;
+                        }
+                  }
+            }
+      }
       
 }
 
@@ -515,6 +526,7 @@
             }
       } 
 
+      //error page
       .Errorpage{
       
             padding: .6rem;

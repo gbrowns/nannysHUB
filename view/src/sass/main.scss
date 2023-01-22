@@ -27,6 +27,7 @@ nav{
                   margin-left: 2rem;
                   font-size: 1.1rem;
                   color: rgb(42, 40, 40);
+                  font-weight: 600;
                   text-decoration: none;
                   &:hover{
                         color: rgb(164, 68, 242);
@@ -52,19 +53,21 @@ nav{
 
 footer{
       position: relative;
-      background-color: rgb(245, 245, 245);
+      background-color: rgb(247, 245, 245);
       height: 40vh;
 
       display: flex;
       flex-direction: column;
       .section-a{
             height: 100%;
-            background-color: rgb(245, 230, 255);
+            background-color: rgb(161, 161, 161);
             padding: 2rem 5rem;
 
             h3{
-                  font-size: 2.5rem;
-                  margin-bottom: 1.5rem;
+                  font-size: 4rem;
+                  margin-bottom: 2rem;
+                  width: 40%;
+                  line-height: 1.2;
             }
 
             input{
