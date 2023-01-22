@@ -11,6 +11,7 @@ import ErrorPage from './pages/ErrorPage'
 //import HomePage from './pages/HomePage'
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
+import FindNannyPage from './pages/FindNannyPage';
 
 import {Routes, Route, Navigate} from 'react-router-dom';
 import AdminLoginPage from './pages/AdminLoginPage'
@@ -29,6 +30,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage  />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/find-a-nanny" element={<FindNannyPage />} />
 
         <Route path="/auth/login" element={<AdminLoginPage />} />  
 

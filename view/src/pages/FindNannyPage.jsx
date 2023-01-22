@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react'
-import Banner from '../components/Banner'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import {useNavigate, useLocation} from 'react-router-dom';
 import axios from 'axios';
 
-function FindNanny() {
+import {MdVerified} from 'react-icons/md';
+
+function FindNannyPage() {
 
     const navigate = useNavigate();
     const [nannies, setNannies] = useState([]);
@@ -20,12 +21,9 @@ function FindNanny() {
     }
 
     useEffect(() => {
-        //fetch nannies data from application
         const fetchNanniesData = async () => {
             const res = await axios(options).catch(err => setErrorMsg(err.message));
-            //console.log(res);
             setNannies([...res.data.data.results]);
-           // console.log(nannies);
         }
         fetchNanniesData();
     }, [nannies]);
@@ -36,68 +34,280 @@ function FindNanny() {
         navigate(`/nanny/${nannyId}`);
 
     }
-    //console.log("nannies",nannies);
-
     
-    //filter nannies by isApproved
-    const approvedNannies = nannies.filter(nanny => nanny.isApproved === false);
+    //filter nannies by isVerified and isApproved
+    const verifiedNannies = nannies.filter(nanny => nanny.isVerified === false);
 
     //console.log(approvedNannies);
   return (
-    <div className='find-nanny-container'>
+    <div className='FindNannyPage'>
         <Navbar />
-        <Banner title="Find a Nanny" image={require('../images/nanny1.jpeg')} />
-        <div className="find-nanny-content">
+        <div className="FindNannyPage__content">
+            <h3> Find a Nanny</h3>
+
             <div className="controls">
-                <div className='category-control'>
-                    <h3>Category</h3>
-                    <select>
-                        <option value="">Select Category</option>
-                        <option value="">Live-in Nannies</option>
-                        <option value="">Live-out Nannies</option>
-                        <option value="">Emmergency Nannies</option>
-                    </select>
-
-                </div>
-                <div className="search-box">
-                    <input type="text" placeholder="Search for nanny" />
-                </div>
+                <select>
+                    <option value="">Filter</option>
+                    <option value="live-in">Live-in Nannies</option>
+                    <option value="live-out">Live-out Nannies</option>
+                    <option value="emmergency">Emmergency Nannies</option>
+                </select>
+                
+                <input type="search" placeholder="Search for nanny" />
             </div>
+
             <div className="nanny-list">
-                {
-                    approvedNannies.map((nanny) => {
-                        const { _id:id, firstname, lastname, age, address, location, jobOptions, availability, agreementOptions, salary } = nanny;
-                        return (
-                            <div className="nanny-card" key={id} onClick={() => navigate(`details/${id}`) }>
-                                {/*<img src={image} alt="nanny" width="100px" />*/}
-                                <div className="nanny-card-body">
-                                    <h5>{`${firstname} ${lastname}`}</h5>
-                                    <div className="chores">
-                                        {
-                                            jobOptions.map((chore,i) => <span key={i}>{chore}</span>)
-                                        }
-                                    </div>
-                                    <div className="nanny-card-footer">
-                                        <p>Age: <span>{age}</span></p>
-                                        <p>Type: <span>{agreementOptions.join(", ")}</span></p>
-                                        <p>Location: <span>{`${address} | ${location}`}</span></p>
-                                        <p>Expected Salary: <span>{salary}</span></p>
-                                    </div>
-                                    <input type="button" value={`Ask for ${firstname}`} />
-                                </div>
-                            </div>
-                        )
-                    })
-                }
+                <div className='nanny-card'>
+                    <h1>John Doe</h1>
+                    <div className="chores">
+                        <span>Chores here</span>
+                        <span>Chores</span>
+                        <span>Chores</span>
+                        <span>Chores</span>
+                    </div>
+                    <div className="details">
+                        <p>Age: <span>24</span></p>
+                        <p>Type: <span>Full-Time</span></p>
+                        <p>Location: <span>Nairobi West</span></p>
+                        <p>Expected Salary: <span>500</span></p>
+                    </div>
+                    <div className="controls">
+                        <input type="button" value={`View details`} />
+                        <span>
+                            <MdVerified className="icon" />
+                            Verified
+                        </span>
+                        
+                    </div>
+                </div>
+                <div className='nanny-card'>
+                    <h1>John Doe</h1>
+                    <div className="chores">
+                        <span>Chores here</span>
+                        <span>Chores</span>
+                        <span>Chores</span>
+                        <span>Chores</span>
+                    </div>
+                    <div className="details">
+                        <p>Age: <span>24</span></p>
+                        <p>Type: <span>Full-Time</span></p>
+                        <p>Location: <span>Nairobi West</span></p>
+                        <p>Expected Salary: <span>500</span></p>
+                    </div>
+                    <div className="controls">
+                        <input type="button" value={`View details`} />
+                        <span>
+                            <MdVerified className="icon" />
+                            Verified
+                        </span>
+                        
+                    </div>
+                </div>
+                <div className='nanny-card'>
+                    <h1>John Doe</h1>
+                    <div className="chores">
+                        <span>Chores here</span>
+                        <span>Chores</span>
+                        <span>Chores</span>
+                        <span>Chores</span>
+                    </div>
+                    <div className="details">
+                        <p>Age: <span>24</span></p>
+                        <p>Type: <span>Full-Time</span></p>
+                        <p>Location: <span>Nairobi West</span></p>
+                        <p>Expected Salary: <span>500</span></p>
+                    </div>
+                    <div className="controls">
+                        <input type="button" value={`View details`} />
+                        <span>
+                            <MdVerified className="icon" />
+                            Verified
+                        </span>
+                        
+                    </div>
+                </div>
+                <div className='nanny-card'>
+                    <h1>John Doe</h1>
+                    <div className="chores">
+                        <span>Chores here</span>
+                        <span>Chores</span>
+                        <span>Chores</span>
+                        <span>Chores</span>
+                    </div>
+                    <div className="details">
+                        <p>Age: <span>24</span></p>
+                        <p>Type: <span>Full-Time</span></p>
+                        <p>Location: <span>Nairobi West</span></p>
+                        <p>Expected Salary: <span>500</span></p>
+                    </div>
+                    <div className="controls">
+                        <input type="button" value={`View details`} />
+                        <span>
+                            <MdVerified className="icon" />
+                            Verified
+                        </span>
+                        
+                    </div>
+                </div>
+                <div className='nanny-card'>
+                    <h1>John Doe</h1>
+                    <div className="chores">
+                        <span>Chores here</span>
+                        <span>Chores</span>
+                        <span>Chores</span>
+                        <span>Chores</span>
+                    </div>
+                    <div className="details">
+                        <p>Age: <span>24</span></p>
+                        <p>Type: <span>Full-Time</span></p>
+                        <p>Location: <span>Nairobi West</span></p>
+                        <p>Expected Salary: <span>500</span></p>
+                    </div>
+                    <div className="controls">
+                        <input type="button" value={`View details`} />
+                        <span>
+                            <MdVerified className="icon" />
+                            Verified
+                        </span>
+                        
+                    </div>
+                </div>
+                <div className='nanny-card'>
+                    <h1>John Doe</h1>
+                    <div className="chores">
+                        <span>Chores here</span>
+                        <span>Chores</span>
+                        <span>Chores</span>
+                        <span>Chores</span>
+                    </div>
+                    <div className="details">
+                        <p>Age: <span>24</span></p>
+                        <p>Type: <span>Full-Time</span></p>
+                        <p>Location: <span>Nairobi West</span></p>
+                        <p>Expected Salary: <span>500</span></p>
+                    </div>
+                    <div className="controls">
+                        <input type="button" value={`View details`} />
+                        <span>
+                            <MdVerified className="icon" />
+                            Verified
+                        </span>
+                        
+                    </div>
+                </div>
+                <div className='nanny-card'>
+                    <h1>John Doe</h1>
+                    <div className="chores">
+                        <span>Chores here</span>
+                        <span>Chores</span>
+                        <span>Chores</span>
+                        <span>Chores</span>
+                    </div>
+                    <div className="details">
+                        <p>Age: <span>24</span></p>
+                        <p>Type: <span>Full-Time</span></p>
+                        <p>Location: <span>Nairobi West</span></p>
+                        <p>Expected Salary: <span>500</span></p>
+                    </div>
+                    <div className="controls">
+                        <input type="button" value={`View details`} />
+                        <span>
+                            <MdVerified className="icon" />
+                            Verified
+                        </span>
+                        
+                    </div>
+                </div>
+                <div className='nanny-card'>
+                    <h1>John Doe</h1>
+                    <div className="chores">
+                        <span>Chores here</span>
+                        <span>Chores</span>
+                        <span>Chores</span>
+                        <span>Chores</span>
+                    </div>
+                    <div className="details">
+                        <p>Age: <span>24</span></p>
+                        <p>Type: <span>Full-Time</span></p>
+                        <p>Location: <span>Nairobi West</span></p>
+                        <p>Expected Salary: <span>500</span></p>
+                    </div>
+                    <div className="controls">
+                        <input type="button" value={`View details`} />
+                        <span>
+                            <MdVerified className="icon" />
+                            Verified
+                        </span>
+                        
+                    </div>
+                </div>
+                <div className='nanny-card'>
+                    <h1>John Doe</h1>
+                    <div className="chores">
+                        <span>Chores here</span>
+                        <span>Chores</span>
+                        <span>Chores</span>
+                        <span>Chores</span>
+                    </div>
+                    <div className="details">
+                        <p>Age: <span>24</span></p>
+                        <p>Type: <span>Full-Time</span></p>
+                        <p>Location: <span>Nairobi West</span></p>
+                        <p>Expected Salary: <span>500</span></p>
+                    </div>
+                    <div className="controls">
+                        <input type="button" value={`View details`} />
+                        <span>
+                            <MdVerified className="icon" />
+                            Verified
+                        </span>
+                        
+                    </div>
+                </div>
+            </div>   
 
+            <div className="paginate">
+                <button className="btn btn-primary" onClick={() => navigate('/nanny/1')}>1</button>
+                <button className="btn btn-primary" onClick={() => navigate('/nanny/2')}>2</button>
             </div>
-            <div className="request-nanny-form">
-            </div>
-
         </div>
         <Footer />
     </div>
   )
 }
 
-export default FindNanny
+const Nannies = (nannies) => {
+    return (
+        <div className="nanny-list">
+            {
+                nannies.map((nanny) => {
+                    const { _id:id, firstname, lastname, age, address, location, jobOptions, availability, agreementOptions, salary } = nanny;
+                    return (
+                        <div className="nanny-card" key={id} onClick={() => navigate(`details/${id}`) }>
+                            {/*<img src={image} alt="nanny" width="100px" />*/}
+                            <div className="nanny-card-body">
+                                <h5>{`${firstname} ${lastname}`}</h5>
+                                <div className="chores">
+                                    {
+                                        jobOptions.map((chore,i) => <span key={i}>{chore}</span>)
+                                    }
+                                </div>
+                                <div className="nanny-card-footer">
+                                    <p>Age: <span>{age}</span></p>
+                                    <p>Type: <span>{agreementOptions.join(", ")}</span></p>
+                                    <p>Location: <span>{`${address} | ${location}`}</span></p>
+                                    <p>Expected Salary: <span>{salary}</span></p>
+                                </div>
+                                <input type="button" value={`Ask for ${firstname}`} />
+                            </div>
+                        </div>
+                    )
+                })
+            }
+               
+        </div>
+    )
+    
+}
+
+export default FindNannyPage;
