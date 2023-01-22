@@ -1,0 +1,34 @@
+name: React+Vite App Deployment To Production
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+  
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  Deploy-React-App-To-Production:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check Node.js version ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - name: Check Node version
+        run: node --version
+      - name: Change to view directory
+        run: cd view
+      - name: Install Vercel CLI
+        run: npm install --global vercel@canary
+      - name: Pull Vercel Environent Info
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Build project Artifacts
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Deploy Project Artifacts to Vercel
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
