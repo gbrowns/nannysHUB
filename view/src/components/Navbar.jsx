@@ -7,7 +7,7 @@ import { useState } from 'react'
 import Logo from '../assets/logo.png'
 
 function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(true)
 
   //handle the state of the navbar
   const handleToggle = () => setIsOpen(!isOpen)
@@ -19,18 +19,26 @@ function Navbar() {
         {/*<img src={Logo} alt="logo" width="150px" />*/}
         <h1>NannyHub.</h1>
       </div>
-      <div className="links" style={{display: isOpen ? "none" : "flex"}}>
-        <Link to="/">Home</Link>
-        <Link to="/about-us">About us</Link>
-        <Link to="/find-a-nanny">Find a nanny</Link>
-        <Link to="/apply-for-job">Apply for job</Link>
-      </div>
+      {
+        isOpen && <Links />
+      }
       <div className="menu">
         <BiMenuAltRight className="icon" onClick={handleToggle} style={{display: isOpen ? "block" : "none"}}/>
         <GrFormClose className="icon" style={{ display: isOpen ? "none" : "block" }} onClick={handleToggle}   />
       </div>
 
     </nav>
+  )
+}
+
+const Links = () => { 
+  return (
+    <div className="links">
+      <Link to="/">Home</Link>
+      <Link to="/about">About us</Link>
+      <Link to="/find-a-nanny">Find a nanny</Link>
+      <Link to="/apply-for-job">Apply for job</Link>
+    </div>
   )
 }
 
