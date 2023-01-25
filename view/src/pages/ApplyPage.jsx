@@ -1,10 +1,9 @@
-import React, {useEffect, useState} from 'react'
-import Banner from '../components/Banner';
+import React, {useEffect, useState} from 'react';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import axios from 'axios';
 
-function Application() {
+function ApplyPage() {
   const [firstname, setFirstName] = useState(null);
   const [lastname, setLastName] = useState(null);
   const [email, setEmail] = useState(null);
@@ -103,7 +102,6 @@ function Application() {
   return (
     <div className="apply-page">
         <Navbar />
-        <Banner title="Apply for Job" image={require('../images/nanny1.jpeg')} />
         <div className="apply-container">
             <h1>Apply for a nanny Job</h1>
             <p>
@@ -296,4 +294,30 @@ function Application() {
   )
 }
 
-export default Application
+
+
+const PersonalData = () => {
+
+  return (
+    <>
+      <div className="form-group">
+        <input
+          type="text"
+          placeholder="First Name" 
+          className="form-control"
+          onChange={(e) => setFirstName(e.target.value)}
+          value={firstname}
+       />
+        <input
+          type="text"
+          placeholder="Last Name" 
+          className="form-control"
+          onChange={(e) => setLastName(e.target.value)}
+          value={lastname}
+        />
+      </div>
+    </>
+  )
+}
+
+export default ApplyPage;

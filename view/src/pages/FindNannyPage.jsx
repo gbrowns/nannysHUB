@@ -241,29 +241,7 @@ function FindNannyPage() {
                         
                     </div>
                 </div>
-                <div className='nanny-card'>
-                    <h1>John Doe</h1>
-                    <div className="chores">
-                        <span>Chores here</span>
-                        <span>Chores</span>
-                        <span>Chores</span>
-                        <span>Chores</span>
-                    </div>
-                    <div className="details">
-                        <p>Age: <span>24</span></p>
-                        <p>Type: <span>Full-Time</span></p>
-                        <p>Location: <span>Nairobi West</span></p>
-                        <p>Expected Salary: <span>500</span></p>
-                    </div>
-                    <div className="controls">
-                        <input type="button" value={`View details`} />
-                        <span>
-                            <MdVerified className="icon" />
-                            Verified
-                        </span>
-                        
-                    </div>
-                </div>
+                
             </div>   
 
             <div className="paginate">

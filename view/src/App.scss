@@ -733,7 +733,6 @@
 
     .nanny-list{
       position: relative;
-      min-height: 50vh;
       margin-top: 2rem;
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -742,6 +741,7 @@
         border: 1px solid #ccc;
         padding: 1rem;
         border-radius: 5px;
+        min-height: 36vh;
 
         h1{
           font-size: 1.8rem;
