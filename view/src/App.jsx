@@ -31,6 +31,7 @@ function App() {
         <Route path="/" element={<HomePage  />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/find-a-nanny" element={<FindNannyPage />} />
+        <Route path="/apply" element={<FindNannyPage />} />
 
         <Route path="/auth/login" element={<AdminLoginPage />} />  
 
