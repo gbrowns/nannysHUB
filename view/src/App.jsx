@@ -2,11 +2,11 @@ import { useState } from 'react'
 import './App.scss'
 import SideNavigation from './components/SideNavigation'
 import AdminDashboard from './pages/AdminDashboard'
-import ApplicationDash from './pages/ApplicationDash'
-import NannyDash from './pages/NannyDash'
-import PaymentsDash from './pages/PaymentsDash'
-import RequestsDash from './pages/RequestsDash'
-import ErrorPage from './pages/ErrorPage'
+import ApplicationDash from './pages/ApplicationDash';
+import NannyDash from './pages/NannyDash';
+import PaymentsDash from './pages/PaymentsDash';
+import RequestsDash from './pages/RequestsDash';
+import ErrorPage from './pages/ErrorPage';
 
 //import HomePage from './pages/HomePage'
 import HomePage from './pages/HomePage';
