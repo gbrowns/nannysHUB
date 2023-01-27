@@ -37,7 +37,7 @@ const Links = () => {
       <Link to="/">Home</Link>
       <Link to="/about">About us</Link>
       <Link to="/find-a-nanny">Find a nanny</Link>
-      <Link to="/apply-for-job">Apply for job</Link>
+      <Link to="/apply">Apply for job</Link>
     </div>
   )
 }

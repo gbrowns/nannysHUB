@@ -12,6 +12,7 @@ import ErrorPage from './pages/ErrorPage'
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import FindNannyPage from './pages/FindNannyPage';
+import ApplyPage from './pages/ApplyPage';
 
 import {Routes, Route, Navigate} from 'react-router-dom';
 import AdminLoginPage from './pages/AdminLoginPage'
@@ -31,7 +32,7 @@ function App() {
         <Route path="/" element={<HomePage  />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/find-a-nanny" element={<FindNannyPage />} />
-        <Route path="/apply" element={<FindNannyPage />} />
+        <Route path="/apply" element={<ApplyPage />} />
 
         <Route path="/auth/login" element={<AdminLoginPage />} />  
 

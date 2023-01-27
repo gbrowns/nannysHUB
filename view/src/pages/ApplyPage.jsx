@@ -20,6 +20,8 @@ function ApplyPage() {
   const [message, setMessage] = useState(null);
   const [error, setError] = useState(null);
 
+  const [toggle, setToggle] = useState(false);
+
   //get location coordinated from browser
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -99,11 +101,17 @@ function ApplyPage() {
     });
   }
 
+  //handle toggle of the sections
+  const handleToggle = (e) => {
+    e.preventDefault();
+    setToggle(!toggle);
+  }
+
   return (
-    <div className="apply-page">
+    <div className="ApplyPage">
         <Navbar />
-        <div className="apply-container">
-            <h1>Apply for a nanny Job</h1>
+        <div className="ApplyPage__content">
+            <h1>Apply to become a Nanny</h1>
             <p>
               To Apply for a nanny Job, please fill out the form below.
             </p>
@@ -111,41 +119,93 @@ function ApplyPage() {
               error && <span>{error}</span>
             }
             <form autoComplete="off" onSubmit={handleSubmit}>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder="First Name" 
-                    className="form-control"
-                    onChange={(e) => setFirstName(e.target.value)}
-                    value={firstname}
-                  />
-                  <input
-                    type="text"
-                    placeholder="Last Name" 
-                    className="form-control"
-                    onChange={(e) => setLastName(e.target.value)}
-                    value={lastname}
-                  />
-                </div>
+              <h3 onClick={handleToggle}>Personal info</h3>
+              {
+                !toggle && <PersonalData />
+              }
+              <h3 onClick={handleToggle}>Work info</h3>
+              {
+                toggle && "Job details"
+              }
+                
+              <input type="submit" value="Submit "  />
 
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder="Your email" 
-                    className="form-control"
-                    onChange={(e) => setEmail(e.target.value)}
-                    value={email}
-                  />
-                  <input
-                    type="text"
-                    placeholder="Phone number" 
-                    className="form-control"
-                    onChange={(e) => setPhone(e.target.value)}
-                    value={phone}
-                  />
-                </div>
+            </form>
+        </div>
+        <Footer />
+    </div>
+  )
+}
 
-                <div className="form-group">
+
+
+const PersonalData = ({firstname, lastname, phone, email, gender, age}) => {
+
+  const handleInputChange = (e) => {
+    e.preventDefault();
+  }
+
+  return (
+    <>
+      <div className="form-group">
+        <input
+          type="text"
+          placeholder="First name"
+          name='firstname'
+          onChange={handleInputChange}
+          value={firstname}
+       />
+        <input
+          type="text"
+          placeholder="Last Name" 
+          name='lastname'
+          onChange={handleInputChange}
+          value={lastname}
+        />
+      </div>
+      <div className="form-group">
+        <input
+          type="text"
+          placeholder="Your email address" 
+          name='email'
+          onChange={handleInputChange}
+          value={email}
+        />
+        <input
+          type="text"
+          placeholder="Phone Number" 
+          name='phone'
+          onChange={handleInputChange}
+          value={phone}
+        />
+      </div>
+
+      <div className="form-group">
+        <select value={gender} onChange={(e) => setGender(e.target.value)}>
+          <option value="">Your gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+        <input
+          type="text"
+          placeholder="Age" 
+          name='age'
+          onChange={handleInputChange}
+          value={age}
+        />
+      </div>
+       
+    </>
+  )
+}
+
+
+const WorkData = () => {
+
+  return (
+    <>
+      <div className="form-group">
                   <input
                     type="text"
                     placeholder="Estate or street" 
@@ -159,12 +219,7 @@ function ApplyPage() {
                 </div>
 
                 <div className="form-group">
-                  <select value={gender} onChange={(e) => setGender(e.target.value)}>
-                    <option value="">Your gender</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
-                  </select>
+                  
                   <input
                     type="text"
                     placeholder="Enter your age" 
@@ -285,37 +340,6 @@ function ApplyPage() {
                     placeholder="Tell us about yourself"
                   />
                 </div>
-                <input type="submit" value="Submit Details"  />
-
-            </form>
-        </div>
-        <Footer />
-    </div>
-  )
-}
-
-
-
-const PersonalData = () => {
-
-  return (
-    <>
-      <div className="form-group">
-        <input
-          type="text"
-          placeholder="First Name" 
-          className="form-control"
-          onChange={(e) => setFirstName(e.target.value)}
-          value={firstname}
-       />
-        <input
-          type="text"
-          placeholder="Last Name" 
-          className="form-control"
-          onChange={(e) => setLastName(e.target.value)}
-          value={lastname}
-        />
-      </div>
     </>
   )
 }
