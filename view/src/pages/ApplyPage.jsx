@@ -125,7 +125,7 @@ function ApplyPage() {
               }
               <h3 onClick={handleToggle}>Work info</h3>
               {
-                toggle && "Job details"
+                toggle && <WorkData />
               }
                 
               <input type="submit" value="Submit "  />
@@ -201,145 +201,149 @@ const PersonalData = ({firstname, lastname, phone, email, gender, age}) => {
 }
 
 
-const WorkData = () => {
+const WorkData = ({address,empStatus,salary, availability, message}) => {
+
+  const handleOnChangeEvent2 = (e) => {
+    e.preventDefault();
+  }
+
+  const handleOnChangeEvent1 = (e) => {
+    e.preventDefault();
+  } 
+
+  const handleInputChange = (e) => {
+    e.preventDefault();
+  }
 
   return (
     <>
       <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder="Estate or street" 
-                    className="form-control"
-                    onChange={(e) => setAddress(e.target.value)}
-                    value={address}
-                  />
-                  {
-                    //change|<input type="text" placeholder="Location" className="form-control" />
-                  }
-                </div>
+        <input
+          type="text"
+          placeholder="Estate or street" 
+          className="form-control"
+          onChange={handleInputChange}
+          value={address}
+        />
+        
+        <select value={availability} onChange={handleInputChange} >
+          <option value="">When are you available for a job</option>
+          <option value="imediately">Imediately</option>
+          <option value="Every weekend">Every weekends</option>
+          <option value="Every 2 weeks">Every 2 weeks</option>
+          <option value="fully available">fully available</option>
+        </select>
+      </div>
 
-                <div className="form-group">
-                  
-                  <input
-                    type="text"
-                    placeholder="Enter your age" 
-                    className="form-control"
-                    onChange={(e) => setAge(e.target.value)}
-                    value={age}
-                  />
-                </div>
+      <div className="form-group">
+        <select value={empStatus} onChange={handleInputChange}>
+          <option value="">Your employment status</option>
+          <option value="unemployed">Unemployed</option>
+          <option value="employed">Employed</option>
+          <option value="self- employed">Self employed</option>
+          <option value="contract">Contract</option>
+          <option value="other">Other</option>
+        </select>
+        <input
+          type="text"
+          placeholder="Salary willing to taken  (Ksh.)" 
+          className="form-control"
+          onChange={handleInputChange}
+          value={salary}
+        />
+      </div>
 
-                <div className="form-group">
-                  <select value={empStatus} onChange={(e) => setEmpStatus(e.target.value)}>
-                    <option value="">Your employment status</option>
-                    <option value="unemployed">Unemployed</option>
-                    <option value="employed">Employed</option>
-                    <option value="self- employed">Self employed</option>
-                    <option value="contract">Contract</option>
-                    <option value="other">Other</option>
-                  </select>
-                  <input
-                    type="text"
-                    placeholder="Salary willing to taken  (Ksh.)" 
-                    className="form-control"
-                    onChange={(e) => setSalary(e.target.value)}
-                    value={salary}
-                  />
-                </div>
+      <div className="form-group">
+        <div className="inner-group">
+          <span>Type of job (you can select more than one)</span>
+          <div>
+            <label>Night nanny</label>
+            <input 
+              type="checkbox" 
+              value="Maiden" 
+              name="job option"
+              onChange={handleOnChangeEvent1}
+            />
+            <label>Part time</label>
+            <input
+              type="checkbox" 
+              value="Messenger" 
+              name="job option"
+              onChange={handleOnChangeEvent1}
+            />
+            <label>Domestic</label>
+            <input
+              type="checkbox" 
+              value="domestic"
+              name="job option"
+              onChange={handleOnChangeEvent1}
+            />
+            <label>Childcare</label>
+            <input 
+              type="checkbox" 
+              value="child care" 
+              name="job option"
+              onChange={handleOnChangeEvent1}
+            />
+            <label>Gardener</label>
+            <input
+              type="checkbox"
+              value="gardener" 
+              name="job option"
+              onChange={handleOnChangeEvent1}
+            />
+            <label>Homecleaner</label>
+            <input 
+              type="checkbox" 
+              value="home cleaner" 
+              name="job option"
+              onChange={handleOnChangeEvent1}
+            />
 
-                <div className="form-group">
-                  <div className="inner-group">
-                    <span>Type of job (you can select more than one)</span>
-                   <div>
-                      <label>Night nanny</label>
-                      <input 
-                        type="checkbox" 
-                        value="Maiden" 
-                        name="job option"
-                        onChange={handleOnChangeEvent1}
-                      />
-                      <label>Part time</label>
-                      <input
-                        type="checkbox" 
-                        value="Messenger" 
-                        name="job option"
-                        onChange={handleOnChangeEvent1}
-                      />
-                      <label>Domestic</label>
-                      <input
-                        type="checkbox" 
-                        value="domestic"
-                        name="job option"
-                        onChange={handleOnChangeEvent1}
-                      />
-                      <label>Childcare</label>
-                      <input 
-                        type="checkbox" 
-                        value="child care" 
-                        name="job option"
-                        onChange={handleOnChangeEvent1}
-                      />
-                      <label>Gardener</label>
-                      <input
-                        type="checkbox"
-                        value="gardener" 
-                        name="job option"
-                        onChange={handleOnChangeEvent1}
-                      />
-                      <label>Homecleaner</label>
-                      <input 
-                        type="checkbox" 
-                        value="home cleaner" 
-                        name="job option"
-                        onChange={handleOnChangeEvent1}
-                      />
+          </div>
+        </div>
 
-                    </div>
-                  </div>
-                  <select value={availability} onChange={(e) => setAvailability(e.target.value)} >
-                    <option value="">When are you available for a job</option>
-                    <option value="imediately">Imediately</option>
-                    <option value="Every weekend">Every weekends</option>
-                    <option value="Every 2 weeks">Every 2 weeks</option>
-                    <option value="fully available">fully available</option>
-                  </select>
-                </div>
+        <div className="inner-group">
+          <span>Type of Agreement (you can select more than one)</span>
+          <div>
+            <label>Live in</label>
+            <input 
+              type="checkbox" 
+              value="night nanny"
+              name="agreement option"
+              onChange={handleOnChangeEvent2}
+            />
+            <label>Live out</label>
+            <input 
+              type="checkbox" 
+              value="part time" 
+              name="agreement option"
+              onChange={handleOnChangeEvent2}
+            />
+            <label>Contract</label>
+            <input 
+              type="checkbox" 
+              value="domestic" 
+              name="agreement option"
+              onChange={handleOnChangeEvent2}
+            />
 
-                <div className="form-group">
-                  <span>Type of Agreement (you can select more than one)</span>
-                  <div>
-                    <label>Live in</label>
-                    <input 
-                      type="checkbox" 
-                      value="night nanny"
-                      name="agreement option"
-                      onChange={handleOnChangeEvent2}
-                    />
-                    <label>Live out</label>
-                    <input 
-                      type="checkbox" 
-                      value="part time" 
-                      name="agreement option"
-                      onChange={handleOnChangeEvent2}
-                    />
-                    <label>Contract</label>
-                    <input 
-                      type="checkbox" 
-                      value="domestic" 
-                      name="agreement option"
-                      onChange={handleOnChangeEvent2}
-                    />
+          </div>
+        </div>
+        
+      </div>
 
-                  </div>
-                </div>
+      <div className="form-group">
+        
+      </div>
 
-                <div className="form-group">
-                  <textarea
-                    onChange={(e) => setMessage(e.target.value)}
-                    value={message}
-                    placeholder="Tell us about yourself"
-                  />
-                </div>
+      <div className="form-group">
+        <textarea
+          onChange={handleInputChange}
+          value={message}
+          placeholder="Tell us about yourself"
+        />
+      </div>
     </>
   )
 }

@@ -812,6 +812,13 @@
       font-size: 1.2rem;
       margin-bottom: 1rem;
     }
+    >span{
+      font-size: 1.2rem;
+      background-color: rgb(241, 235, 235);
+      padding: .5rem 1rem;
+      border-radius: 5px;
+      width: 400px;
+    }
 
     form{
       display: flex;
@@ -844,6 +851,49 @@
       //personal information
       .form-group{
         margin-bottom: 1rem;
+        display: flex;
+        flex-direction: row;
+        .inner-group{
+          display: flex;
+          flex-direction: column;
+          margin-right: 2rem;
+          margin-top: 1rem;
+          width: 400px;
+          span{
+            font-size: 1.3rem;
+            margin-bottom: .2rem;
+            line-height: 1.3;
+          }
+          div{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: .5rem;
+            input{
+              margin-left: .2rem;
+              width: 20px;
+            }
+          }
+        }
+
+        select{
+          background: none;
+        }
+
+        textarea{
+          width: 800px;
+          height: 200px;
+          font-size: 1.2rem;
+          outline: none;
+          color:rgb(62, 62, 68);
+          border-radius: 5px;
+          border: 1px solid #ccc;
+          padding: .6rem .8rem;
+          &::placeholder{
+            font-weight: 200;
+          }
+        }
       }
       input, select{
         padding: .6rem .8rem;
