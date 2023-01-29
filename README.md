@@ -16,3 +16,7 @@ This is a project that automates the process of physically finding nannies by pr
 `cd view && npm run dev`
 
 > Application hosted on [nannys hub](nannyshubke.vercel.app)
+
+## Sections
+```Admin```
+```Nannies```
