@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import axios from 'axios';
 
-function NannyDetails() {
+function NannyDetailsPage() {
     const {nannyId} = useParams();
     const [nanny, setNanny] = useState({});
     const [fullName, setFullName] = useState(null);
@@ -169,4 +169,4 @@ function NannyDetails() {
   )
 }
 
-export default NannyDetails
+export default NannyDetailsPage;
