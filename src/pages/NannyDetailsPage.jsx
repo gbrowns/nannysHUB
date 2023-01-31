@@ -101,31 +101,31 @@ function NannyDetailsPage() {
 
     const {firstname, lastname, age, gender, address, location, empStatus, jobOptions, agreementOptions, salary, availability} = nanny;
   return (
-    <div>
+    <div className='NannyDetails'>
         <Navbar />
         
-        <div className="nanny-details-page">
+        <div className="NannyDetails__content">
             <div className='left'>
-
-                <div className='nanny-details'>
-                    <h1>Nanny's Name: {`${firstname} ${lastname}`}</h1>
-                    <p>Age: <b>{age}</b></p>
-                    <p>Address: <b>{`${address} | ${location}`}</b></p>
-                    <p>Gender: <b>{gender}</b></p>
-                    <p>Employment status: <b>{empStatus}</b></p>
-                    <p>Chores: 
-                        {
-                           //jobOptions.map((chore,i) => <span key={i}>{chore}</span>)
-                        }
-                    </p>
-                    <p>Agreement Type: <b>{/* agreementOptions.join(', ')*/}</b></p>
-                    <p>Availability: <b>{availability}</b></p>
-                    <p>Expected Salary: <b>{salary}</b></p>
+                <h3>Nanny's Name: {`${"firstname"} ${"lastname"}`}</h3>
+                <p>Age: <b>{"12"}</b></p>
+                <p>Address: <b>{`${address} | ${location}`}</b></p>
+                <p>Gender: <b>{"gender"}</b></p>
+                <p>Employment status: <b>{"Unemployed"/*empStatus*/}</b></p>
+                <p>Chores: 
+                    {
+                        //jobOptions.map((chore,i) => <span key={i}>{chore}</span>)
+                    }
+                </p>
+                <p>Agreement Type: <b>{"Full time"/* agreementOptions.join(', ')*/}</b></p>
+                <p>Availability: <b>{"immediately"}</b></p>
+                <p>Expected Salary: <b>{"salary"}</b></p>
+                <div>
+                    plot map here
                 </div>
 
             </div>
             <div className='right'>
-                <h3>Secure selected Nanny</h3>
+                <h3>Attach Your Info.</h3>
                 {
                     errorMsg &&  <span>{errorMsg}</span>
                 }

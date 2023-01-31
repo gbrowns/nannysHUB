@@ -12,6 +12,7 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import FindNannyPage from './pages/FindNannyPage';
 import ApplyPage from './pages/ApplyPage';
+import NannyDetailsPage from './pages/NannyDetailsPage';
 
 import SuccessPaymentPage from './pages/SuccessPaymentPage';
 import VerifyUserPage from './pages/VerifyUserPage';
@@ -33,6 +34,7 @@ function App() {
         <Route path="/" element={<HomePage  />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/find-a-nanny" element={<FindNannyPage />} />
+        <Route path="/details/:id" element={<NannyDetailsPage />} />
         <Route path="/apply" element={<ApplyPage />} />
 
         <Route path="/auth/login" element={<AdminLoginPage />} /> 
