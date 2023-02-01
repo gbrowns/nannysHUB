@@ -28,7 +28,6 @@ function App() {
   return (
     <div className="App">
       
-      
       <Routes>
 
         <Route path="/" element={<HomePage  />} />
@@ -54,17 +53,9 @@ function App() {
 
         <Route path="*" element={<ErrorPage />} />
       </Routes>
-
-      {
-        //
-        //<NotificationDash />
-        //<PaymentsDash />
-        //<RequestsDash />
-        //
-      }
        
     </div>
   )
 }
 
-export default App
+export default App;

@@ -2,6 +2,11 @@ import React, {useEffect, useState} from 'react'
 import {useNavigate, useParams} from 'react-router-dom';
 import axios from 'axios';
 
+import Mpesa from '../assets/mpesa.png';
+import Paypal from '../assets/paypal.png';
+import Visa from '../assets/visa.png';
+import Nanny5 from '../assets/nanny6.jpeg';
+
 //get nanny details {by id} - amount to pay, payment method, nanny name, nanny id
 //get payment details
 //display payment details
@@ -71,30 +76,54 @@ function PaymentPage() {
     }
 
     return (
-        <div className='payment'>
-            <h2>Complete pending transaction for:</h2>
-            <div className='payment-details'>
-                <p>Name: {`${firstname} ${lastname}`}</p>
-                <p>Nanny ID: {id}</p>
-                <p>Amount: <span>Ksh {salary}</span></p>
-                <p>Payment Method: <span>Mpesa</span></p>
-            </div>
-            {
-                error && <p className='error'>{error}</p>
-            }
-        
-            <form onSubmit={handlePayment}>
-                <input 
-                    type='text' 
-                    placeholder='Enter valid Mpesa number'
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)} 
-                />
-                
-                <input type='submit' value='Make Payment'/>
-            </form>
+        <div className='PaymentPage'>
 
-            <button onClick={ () => navigate('/find-a-nanny')}>Cancel and navigate back</button>
+            <div className='PaymentPage__rightview'>
+                <img src={Nanny5} alt='nanny'/>
+                <div className='PaymentPage__rightview__overlay'></div>
+                
+                <div className='PaymentPage__rightview__content'>
+                    <h1>NannyHub.</h1>
+                    <p>  Find a nanny for your child, 
+                    household and garden chores from  a trusted <span>Nannies Hub</span></p>
+                   
+                </div>
+
+            </div>
+
+            <form onSubmit={handlePayment}>
+                <h2>Checkout</h2>
+                <p>Complete payment for the selected nanny</p>
+
+                <div className='payment-options'>
+                    <img src={Mpesa} alt='mpesa' width="100px"/>
+                    <img src={Paypal} alt='paypal' width="100px"/>
+                    <img src={Visa} alt='visa' width="100px"/>
+
+                </div>
+
+                <span>{error}</span>
+
+                <div className='form-group'>
+                    <label htmlFor='phone'>Mpesa Phone Number</label>
+                    <input 
+                        type='text' 
+                        placeholder='07 xxx xxx xxx'
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)} 
+                    />
+                </div>
+
+
+                <div className='details'>
+                    <p>Nanny ID: <span>{"nanny-1tfeg353gg544trj"}</span></p>
+                    <p>Payment Method: <span>Mpesa</span></p>
+                    <p>Total amount: <span>Ksh {3000}</span></p>
+                </div>
+                    
+                <input type='submit' value={"Pay ksh 3,000"}/>
+                <a href="/find-a-nanny">Cancel and navigate back</a>
+            </form>
             
         </div>
     )
