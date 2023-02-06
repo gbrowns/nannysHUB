@@ -1,0 +1,386 @@
+@import './sass/main.scss';
+@import './sass/media.scss';
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+//ADMIN
+//admins dashboard styles
+
+//side nav
+.sidebar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(76, 30, 114);
+
+  padding: 2rem;
+  
+
+  h1{
+    padding: 2.5rem 0;
+    color: #fff
+  }
+
+  a{
+    flex: 0 0 1;
+    margin: 1.2rem 0;
+    color: rgb(232, 232, 232);
+    text-decoration: none;
+    font-weight: 600;
+    &:hover{
+      color: #000;
+    }
+  }
+
+  button{
+    flex: 0 0 1;
+    margin-top: 3rem;
+    width: 200px;
+    height: 40px;
+    border: none;
+
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  span{
+    flex: 0 0 1;
+    margin-top: auto;
+    font-weight: 600;
+    color: rgb(15, 11, 11);
+  }
+}
+
+//dashboard
+.dashboard{
+  background-color: rgb(253, 253, 253);
+  float: right;
+  width: 80vw;
+  height: 100vh;
+
+  padding: 5rem;
+  
+  h1{
+    font-size: 2.5rem;
+  }
+
+  &_content{
+    margin-top: 3rem;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    //grid-template-rows: repeat(3, );
+    grid-gap: 1rem;
+
+    .card{
+      background-color: rgb(224, 224, 224);
+      border-radius: 5px;
+      height: 20vh;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 0 2rem;
+      &:nth-of-type(1){
+        grid-column: 1/3;
+        grid-row: 1/4;
+        background-color: rgb(255, 255, 255);
+        box-shadow: 1px 0 10px rgba(0, 0, 0, 0.074);
+        color: rgb(44, 42, 42);
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        font-size: 4rem;
+        line-height: 1.4;
+        padding: 0 4rem;
+        height: 40vh;
+      }
+
+      &:nth-of-type(2){
+        grid-column: 3/3;
+        grid-row: 1/4;
+        background-color: rgb(218, 218, 27);
+        height: 40vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+
+        h1{
+          padding-top: 2rem;
+          font-size: 3rem;
+        }
+      }
+    }
+  }
+}
+
+//top nav
+
+//display area
+
+//Notifications
+.notifications{
+  background-color: rgb(253, 253, 253);
+  float: right;
+  width: 80vw;
+  height: 100vh;
+
+  padding: 5rem;
+  
+  h1{
+    font-size: 2.5rem;
+  }
+
+  &_content{
+    margin-top: 3rem;
+
+    .note{
+      border: 1px solid rgb(226, 226, 226);
+      padding: 1rem;
+      margin-bottom: .7rem;
+      cursor: pointer;
+      &:hover{
+        border: 2px solid rgb(137, 134, 134);
+      }
+      div{
+        span{
+          font-size: .9rem;
+          margin-right: 2rem;
+          font-weight: bold;
+          color: rgba(51, 51, 51, 0.68);
+        }
+      }
+      h2{
+        padding: .4rem 0;
+      }
+
+      p{
+        width: 70%;
+        line-height: 1.8;
+      }
+
+      div{
+        margin-top: .3rem;
+        button{
+          padding: .3rem .5rem;
+          border: 1px solid #ccc;
+          border-radius: 40px;
+        }
+        em{
+          margin-left: 1rem;
+        }
+      }
+    
+    }
+  }
+
+}
+
+//pagination controls
+.paginate{
+    margin-top: 2rem;
+      
+      button{
+        width: 60px;
+        height: 30px;
+        margin-right: 1rem;
+        border: 1px solid #ccc;
+        cursor: pointer;
+
+        font-weight: 600;
+
+        &:nth-child(1){
+          border: none;
+          background-color: rgb(235, 235, 235);
+        }
+
+        &:nth-child(2){
+          background-color: #000;
+          color: #fff;
+        }
+      }
+    }
+
+//payment dashboard
+.payments, .common{
+  background-color: rgb(253, 253, 253);
+  float: right;
+  width: 80vw;
+  height: 100vh;
+
+  padding: 5rem;
+  
+  h1{
+    font-size: 2.5rem;
+  }
+
+  table{
+    margin-top: 3rem;
+    border-collapse: collapse;
+    width: 100%;
+    th,tr,td{
+      border: 1px solid;
+      text-align: left;
+      padding: .8rem .4rem;
+      
+
+      .icon{
+        font-weight: 600;
+        font-size: 1.3rem;
+        margin-right: .8rem;
+        cursor: pointer;
+      }
+    }
+  }
+
+}
+
+
+//
+
+//NANNY
+//Home page
+
+
+//find nanny page
+
+
+// apply for nanny job
+
+
+//error page
+
+
+//Admin login page
+.Admin-Login{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(227, 222, 231);
+  img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  form{
+    position: relative;
+    z-index: 3;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    height: 50vh;
+
+    padding: 2rem;
+    border-radius: 5px;
+
+    h1{
+      font-size: 2rem;
+      margin-bottom: .5rem;
+    }
+
+    p{
+      font-size: .9rem;
+      margin-bottom: 1rem;
+    }
+    input{
+      padding: .5rem .8rem;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      margin-bottom: 1rem;
+      height: 45px;
+
+      outline: none;
+
+      font-size: 1rem;
+      &:focus{
+        border: 1px solid rgb(18, 104, 169);
+      }
+    }
+    button{
+      height: 45px;
+      margin-top: .5rem;
+      font-weight: bold;
+      border: none;
+      background-color: rgb(12, 12, 34);
+      color: #fff;
+
+      cursor: pointer;
+    }
+
+    a{
+      margin-top: 1.5rem;
+    }
+  }
+}
+
+.notify{
+  position: relative;
+  z-index: 3;
+  transform: translateY(-200%);
+
+  background-color: #ccc;
+  width: 250px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  padding: 0 .5rem;
+
+  border-radius: 3px;
+}
+
+//error page
+.Errorpage{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  img{
+    width: 45%;
+    object-fit: cover;
+  }
+  h1{
+    font-size: 2rem;
+    margin-bottom : .8rem;
+    text-align: center;
+    line-height: 1.3;
+  }
+  p{
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    width: 40%;
+    background-color: rgb(243, 243, 243);
+    padding: .8rem;
+    border-radius: 5px;
+    line-height: 1.6;
+  }
+  button{
+    padding: .5rem 1rem;
+    border: none;
+    background-color: rgb(12, 12, 34);
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+  }
+}
+

@@ -1,0 +1,728 @@
+//mobile view sm
+@media only screen and (max-width: 375px) {
+
+      nav{
+           padding: 0 1rem;
+           
+           .logo{
+                  h1{
+                        font-size: 1.5rem;
+                  }
+            }
+
+            .links{
+                  display: flex;
+                  flex-direction: column;
+                  position: absolute;
+                  background-color: #fff;
+
+                  top: 100%;
+                  left: 0;
+                  width: 100%;
+                  padding: 1rem;
+
+
+                  justify-content: flex-start;
+                  align-items: flex-start;
+                  z-index: 3;
+
+
+                  a{
+                        font-size: 1.2rem;
+                        font-weight: 600;
+                        width: 100%;
+                        border-bottom: 1px solid #ccc;
+                        margin: 0 0 1rem 0;
+                        padding: 1rem 0;
+                        margin-bottom: .4rem;
+
+
+                        &:last-child{
+                            margin-top: .7rem;
+                            width: 50%;
+                            text-align: center
+                        }
+                  }
+            }
+
+            .menu{
+                  display: block;
+                  font-size: 1.5rem;
+                  color: rgb(42, 40, 40);
+                  cursor: pointer;
+
+                  border: 1px solid rgb(235, 235, 235);
+                  padding: .4rem;
+                  border-radius: 5px;
+                  background-color: #fff;
+
+                  .icon{
+                        font-size: 1.6rem;
+                  }
+                  
+            }
+      }
+  
+      footer{
+            display: flex;
+            flex-direction: column;
+
+            .section-a{
+                  padding: 2rem 1rem;
+                  h3{
+                        font-size: 2rem;
+                        line-height: 1.2;
+                        margin-bottom: .8rem;
+                  }
+
+                  input{
+                        font-size: .9rem;
+                        padding: 1rem 1.5rem;
+                        font-size: .9rem;
+                        
+                  }
+            }
+
+            .section-b{
+                  padding: 1.5rem 1rem;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  align-items: center;
+                 
+                  .copy{
+                        order: 3;
+                        span{
+                              font-size: .9rem;
+                              margin: 0 .4rem;
+                              margin-bottom: 1rem;
+                        }
+                  }
+                  .icons{
+                        order: 2;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-bottom: 1rem;
+                        a{
+                              margin-right: 1rem;
+                        }
+                  }
+
+                  .nav{
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 1rem;
+                        a{
+                              margin-left: .5rem;
+                              font-size: .9rem;
+                        }
+                  }
+            }
+      }
+
+      .VerifyUserPage{
+            padding: .6rem;
+            &__title{
+                  font-size: 1.3rem;
+                  line-height: 1.3;
+            }
+            &__text{
+                  font-size: 1.1rem;
+                  width: 90%;
+                  line-height: 1.4;
+            }
+      }
+      //payment success page
+      .successPayment{
+            &_icon{
+                  font-size: 5rem;
+            }
+            h2{
+                  font-size: 1.8rem;
+                  line-height: 1.3;
+            }
+            p{
+                  width: 70%;
+                  line-height: 1.4;
+                  span{
+                        font-size: 1.1rem;
+  
+                  }
+                  a{
+                        font-size: 1.1rem;
+  
+                  }
+            }
+      }  
+      .Errorpage{
+      
+            padding: .6rem;
+            img{
+                  width: 100% !important;
+            }
+            h1{
+                  font-size: 1.8rem !important;
+                  line-height: 1.3;
+            }
+            p{
+                  width: 90% !important;
+                  line-height: 1.4;
+                 
+            }
+      }
+
+      //pages
+      .HomePage{
+            header{
+                  .banner{
+                        h1{
+                              font-size: 1.1rem!important;
+                        }
+                  }
+            }
+      }
+
+
+      //payment page
+      .PaymentPage{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            &__rightview{ 
+                  display: none;
+            }
+
+            form{
+                  padding: 5rem 1.5rem;
+
+                  h2{
+                        font-size: 1.8rem;
+                        margin-bottom: 1.2rem;
+                  }
+
+                  .payment-options{
+
+                        img{
+                              width: 80px;
+                              margin-right: 2rem;
+                        }
+                  }
+
+                  >span{
+                        font-size: 1.1rem;
+                        margin-bottom: 1rem;
+                  }
+
+                  .form-group{
+                        margin-bottom: 2rem 0;
+                        width: 100%;
+                        label{
+                              font-size: 1.1rem;
+                              margin-bottom: .8rem;
+                        }
+                        input[type="text"]{
+                              font-size: 1rem;
+                              padding: 1rem 1.5rem;
+                              font-size: 1rem;
+                              width: 100%;
+                        }
+                  }
+
+                  .details{
+                        p{
+                              font-size: 1.1rem;
+                        }
+                  }
+
+                  input[type="submit"]{
+                        width: 100%;
+                        margin: 2rem 0;
+                        padding: 1.1rem 2rem;
+                  }
+            }
+      }
+
+
+      
+}
+
+//mobile view - md
+@media only screen and (min-width: 375px) and (max-width: 425px) {
+
+      nav{
+           padding: 0 1rem;
+           
+           .logo{
+                  h1{
+                        font-size: 1.5rem;
+                  }
+            }
+
+            .links{
+                  display: flex;
+                  flex-direction: column;
+                  position: absolute;
+                  background-color: #fff;
+
+                  top: 100%;
+                  left: 0;
+                  width: 100%;
+                  padding: 1rem;
+
+
+                  justify-content: flex-start;
+                  align-items: flex-start;
+                  z-index: 3;
+
+
+                  a{
+                        font-size: 1.2rem;
+                        font-weight: 600;
+                        width: 100%;
+                        border-bottom: 1px solid #ccc;
+                        margin: 0 0 1rem 0;
+                        padding: 1rem 0;
+                        margin-bottom: .4rem;
+
+
+                        &:last-child{
+                            margin-top: .7rem;
+                            width: 50%;
+                            text-align: center
+                        }
+                  }
+            }
+
+            .menu{
+                  display: block;
+                  font-size: 1.5rem;
+                  color: rgb(42, 40, 40);
+                  cursor: pointer;
+
+                  border: 1px solid rgb(235, 235, 235);
+                  padding: .4rem;
+                  border-radius: 5px;
+                  background-color: #fff;
+
+                  .icon{
+                        font-size: 1.6rem;
+                  }
+                  
+            }
+      }
+  
+      footer{
+            display: flex;
+            flex-direction: column;
+
+            .section-a{
+                  padding: 2rem 2rem;
+                  h3{
+                        font-size: 2.5rem;
+                        line-height: 1.2;
+                        margin-bottom: .8rem;
+                  }
+
+                  input{
+                        font-size: .9rem;
+                        padding: 1rem 2rem;
+                        font-size: .9rem;
+                        
+                  }
+            }
+
+            .section-b{
+                  padding: 1.5rem 2rem;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  align-items: center;
+                 
+                  .copy{
+                        order: 3;
+                        span{
+                              font-size: .9rem;
+                              margin: 0 .4rem;
+                              margin-bottom: 1rem;
+                        }
+                  }
+                  .icons{
+                        order: 2;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-bottom: 1rem;
+                        a{
+                              margin-right: 1rem;
+                        }
+                  }
+
+                  .nav{
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 1rem;
+                        a{
+                              margin-left: .5rem;
+                              font-size: .9rem;
+                        }
+                  }
+            }
+      }
+
+      .VerifyUserPage{
+            padding: .5rem;
+            &__title{
+                  font-size: 1.4rem;
+                  line-height: 1.3;
+            }
+            &__text{
+                  font-size: 1.1rem;
+                  width: 80%;
+                  line-height: 1.4;
+            }
+      }
+      
+      //payment success page
+      .successPayment{
+            &_icon{
+                  font-size: 5rem;
+            }
+            h2{
+                  font-size: 2.8rem;
+                  line-height: 1.2;
+            }
+            p{
+                  width: 80%;
+                  line-height: 1.2;
+                  span{
+                        font-size: 1.1rem;
+  
+                  }
+                  a{
+                        font-size: 1.1rem;
+  
+                  }
+            }
+      }   
+      
+      .Errorpage{
+      
+            padding: .6rem;
+            img{
+                  width: 100% !important;
+            }
+            h1{
+                  font-size: 1.8rem !important;
+                  line-height: 1.3;
+            }
+            p{
+                  width: 90% !important;
+                  line-height: 1.4;
+                 
+            }
+      } 
+      
+      
+       //payment page
+       .PaymentPage{
+            display: flex;
+            flex-direction: column;
+
+            &__rightview{ 
+                  display: none;
+            }
+
+            form{
+                  padding: 5rem 1.5rem;
+
+                  h2{
+                        font-size: 2rem;
+                        margin-bottom: 1.2rem;
+                  }
+
+                  .payment-options{
+
+                        img{
+                              width: 90px;
+                              margin-right: 2.5rem;
+                        }
+                  }
+
+                  >span{
+                        font-size: 1.1rem;
+                        margin-bottom: .5rem;
+                  }
+
+                  .form-group{
+                        margin-bottom: 2rem 0;
+                        width: 100%;
+                        label{
+                              font-size: 1.1rem;
+                              margin-bottom: .8rem;
+                        }
+                        input[type="text"]{
+                              font-size: 1rem;
+                              padding: 1.2rem 1.5rem;
+                              font-size: 1rem;
+                              width: 100%;
+                        }
+                  }
+
+                  .details{
+                        p{
+                              font-size: 1.1rem;
+                        }
+                  }
+
+                  input[type="submit"]{
+                        width: 100%;
+                        margin: 2rem 0;
+                        padding: 1.1rem 2rem;
+                  }
+            }
+      }
+
+
+}
+
+//mobile view - lg
+@media only screen and (min-width: 425px) and (max-width: 768px) {
+      
+      nav{
+           padding: 0 1rem;
+           
+           .logo{
+                  h1{
+                        font-size: 2rem;
+                  }
+            }
+
+            .links{
+                  display: flex;
+                  flex-direction: column;
+                  position: absolute;
+                  background-color: #fff;
+
+                  top: 100%;
+                  left: 0;
+                  width: 100%;
+                  padding: 1.5rem;
+
+
+                  justify-content: flex-start;
+                  align-items: flex-start;
+                  z-index: 3;
+
+
+                  a{
+                        font-size: 1.2rem;
+                        font-weight: 600;
+                        width: 100%;
+                        border-bottom: 1px solid #ccc;
+                        margin: 0 0 1rem 0;
+                        padding: 1rem 0;
+                        margin-bottom: .4rem;
+
+
+                        &:last-child{
+                            margin-top: .7rem;
+                            width: 50%;
+                            text-align: center;
+                            padding: .7rem 1rem;
+                        }
+                  }
+            }
+
+            .menu{
+                  display: block;
+                  font-size: 1.5rem;
+                  color: rgb(42, 40, 40);
+                  cursor: pointer;
+
+                  border: 1px solid rgb(235, 235, 235);
+                  padding: .4rem;
+                  border-radius: 5px;
+                  background-color: #fff;
+
+                  .icon{
+                        font-size: 2rem;
+                  }
+                  
+            }
+      }
+      footer{
+            display: flex;
+            flex-direction: column;
+
+            .section-a{
+                  padding: 2rem 2.5rem;
+                  h3{
+                        font-size: 2.6rem;
+                        line-height: 1.2;
+                        margin-bottom: .8rem;
+                  }
+
+                  input{
+                        font-size: .9rem;
+                        padding: 1rem 2.3rem;
+                        font-size: .9rem;
+                        
+                  }
+            }
+
+            .section-b{
+                  padding: 1.5rem 2.5rem;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  align-items: center;
+                 
+                  .copy{
+                        order: 3;
+                        span{
+                              font-size: .9rem;
+                              margin: 0 .4rem;
+                              margin-bottom: 1rem;
+                        }
+                  }
+                  .icons{
+                        order: 2;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-bottom: 1rem;
+                        a{
+                              margin-right: 1rem;
+                        }
+                  }
+
+                  .nav{
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 1rem;
+                        a{
+                              margin-left: .5rem;
+                              font-size: 1rem;
+                        }
+                  }
+            }
+      }
+
+      //verify user page
+      .VerifyUserPage{
+            &__title{
+                  font-size: 1.4rem;
+                  line-height: 1.3;
+            }
+            &__text{
+                  font-size: 1.1rem;
+                  width: 60%;
+                  line-height: 1.5;
+            }
+      }  
+      
+      //payment success page
+      .successPayment{
+            &_icon{
+                  font-size: 5rem;
+            }
+            h2{
+                  font-size: 2.5rem;
+                  line-height: 1.2;
+            }
+            p{
+                  width: 80%;
+                  line-height: 1.3;
+                  span{
+                        font-size: 1.2rem;
+  
+                  }
+                  a{
+                        font-size: 1.1rem;
+  
+                  }
+            }
+      } 
+
+      //error page
+      .Errorpage{
+      
+            padding: .6rem;
+            img{
+                  width: 100% !important;
+            }
+            h1{
+                  font-size: 1.8rem !important;
+                  line-height: 1.3;
+            }
+            p{
+                  width: 90% !important;
+                  line-height: 1.4;
+                 
+            }
+      }  
+
+      //payment page
+      .PaymentPage{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+
+            &__rightview{ 
+                  display: none;
+            }
+
+            form{
+                  padding: 5rem 2.5rem;
+
+                  h2{
+                        font-size: 2rem;
+                        margin-bottom: 1.2rem;
+                  }
+
+                  .payment-options{
+                        width: 100%;
+                        justify-content: space-between;
+
+                        img{
+                              width: 100px;
+                        }
+                  }
+
+                  >span{
+                        font-size: 1.2rem;
+                        margin-bottom: .5rem;
+                  }
+
+                  .form-group{
+                        margin-bottom: 2rem 0;
+                        width: 100%;
+                        label{
+                              font-size: 1.2rem;
+                              margin-bottom: .8rem;
+                        }
+                        input[type="text"]{
+                              padding: 1.2rem 1.5rem;
+                              font-size: 1.2rem;
+                              width: 100%;
+                        }
+                  }
+
+                  .details{
+                        p{
+                              font-size: 1.2rem;
+                        }
+                  }
+
+                  input[type="submit"]{
+                        width: 100%;
+                        margin: 2rem 0;
+                        padding: 1.2rem 2rem;
+                  }
+            }
+      }
+}
