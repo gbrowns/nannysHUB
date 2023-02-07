@@ -7,7 +7,7 @@ import { useState } from 'react'
 import Logo from '../assets/logo.png'
 
 function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(true)
 
   //handle the state of the navbar
   const handleToggle = () => setIsOpen(!isOpen)

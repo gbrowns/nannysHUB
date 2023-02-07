@@ -2,7 +2,7 @@
   "name": "view",
   "private": true,
   "version": "0.0.0",
-  "proxy": "http://localhost:8000",
+  "proxy": "https://n-ar93.onrender.com",
   "type": "module",
   "scripts": {
     "dev": "vite",
