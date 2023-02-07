@@ -44,7 +44,7 @@ function FindNannyPage() {
 
             <div className="nanny-list">
                 {
-                    nannies ? (<Nannies nannies = {nannies} />) : (<p>Loading...</p>)
+                    nannies.length ? (<Nannies nannies = {nannies} />) : (<p>Loading...</p>)
                 }
                 
             </div>   
