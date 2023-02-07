@@ -3,49 +3,31 @@ import {useParams, useNavigate} from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import axios from 'axios';
+import { getNannyById } from '../utils/Helper';
 
 function NannyDetailsPage() {
-    const {nannyId} = useParams();
-    const [nanny, setNanny] = useState({});
-    const [fullName, setFullName] = useState(null);
-    const [email, setEmail] = useState(null);
-    const [phone, setPhone] = useState(null);
+   
+    
+    const [fullName, setFullName] = useState("");
+    const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
     const [coords, setCoords] = useState({});
-    const [message, setMessage] = useState(null);
-    const [errorMsg, setErrorMsg] = useState(null);
+    const [message, setMessage] = useState("");
+    const [errorMsg, setErrorMsg] = useState("");
 
     const navigate = useNavigate();
+    const {id} = useParams();
+    const nannyId = localStorage.getItem("nannyId");
+    //console.log(id)
 
-    useEffect(() => {
-        const options = {
-            method: 'GET',
-            url: `http://localhost:8000/api/nannies/${nannyId}`,
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        };
-        /*
-        try{
-            axios(options)
-            .then(res => {
-                if (res.status !== 200) {
-                    setErrorMsg("An error occured");
-                }
-                setNanny(res.data.data);
-            });
-        }catch(err){
-            setErrorMsg(err.message);
-        }*/
+    if (!nannyId || nannyId !== id) {
+        //save id to local storage
+        localStorage.setItem("nannyId", id);
+    }
+
+    const nanny = getNannyById(nannyId); //fetch nanny data from DB
+
     
-        navigator.geolocation.getCurrentPosition((position) => {
-            const { latitude, longitude } = position.coords;
-            //console.log(latitude, longitude);
-            setCoords({ latitude, longitude });
-        });
-        
-    }, [nannyId, coords]);
-
-
     const handleSubmit = (e) => {
         e.preventDefault();
         //check for inputs
@@ -59,18 +41,18 @@ function NannyDetailsPage() {
             return;
         }
 
-        const requestDetails = {
+        const orderDetails = {
             nannyId,fullName,email,
-            phone,coords,message
+            phone,message
         }
 
         const options = {
             method: "POST",
-            url: "http://localhost:8000/api/requests",
+            url: "https://n-ar93.onrender.com/api/orders",
             headers: {
                 'Content-Type': 'application/json'
             },
-            data: JSON.stringify(requestDetails),
+            data: JSON.stringify(orderDetails),
         }
 
         //POST request to DB
@@ -98,75 +80,96 @@ function NannyDetailsPage() {
 
 
     }
+    //handle input change
+    const handleInputChange = (e) => {
+        const {name, value} = e.target;
+
+        if(errorMsg) setErrorMsg("");
+
+        switch(name){
+            case "fullName":
+                setFullName(value);
+                break;
+            case "email":
+                setEmail(value);
+                break;
+            case "phone":
+                setPhone(value);
+                break;
+            case "message":
+                setMessage(value);
+                break;
+            default:
+                break;
+
+        }
+    }
 
     const {firstname, lastname, age, gender, address, location, empStatus, jobOptions, agreementOptions, salary, availability} = nanny;
-  return (
-    <div className='NannyDetails'>
-        <Navbar />
-        
-        <div className="NannyDetails__content">
-            <div className='left'>
-                <h3>Nanny's Name: {`${"firstname"} ${"lastname"}`}</h3>
-                <p>Age: <b>{"12"}</b></p>
-                <p>Address: <b>{`${address} | ${location}`}</b></p>
-                <p>Gender: <b>{"gender"}</b></p>
-                <p>Employment status: <b>{"Unemployed"/*empStatus*/}</b></p>
-                <p>Chores: 
-                    {
-                        //jobOptions.map((chore,i) => <span key={i}>{chore}</span>)
-                    }
-                </p>
-                <p>Agreement Type: <b>{"Full time"/* agreementOptions.join(', ')*/}</b></p>
-                <p>Availability: <b>{"immediately"}</b></p>
-                <p>Expected Salary: <b>{"salary"}</b></p>
-                <div>
-                    plot map here
+    return (
+        <div className='NannyDetails'>
+            <Navbar />
+            
+            <div className="NannyDetails__content">
+                <div className='left'>
+                    <h3>Nanny's Name: {`${firstname} ${lastname}`}</h3>
+                    <p>Age: <b>{age}</b></p>
+                    <p>Address: <b>{`${address} | ${location}`}</b></p>
+                    <p>Gender: <b>{gender}</b></p>
+                    <p>Employment status: <b>{empStatus}</b></p>
+                    <p>Availability: <b>{availability}</b></p>
+                    <p>Expected Salary: <b>{salary}</b></p>
+                    <div>
+                        plot map here
+                    </div>
+
                 </div>
-
-            </div>
-            <div className='right'>
-                <h3>Attach Your Info.</h3>
-                {
-                    errorMsg &&  <span>{errorMsg}</span>
-                }
-                <form onSubmit={handleSubmit}>
-                    <input 
-                        type="text" 
-                        placeholder="Client's full name" 
-                        value={fullName}
-                        onChange={(e) => setFullName(e.target.value)}
-                    />
-                    <input 
-                        type="text" 
-                        placeholder="Your email" 
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <input 
-                        type="text" 
-                        placeholder="Your phone number" 
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                    />
-                    <textarea 
-                        name="message" 
-                        id="message" c
-                        ols="30" rows="10" 
-                        placeholder="Enter additional message"
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}>
-                    
-                    </textarea>
+                <div className='right'>
+                    <h3>Attach Your Info.</h3>
+                    {
+                        errorMsg &&  <span>{errorMsg}</span>
+                    }
+                    <form onSubmit={handleSubmit}>
+                        <input 
+                            type="text" 
+                            placeholder="Client's full name" 
+                            value={fullName}
+                            name="fullName"
+                            onChange={handleInputChange}
+                        />
+                        <input 
+                            type="text" 
+                            placeholder="Your email" 
+                            value={email}
+                            name="email"
+                            onChange={handleInputChange}
+                        />
+                        <input 
+                            type="text" 
+                            placeholder="Your phone number" 
+                            value={phone}
+                            name="phone"
+                            onChange={handleInputChange}
+                        />
+                        <textarea 
+                            name="message" 
+                            id="message" c
+                            ols="30" rows="10" 
+                            placeholder="Enter additional message"
+                            value={message}
+                            onChange={handleInputChange}>
                         
-                    <input type="submit" value={`Request for ${firstname}`} />
-                </form>
-                
+                        </textarea>
+                            
+                        <input type="submit" value={`Request for ${firstname}`} />
+                    </form>
+                    
+                </div>
             </div>
+
+
         </div>
-
-
-    </div>
-  )
+    )
 }
 
 export default NannyDetailsPage;

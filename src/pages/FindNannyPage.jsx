@@ -1,25 +1,22 @@
 import React, {useState} from 'react'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
-import {useNavigate, useLocation} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 import {getNannyData, getNannyById} from '../utils/Helper';
 
 import {MdVerified} from 'react-icons/md';
 
 function FindNannyPage() {
-
+    const [errorMsg, setErrorMsg] = useState("");
     const navigate = useNavigate();
-    const [errorMsg, setErrorMsg] = useState(null);
 
     const nannies = getNannyData();
     //console.log(nannies);
 
-    //
     //handle click on nanny card
-    const handleNannyCardClick = (nannyId) => {
-        navigate(`/nanny/${nannyId}`);
-
+    const handleNannyCardClick = (id) => {
+        navigate(`/details/${id}`);
     }
     
     //filter nannies by isVerified and isApproved
@@ -44,7 +41,7 @@ function FindNannyPage() {
 
             <div className="nanny-list">
                 {
-                    nannies.length ? (<Nannies nannies = {nannies} />) : (<p>Loading...</p>)
+                    nannies.length ? (<Nannies nannies = {nannies} handleClick = {handleNannyCardClick}/>) : (<p>Loading...</p>)
                 }
                 
             </div>   
@@ -59,9 +56,9 @@ function FindNannyPage() {
   )
 }
 
-const Nannies = ({nannies}) => {
+const Nannies = ({nannies, handleClick}) => {
 
-    console.log(nannies)
+    //console.log(nannies)
 
     return (
         <>
@@ -71,7 +68,7 @@ const Nannies = ({nannies}) => {
             
             
                     return (
-                        <div className='nanny-card' key={id} onClick={() => navigate(`details/${id}`)} >
+                        <div className='nanny-card' key={id} id={id} onClick={(e) => handleClick(id)} >
                             <h1>{`${firstname} ${lastname}`}</h1>
                             <div className="chores">
                                 {

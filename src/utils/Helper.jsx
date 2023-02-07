@@ -30,7 +30,7 @@ export const getNannyById = (id) => {
 
       useEffect(() => {
 
-            if (!id){
+            if (!nanny.id) {
                   fetch(`${BASE_URL}/nannies/${id}`)
                   .then((response) => response.json())
                   .then((data) => {
@@ -38,10 +38,9 @@ export const getNannyById = (id) => {
                   })
                   .catch((error) => {
                         console.error('Error:', error);
-                  });
+                  });    
             }
            
       }, [nanny, id]);
-
       return nanny;
 }
