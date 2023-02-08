@@ -83,7 +83,7 @@ const Form = () => {
 
         //redirect to find-a-nanny page after 3 seconds
         setTimeout(() => {
-            navigate("/find-a-nanny");
+            setOpenForm(false);
         }, 3000);
     }
 
