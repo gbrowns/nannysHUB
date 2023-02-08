@@ -134,7 +134,7 @@ const Form = () => {
             />
             <input 
                 type='phone' 
-                placeholder='Your email'
+                placeholder='Your phone number'
                 name="phone"
                 value={phone}
                 onChange={handleInputChange}   
