@@ -3,12 +3,12 @@ import {useParams, useNavigate} from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import axios from 'axios';
-import { getNannyById } from '../utils/Helper';
+import { getNannyById, submitRequestOrder } from '../utils/Helper';
 
 function NannyDetailsPage() {
    
     
-    const [fullName, setFullName] = useState("");
+    const [fullname, setFullName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [coords, setCoords] = useState({});
@@ -22,16 +22,19 @@ function NannyDetailsPage() {
 
     if (!nannyId || nannyId !== id) {
         //save id to local storage
-        localStorage.setItem("nannyId", id);
+        localStorage.setItem("nannyId", id); //JSON.stringify(id)
     }
 
-    const nanny = getNannyById(nannyId); //fetch nanny data from DB
+    //console.log(nannyId);
 
-    
-    const handleSubmit = (e) => {
+    const nanny = getNannyById(nannyId); //fetch nanny data from DB //JSON.parse(nannyId)
+
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
+
         //check for inputs
-        if (!fullName || !email || !phone || !message){
+        if (!fullname || !email || !phone || !message){
             setErrorMsg("Please provide all inputs");
             return;
         }
@@ -42,43 +45,29 @@ function NannyDetailsPage() {
         }
 
         const orderDetails = {
-            nannyId,fullName,email,
+            nannyId,fullname,email,
             phone,message
         }
 
-        const options = {
-            method: "POST",
-            url: "https://n-ar93.onrender.com/api/orders",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            data: JSON.stringify(orderDetails),
+        //submit order for nanny
+        const res = await submitRequestOrder(orderDetails);
+
+        //console.log(res);
+        if (res.status !== 201){
+            setErrorMsg("Oops, an error occured in the server!");
+            return;
         }
+        //clear inputs
+        setFullName("");
+        setEmail("");
+        setPhone("");
+        setMessage("");
+        setErrorMsg("Request submitted successfully");
 
-        //POST request to DB
-        axios(options)
-            .then(res => {
-
-                //console.log(res); //
-                if(res.status === 201){
-                    setErrorMsg("Request Submitted Successfully");
-
-                    //clear inputs
-                    setFullName("");
-                    setEmail("");
-                    setPhone("");
-                    setMessage("");
-                }else{
-                    setErrorMsg("Request failed to submit");
-                }
-            })
-            .catch(err => {
-                setErrorMsg(err.message)
-                //console.log(err.message);
-            })
-
-
-
+        //redirect to find-a-nanny page after 3 seconds
+        setTimeout(() => {
+            navigate("/find-a-nanny");
+        }, 3000);
     }
     //handle input change
     const handleInputChange = (e) => {
@@ -87,7 +76,7 @@ function NannyDetailsPage() {
         if(errorMsg) setErrorMsg("");
 
         switch(name){
-            case "fullName":
+            case "fullname":
                 setFullName(value);
                 break;
             case "email":
@@ -125,7 +114,7 @@ function NannyDetailsPage() {
 
                 </div>
                 <div className='right'>
-                    <h3>Attach Your Info.</h3>
+                    <h3>Request Form</h3>
                     {
                         errorMsg &&  <span>{errorMsg}</span>
                     }
@@ -133,8 +122,8 @@ function NannyDetailsPage() {
                         <input 
                             type="text" 
                             placeholder="Client's full name" 
-                            value={fullName}
-                            name="fullName"
+                            value={fullname}
+                            name="fullname"
                             onChange={handleInputChange}
                         />
                         <input 

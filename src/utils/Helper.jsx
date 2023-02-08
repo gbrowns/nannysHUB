@@ -8,17 +8,27 @@ export const getNannyData = () => {
 
 
       useEffect(() => {
+            let mounted = true;
 
-            if (!nannyData.length) {
-                  fetch(`${BASE_URL}/nannies`)
-                  .then((response) => response.json())
-                  .then((data) => {
-                        setNannyData(data);
-                  })
-                  .catch((error) => {
-                        console.error('Error:', error);
-                  });    
+            const fetchData = async () => {
+                  try{
+                        const response = await fetch(`${BASE_URL}/nannies`);
+                        const result = await response.json();
+                        if(mounted){
+                              setNannyData(result);
+                        }
+                  }catch(err){
+                        console.log("Error",err)
+                  }
             }
+            if (!nannyData.length) {
+                  fetchData();  
+            }
+
+            return () => {
+                  mounted = false;
+            }
+
       }, [nannyData]);
 
       return nannyData;
@@ -30,17 +40,47 @@ export const getNannyById = (id) => {
 
       useEffect(() => {
 
-            if (!nanny.id) {
-                  fetch(`${BASE_URL}/nannies/${id}`)
-                  .then((response) => response.json())
-                  .then((data) => {
-                        setNanny(data);
-                  })
-                  .catch((error) => {
-                        console.error('Error:', error);
-                  });    
+            let mounted = true;
+            const fetchData = async () => {
+
+                  try{
+                        const response = await fetch(`${BASE_URL}/nannies/${id}`);
+                        const result = await response.json();
+
+                        if(mounted){
+                              setNanny(result);
+                        }
+                  }catch(err){
+                        console.log("Error",err)
+                  }
+            }
+
+            if (id && Object.keys(nanny).length === 0) {
+                  fetchData();
+            }
+
+            return () => {
+                  mounted = false;
             }
            
-      }, [nanny, id]);
+      }, [id, nanny]);
       return nanny;
+}
+
+
+export const submitRequestOrder = async (orderDetails) => {
+      try{
+            const response = await fetch(`${BASE_URL}/orders`,{
+                  method: "POST",
+                  headers: {
+                        'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(orderDetails),
+            });
+            const result = await response.json();
+            //console.log(result);    
+            return response;
+      }catch(err){
+            console.log("Error",err)
+      }
 }
