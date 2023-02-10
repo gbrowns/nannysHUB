@@ -14,8 +14,9 @@ export const getNannyData = () => {
                   try{
                         const response = await fetch(`${BASE_URL}/nannies`);
                         const result = await response.json();
+
                         if(mounted){
-                              setNannyData(result);
+                              setNannyData(result.data.results);
                         }
                   }catch(err){
                         console.log("Error",err)
@@ -83,4 +84,27 @@ export const submitRequestOrder = async (orderDetails) => {
       }catch(err){
             console.log("Error",err)
       }
+}
+
+
+
+//handle pagination buttons
+export const handlePaginateButton = (e) => {
+
+      const [prevPage, setPrevPage] = useState(1);
+      const [nextPage, setNextPage] = useState(prevPage + 1);
+      const {name, value} = e.target
+
+      if (name === "next" && value < nextPage){
+            setPrevPage(prevPage + 1);
+            setNextPage(nextPage + 1);
+      }
+
+      if (name === "prev" && value >= prevPage ){
+            setPrevPage(prevPage - 1);
+            setNextPage(nextPage - 1);
+      }
+
+      //console.log(`prev: ${prevPage} next: ${nextPage}`);
+      return {prevPage, nextPage};
 }

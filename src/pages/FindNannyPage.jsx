@@ -3,20 +3,45 @@ import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import {useNavigate} from 'react-router-dom';
 
-import {getNannyData, getNannyById} from '../utils/Helper';
+import {getNannyData, handlePaginateButton} from '../utils/Helper';
 
 import {MdVerified} from 'react-icons/md';
 
 function FindNannyPage() {
     const [errorMsg, setErrorMsg] = useState("");
+    const [prevPage, setPrevPage] = useState(1);
+    const [nextPage, setNextPage] = useState(prevPage + 1);
     const navigate = useNavigate();
 
+    //const {prevPage, nextPage} = handlePaginateButton() 
+
     const nannies = getNannyData();
-    //console.log(nannies);
 
     //handle click on nanny card
     const handleNannyCardClick = (id) => {
         navigate(`/details/${id}`);
+    }
+
+    //handle pagination buttons
+    const handlePaginateButton = (e) => {
+
+        const {name, value} = e.target;
+        const firstPage = 1; //prevPage
+        const totalPages = 10; //nextPage
+
+        if (name === "next" && value <= nextPage && value < totalPages){
+            setPrevPage(prevPage + 1);
+            setNextPage(nextPage + 1);
+
+            //console.log("next page", nextPage);
+        }
+
+        if (name === "prev" && value > firstPage ){
+            setPrevPage(prevPage - 1);
+            setNextPage(nextPage - 1);
+
+            //console.log("prev page", prevPage)
+        }
     }
     
     //filter nannies by isVerified and isApproved
@@ -47,8 +72,8 @@ function FindNannyPage() {
             </div>   
 
             <div className="paginate">
-                <button className="btn btn-primary" onClick={() => navigate('/nanny/1')}>1</button>
-                <button className="btn btn-primary" onClick={() => navigate('/nanny/2')}>2</button>
+                <button className="btn btn-primary" name='prev' value={prevPage} onClick={handlePaginateButton}>{prevPage}</button>
+                <button className="btn btn-primary" name='next' value={nextPage} onClick={handlePaginateButton}>{nextPage}</button>
             </div>
         </div>
         <Footer />

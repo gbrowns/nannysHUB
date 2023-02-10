@@ -69,7 +69,7 @@ const Form = () => {
         }
 
         //submit order for nanny
-        const res = await submitRequestOrder(orderDetails);
+        const res = await submitRequestOrder(messageDetails);
 
         //console.log(res);
         if (res.status !== 201){
@@ -81,11 +81,11 @@ const Form = () => {
         setEmail("");
         setPhone("");
         setMessage("");
-        setErrorMsg("Request submitted successfully");
+        setErrorMsg("Message submitted!");
 
         //redirect to find-a-nanny page after 3 seconds
         setTimeout(() => {
-            setOpenForm(false);
+            setOpenForm(true);
         }, 3000);
     }
 
