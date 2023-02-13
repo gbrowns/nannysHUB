@@ -11,11 +11,13 @@ function FindNannyPage() {
     const [errorMsg, setErrorMsg] = useState("");
     const [prevPage, setPrevPage] = useState(1);
     const [nextPage, setNextPage] = useState(prevPage + 1);
+    const [pageNo, setPageNo] = useState(1);
+    const limit = 8;
     const navigate = useNavigate();
 
     //const {prevPage, nextPage} = handlePaginateButton() 
 
-    const nannies = getNannyData();
+    const nannies = getNannyData(pageNo, limit);
 
     //handle click on nanny card
     const handleNannyCardClick = (id) => {
@@ -32,15 +34,18 @@ function FindNannyPage() {
         if (name === "next" && value <= nextPage && value < totalPages){
             setPrevPage(prevPage + 1);
             setNextPage(nextPage + 1);
-
-            //console.log("next page", nextPage);
+            setPageNo(pageNo + 1);
+            //console.log("PageNo:", pageNo)
         }
 
         if (name === "prev" && value > firstPage ){
             setPrevPage(prevPage - 1);
             setNextPage(nextPage - 1);
 
-            //console.log("prev page", prevPage)
+            if (value >= firstPage){
+                setPageNo(pageNo - 1);
+            }
+            //console.log("PageNo:", pageNo)
         }
     }
     

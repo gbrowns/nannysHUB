@@ -3,7 +3,7 @@ import {useParams, useNavigate} from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import axios from 'axios';
-import { getNannyById, submitRequestOrder } from '../utils/Helper';
+import { getNannyById, submitRequests } from '../utils/Helper';
 
 function NannyDetailsPage() {
    
@@ -50,7 +50,7 @@ function NannyDetailsPage() {
         }
 
         //submit order for nanny
-        const res = await submitRequestOrder(orderDetails);
+        const res = await submitRequests(orderDetails);
 
         //console.log(res);
         if (res.status !== 201){

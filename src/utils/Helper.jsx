@@ -2,17 +2,17 @@ import React, {useState, useEffect} from 'react';
 
 const BASE_URL = 'https://n-ar93.onrender.com/api';
 
-export const getNannyData = () => {
+export const getNannyData = (page=1, limit=10) => {
       //fetch data from server
       const [nannyData, setNannyData] = useState([]);
-
 
       useEffect(() => {
             let mounted = true;
 
             const fetchData = async () => {
                   try{
-                        const response = await fetch(`${BASE_URL}/nannies`);
+                        //console.log("toServer:", page, limit)
+                        const response = await fetch(`${BASE_URL}/nannies?page=${page}&limit=${limit}`);
                         const result = await response.json();
 
                         if(mounted){
@@ -28,9 +28,10 @@ export const getNannyData = () => {
 
             return () => {
                   mounted = false;
+      
             }
 
-      }, [nannyData]);
+      }, [nannyData,page]);
 
       return nannyData;
 }
@@ -69,14 +70,32 @@ export const getNannyById = (id) => {
 }
 
 
-export const submitRequestOrder = async (orderDetails) => {
+export const submitRequests = async (data) => {
       try{
             const response = await fetch(`${BASE_URL}/orders`,{
                   method: "POST",
                   headers: {
                         'Content-Type': 'application/json'
                   },
-                  body: JSON.stringify(orderDetails),
+                  body: JSON.stringify(data),
+            });
+            const result = await response.json();
+            //console.log(result);    
+            return response;
+      }catch(err){
+            console.log("Error",err)
+      }
+}
+
+
+export const submitFormApplication = async (data) => {
+      try{
+            const response = await fetch(`${BASE_URL}/nannies/apply`,{
+                  method: "POST",
+                  headers: {
+                        'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(data),
             });
             const result = await response.json();
             //console.log(result);    

@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar';
 
 import Nanny5 from '../assets/nanny5.jpeg';
 
-import { submitRequestOrder } from '../utils/Helper';
+import { submitRequests } from '../utils/Helper';
 
 function AboutPage() {
 
@@ -69,7 +69,7 @@ const Form = () => {
         }
 
         //submit order for nanny
-        const res = await submitRequestOrder(messageDetails);
+        const res = await submitRequests(messageDetails);
 
         //console.log(res);
         if (res.status !== 201){
