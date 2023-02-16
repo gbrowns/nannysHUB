@@ -105,6 +105,25 @@ export const submitFormApplication = async (data) => {
       }
 }
 
+export const checkout = async (data) => {
+      try{
+            const response = await fetch(`${BASE_URL}/mpesa/pay`, {
+                  method: "POST",
+                  headers: {
+                        'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(data)
+            })
+
+            const result = await response.json();
+
+            return response;
+
+      }catch(error){
+            console.log("Error", error);
+      }
+}
+
 
 
 //handle pagination buttons

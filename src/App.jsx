@@ -40,7 +40,7 @@ function App() {
 
         <Route path="/payment-success" element={<SuccessPaymentPage />} />  
         <Route path="/verified" element={<VerifyUserPage />} />  
-        <Route path="/mpesa/pay" element={<PaymentPage />} />  
+        <Route path="/checkout/:nannyID" element={<PaymentPage />} />  
 
         <Route path='/admin' element={<AdminProtectedRoutes />} >
           <Route path="/admin" element={<Navigate replace to='dashboard' />} />

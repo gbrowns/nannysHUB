@@ -6,6 +6,7 @@ import Mpesa from '../assets/mpesa.png';
 import Paypal from '../assets/paypal.png';
 import Visa from '../assets/visa.png';
 import Nanny5 from '../assets/nanny6.jpeg';
+import { checkout } from '../utils/Helper';
 
 //get nanny details {by id} - amount to pay, payment method, nanny name, nanny id
 //get payment details
@@ -39,6 +40,7 @@ function PaymentPage() {
     }, [nanny]);
 
     const { _id: id, firstname, lastname, salary } = nanny;
+
     //handle make payment
     const handlePayment = (e) => {
         e.preventDefault();
@@ -47,32 +49,20 @@ function PaymentPage() {
             setError('Please fill in all fields');
             return;
         }
-        const paymentDetails = {phone, salary};
+        const paymentData = {phone, salary};
         
-        const options = {
-            method: 'POST',
-            url: `http://localhost:8000/api/mpesa/pay`,
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            data: JSON.stringify(paymentDetails)
+        const res = checkout(paymentData)
+
+        //console.log(res);
+        if (res.status !== 201){
+            error("Oops, an error occured in the server!");
+            return;
         }
-        //post to mpesa api
-        axios(options)
-            .then(res => {
-                //console.log(res.data);
-                //status !200
-                if (res.status !== 201) {
-                    setError('An error occured');
-                    console.log(res);
-                    return;           
-                }
-                //navigate to payment success page
-                navigate('/payment-success');
-            })
-            .catch(err => {
-                setError(err.message);
-            });
+
+        //redirect to find-a-nanny page after 3 seconds
+        setTimeout(() => {
+           navigate('/payment-success')
+        }, 3000);
     }
 
     return (
@@ -93,7 +83,7 @@ function PaymentPage() {
 
             <form onSubmit={handlePayment}>
                 <h2>Checkout</h2>
-                <p>Complete payment for the selected nanny</p>
+                <p>Complete payment for the selected nanny ID</p>
 
                 <div className='payment-options'>
                     <img src={Mpesa} alt='mpesa' width="100px"/>
@@ -108,7 +98,7 @@ function PaymentPage() {
                     <label htmlFor='phone'>Mpesa Phone Number</label>
                     <input 
                         type='text' 
-                        placeholder='07 xxx xxx xxx'
+                        placeholder='254 xxx xxx xxx'
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)} 
                     />
@@ -116,7 +106,7 @@ function PaymentPage() {
 
 
                 <div className='details'>
-                    <p>Nanny ID: <span>{"nanny-1tfeg353gg544trj"}</span></p>
+                    <p>Nanny ID: <span>{nannyID}</span></p>
                     <p>Payment Method: <span>Mpesa</span></p>
                     <p>Total amount: <span>Ksh {3000}</span></p>
                 </div>
