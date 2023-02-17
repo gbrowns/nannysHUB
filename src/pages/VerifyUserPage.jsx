@@ -5,14 +5,14 @@ import { updateNanny } from '../utils/Helper';
 
 function VerifyUserPage() {
 
-  const [verified, setVerified] = useState(false);
+  const [verify, setVerify] = useState(false);
   const navigate = useNavigate();
   const {nannyID} = useParams();
 
   if (!nannyID) console.log("provide nanny ID!");
   
   const VerifyUser = async () => {
-    const res = await updateNanny(nannyID, {approved: true}) //verify nanny
+    const res = await updateNanny(nannyID, {verified: true}) //verify nanny
 
     //console.log(res);
     if (res.status !== 200){
@@ -21,7 +21,7 @@ function VerifyUserPage() {
     }
 
     setTimeout(() => {
-      setVerified(true);
+      setVerify(true);
     }, 2000);
   }
 
@@ -35,7 +35,7 @@ function VerifyUserPage() {
     <div className='VerifyUserPage'>
       {
         //console.log(verified)
-        verified ? <VerifyStatus /> : <h1 className='VerifyUserPage__title'>Verifying your account...</h1>
+        verify ? <VerifyStatus /> : <h1 className='VerifyUserPage__title'>Verifying your account...</h1>
       }
       
     </div>

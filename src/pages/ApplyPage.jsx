@@ -117,7 +117,7 @@ function ApplyPage() {
       availability, agreementOptions, message
     }
 
-    console.log(nannyData);
+    //console.log(nannyData);
 
     //submit order for nanny
     const res = await submitFormApplication(nannyData);
