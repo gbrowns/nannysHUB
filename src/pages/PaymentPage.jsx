@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react'
 import {useNavigate, useParams} from 'react-router-dom';
-import axios from 'axios';
 
 import Mpesa from '../assets/mpesa.png';
 import Paypal from '../assets/paypal.png';

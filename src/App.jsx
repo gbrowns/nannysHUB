@@ -39,7 +39,7 @@ function App() {
         <Route path="/auth/login" element={<AdminLoginPage />} /> 
 
         <Route path="/payment-success" element={<SuccessPaymentPage />} />  
-        <Route path="/verified" element={<VerifyUserPage />} />  
+        <Route path="/nanny/verify/:nannyID" element={<VerifyUserPage />} />  
         <Route path="/checkout/:nannyID" element={<PaymentPage />} />  
 
         <Route path='/admin' element={<AdminProtectedRoutes />} >

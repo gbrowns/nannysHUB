@@ -70,6 +70,23 @@ export const getNannyById = (id) => {
       return nanny;
 }
 
+export const updateNanny = async (id, data) => {
+      try{
+            const response = await fetch(`${BASE_URL}/nannies/${id}`,{
+                  method: "PATCH",
+                  headers: {
+                        'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(data),
+            });
+            const result = await response.json();
+            //console.log(result);    
+            return response;
+      }catch(err){
+            console.log("Error",err)
+      }
+}
+
 
 export const submitRequests = async (data) => {
       try{
