@@ -6,63 +6,62 @@ import Mpesa from '../assets/mpesa.png';
 import Paypal from '../assets/paypal.png';
 import Visa from '../assets/visa.png';
 import Nanny5 from '../assets/nanny6.jpeg';
-import { checkout } from '../utils/Helper';
+import { checkout, getNannyById } from '../utils/Helper';
 
-//get nanny details {by id} - amount to pay, payment method, nanny name, nanny id
-//get payment details
-//display payment details
 
 function PaymentPage() {
-    const [phone, setPhone] = useState("");
-    const [error, setError] = useState(null);
-    const [nanny, setNanny] = useState({});
-    //const [client, setClient] = useState({});
-
+    const [phoneNo, setPhoneNo] = useState("");
+    const [alert, setAlert] = useState("");
     const navigate = useNavigate();
     const {nannyID} = useParams();
 
-    //get amount and nanny details
-    //get client details 
 
+    //get selected nanny's data
+    const nanny = getNannyById();
 
-
-
-    useEffect(() => {
-        //axios get nannie details
-        axios.get(`http://localhost:8000/api/nannies/${nannyID}`)
-        .then(res => {
-            //console.log(res)
-            setNanny(res.data.data);
-        })
-        .catch(err => {
-            setError(err.message);
-        });
-    }, [nanny]);
-
-    const { _id: id, firstname, lastname, salary } = nanny;
-
+    const { _id: id, salary } = nanny;
+    console.log();
+    
     //handle make payment
     const handlePayment = (e) => {
         e.preventDefault();
-        //validate inputs
-        if (!phone || !salary) {
-            setError('Please fill in all fields');
+     
+        if (!phoneNo || !salary) {
+            setAlert('Please fill in all fields');
             return;
         }
+
+        const phone = Number(phoneNo);
         const paymentData = {phone, salary};
         
         const res = checkout(paymentData)
 
         //console.log(res);
         if (res.status !== 201){
-            error("Oops, an error occured in the server!");
+            setAlert("Oops, an error occured in the server!");
             return;
         }
 
-        //redirect to find-a-nanny page after 3 seconds
+        setAlert("Payment succuss!!");
+        //redirect to payment success page after 3 seconds
         setTimeout(() => {
-           navigate('/payment-success')
+           navigate('/payment-success');
         }, 3000);
+    }
+
+    const handleChange = (e) => {
+       
+       const {name, value} = e.target;
+
+        switch(name){
+            case "phone":
+                setPhoneNo(value);
+                break;
+            default:
+                break;
+        }
+
+        setAlert('');
     }
 
     return (
@@ -92,26 +91,27 @@ function PaymentPage() {
 
                 </div>
 
-                <span>{error}</span>
+                <span>{alert}</span>
 
                 <div className='form-group'>
                     <label htmlFor='phone'>Mpesa Phone Number</label>
                     <input 
                         type='text' 
                         placeholder='254 xxx xxx xxx'
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)} 
+                        name='phone'
+                        onChange={handleChange}
+                        value={phoneNo}
                     />
                 </div>
 
 
                 <div className='details'>
-                    <p>Nanny ID: <span>{nannyID}</span></p>
+                    <p>Nanny ID: <span>{id || "nanny_id"}</span></p>
                     <p>Payment Method: <span>Mpesa</span></p>
-                    <p>Total amount: <span>Ksh {3000}</span></p>
+                    <p>Total amount: <span>Ksh {salary || "0"}</span></p>
                 </div>
                     
-                <input type='submit' value={"Pay ksh 3,000"}/>
+                <input type='submit' value={`Pay Ksh ${salary || 0}`}/>
                 <a href="/find-a-nanny">Cancel and navigate back</a>
             </form>
             

@@ -53,7 +53,7 @@ export const getNannyById = (id) => {
                               setNanny(result);
                         }
                   }catch(err){
-                        console.log("Error",err)
+                        console.log("Error",err.message)
                   }
             }
 
@@ -66,6 +66,7 @@ export const getNannyById = (id) => {
             }
            
       }, [id, nanny]);
+
       return nanny;
 }
 
