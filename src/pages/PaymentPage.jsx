@@ -16,10 +16,9 @@ function PaymentPage() {
 
 
     //get selected nanny's data
-    const nanny = getNannyById();
+    const nanny = getNannyById(nannyID);
 
     const { _id: id, salary } = nanny;
-    console.log();
     
     //handle make payment
     const handlePayment = (e) => {
@@ -106,7 +105,7 @@ function PaymentPage() {
 
                 <div className='details'>
                     <p>Nanny ID: <span>{id || "nanny_id"}</span></p>
-                    <p>Payment Method: <span>Mpesa</span></p>
+                    <p>Payment Method: <span>MPESA</span></p>
                     <p>Total amount: <span>Ksh {salary || "0"}</span></p>
                 </div>
                     
