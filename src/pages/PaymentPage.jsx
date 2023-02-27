@@ -39,12 +39,12 @@ function PaymentPage() {
             setAlert("Oops, an error occured in the server!");
             return;
         }*/
-
-        setAlert("Payment succuss!!");
+        setAlert("Processing payment...");
         //redirect to payment success page after 3 seconds
         setTimeout(() => {
-           navigate('/payment-success');
-        }, 3000);
+            setAlert("Payment succuss!!");
+            navigate('/payment-success');
+        }, 6000);
     }
 
     const handleChange = (e) => {
