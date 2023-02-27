@@ -3,7 +3,7 @@ import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import {useNavigate} from 'react-router-dom';
 
-import {getNannyData, handlePaginateButton} from '../utils/Helper';
+import {getNannyData, filterApprovedNannyData} from '../utils/Helper';
 
 import {MdVerified} from 'react-icons/md';
 
@@ -17,7 +17,7 @@ function FindNannyPage() {
 
     //const {prevPage, nextPage} = handlePaginateButton() 
 
-    const nannies = getNannyData(pageNo, limit);
+    const {approvedNannies} = filterApprovedNannyData(getNannyData(pageNo, limit));
 
     //handle click on nanny card
     const handleNannyCardClick = (id) => {
@@ -71,7 +71,7 @@ function FindNannyPage() {
 
             <div className="nanny-list">
                 {
-                    nannies.length ? (<Nannies nannies = {nannies} handleClick = {handleNannyCardClick}/>) : (<p>Loading...</p>)
+                    approvedNannies.length ? (<Nannies nannies = {approvedNannies} handleClick = {handleNannyCardClick}/>) : (<p>Loading...</p>)
                 }
                 
             </div>   
