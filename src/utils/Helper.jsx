@@ -37,6 +37,41 @@ export const getNannyData = (page=1, limit=10) => {
       return nannyData;
 }
 
+//get verified nannies
+export const filterVerifiedNannyData = (nannies) => {
+      const verifiedNannies = nannies.filter(nanny => nanny.verified === true);
+      const verifiedNanniesCount = verifiedNannies.length;
+
+      return {verifiedNannies, verifiedNanniesCount};
+}
+
+//get approved nannies
+export const filterApprovedNannyData = (nannies) => {
+      const approvedNannies = nannies.filter(nanny => nanny.approved === true);
+      const approvedNanniesCount = approvedNannies.length;
+
+
+      return {approvedNannies, approvedNanniesCount};
+}
+
+//get unapproved nannies
+export const filterUnapprovedNannyData = (nannies) => {
+      const unapprovedNannies = nannies.filter(nanny => nanny.approved === false);
+      const unapprovedNanniesCount = unapprovedNannies.length;
+
+      return {unapprovedNannies, unapprovedNanniesCount};
+}
+
+//filter booked nannies
+export const filterBookedNannyData = (nannies) => {
+      const bookedNannies = nannies.filter(nanny => nanny.booked === true);
+      const bookedNanniesCount = bookedNannies.length;
+
+      return {bookedNannies, bookedNanniesCount};
+}
+
+
+
 export const getNannyById = (id) => {
       //fetch data from server
       const [nanny, setNanny] = useState({});
@@ -84,8 +119,104 @@ export const updateNanny = async (id, data) => {
             //console.log(result);    
             return response;
       }catch(err){
-            console.log("Error",err)
+            console.log("Error",err);
       }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+
+//get payment data
+export const getPaymentData = async (page=1, limit=10) => {
+
+      const [payments, setPayments] = useState([]);
+      //get token from local storage
+      const token = localStorage.getItem('token');
+
+      useEffect(() => {
+            let mounted = true;
+
+            const fetchData = async () => {
+                  try{
+                        const response = await fetch(`${BASE_URL}/mpesa/payments?page=${page}&limit=${limit}`, {
+                              method: "GET",
+                              headers: {
+                                    'Content-Type': 'application/json',
+                                    'x-access-token': token
+                              }
+                        });
+
+                        const result = await response.json();
+
+                        if(mounted){
+                              setPayments(result.data.results);
+                        }
+                  }catch(err){
+                        console.log("Error",err)
+                  }
+            }
+
+            if (!payments.length) {
+                  fetchData();  
+            }
+
+            return () => {
+                  mounted = false;
+      
+            }
+
+      }, [payments,page]);
+      
+      //console.log(payments)
+      return payments;
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+//get orders data
+export const getOrdersData = async (page=1, limit=10) => {
+
+      const [orders, setOrders] = useState([]);
+
+      //get token from local storage
+      const token = localStorage.getItem('token');
+
+      useEffect(() => {
+            let mounted = true;
+
+            const fetchData = async () => {
+                  try{
+                        const response = await fetch(`${BASE_URL}/orders?page=${page}&limit=${limit}`, {
+                              method: "GET",
+                              headers: {
+                                    'Content-Type': 'application/json',
+                                    'x-access-token': token
+                              }
+                        });
+
+                        const result = await response.json();
+
+                        if(mounted){
+                              setOrders(result.data.results);
+                        }
+                  }catch(err){
+                        console.log("Error",err)
+                  }
+            }
+
+            if (!orders.length) {
+                  fetchData();  
+            }
+
+            return () => {
+                  mounted = false;
+      
+            }
+
+      })
+      
+      return orders;
+      
 }
 
 

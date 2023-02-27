@@ -2,8 +2,13 @@ import React from 'react'
 import { BiHide, BiArchiveIn } from 'react-icons/bi'
 import { AiFillDelete } from 'react-icons/ai'
 import SideNavigation from '../components/SideNavigation'
+import { getPaymentData } from '../utils/Helper'
 
 function PaymentsDash() {
+
+     const payments = getPaymentData();
+
+     console.log(payments)
   return (
 
      <>
@@ -18,40 +23,12 @@ function PaymentsDash() {
                          <th>Code</th>
                          <th>Date</th>
                          <th>Amount Recieved</th>
-                         <th>Balance</th>
-                         <th>Item paid</th>
-                         <th>Status</th>
+                         <th>Phone</th>
                          <th>Action</th>
                     </tr>
 
                     <tbody>
-                         <tr>
-                              <td>PRVXXJWKD</td>
-                              <td>12-07-2022</td>
-                              <td>2,000</td>
-                              <td>1,500</td>
-                              <td>Nanny's name</td>
-                              <td>Pending</td>
-                              <td>
-                                   <BiHide className='icon' />
-                                   <BiArchiveIn className='icon' />
-                                   <AiFillDelete className='icon' />
-                              </td>
-                         </tr>
-                         <tr>
-                              <td>PRVXXJWKD</td>
-                              <td>12-07-2022</td>
-                              <td>4,000</td>
-                              <td>0</td>
-                              <td>Nanny's name</td>
-                              <td>Paid</td>
-                              <td>
-                                   <BiHide className='icon' />
-                                   <BiArchiveIn className='icon' />
-                                   <AiFillDelete className='icon' />
-                              </td>
-                         </tr>
-
+                         
                     </tbody>
 
                </table>
@@ -70,6 +47,24 @@ function PaymentsDash() {
      </>
     
   )
+}
+
+const TableRow = ({payment}) => {
+     const { date, amount, phone, receiptNumber, status} = payment;
+     return (
+          <tr>
+               <td>{receiptNumber}</td>
+               <td>{date}</td>
+               <td>{amount}</td>
+               <td>{phone}</td>
+               <td>{status}</td>
+               <td>
+                    <BiHide className='icon' />
+                    <BiArchiveIn className='icon' />
+                    <AiFillDelete className='icon' />
+               </td>
+          </tr>
+     )
 }
 
 export default PaymentsDash

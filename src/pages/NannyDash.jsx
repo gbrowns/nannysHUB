@@ -3,8 +3,12 @@ import { BiHide, BiArchiveIn } from 'react-icons/bi'
 import { AiFillDelete, AiOutlineMail, AiFillEdit } from 'react-icons/ai'
 import { GrConnect } from 'react-icons/gr'
 import SideNavigation from '../components/SideNavigation'
+import { filterApprovedNannyData, getNannyData } from '../utils/Helper'
 
 function NannyDash() {
+
+     const {approvedNannies} = filterApprovedNannyData(getNannyData());
+
   return (
      <>
           <SideNavigation />
@@ -19,44 +23,14 @@ function NannyDash() {
                          <th>Location</th>
                          <th>Expected Sal.</th>
                          <th>Job Type</th>
-                         <th>Status</th>
+                         <th>Booked</th>
                          <th>Action</th>
                     </tr>
 
                     <tbody>
-                         <tr>
-                              <td>John Doe</td>
-                              <td>+254712345677</td>
-                              <td>john@gmail.com</td>
-                              <td>South B</td>
-                              <td>8,000</td>
-                              <td>Contract, Fulltime</td>
-                              <td><b>Active</b></td>
-                              <td>
-                                   <AiFillEdit className='icon' />
-                                   <AiOutlineMail className='icon' />
-                                   <AiFillDelete className='icon' />
-                              </td>
-
-                         </tr>
-                         <tr>
-                              <td>John Doe</td>
-                              <td>+254712345677</td>
-                              <td>john@gmail.com</td>
-                              <td>South B</td>
-                              <td>8,000</td>
-                              <td>Contract, Fulltime</td>
-                              <td><b>Active</b></td>
-                              <td>
-                                   <AiFillEdit className='icon' />
-                                   <AiOutlineMail className='icon' />
-                                   <AiFillDelete className='icon' />
-                              </td>
-
-                         </tr>
-
-
-
+                         {
+                              approvedNannies.length ? approvedNannies.map(nanny => <TableRow key={nanny.id} nanny={nanny} />) : <tr><td colSpan='8'>Loading Nannies...</td></tr>
+                         }
                     </tbody>
 
                </table>
@@ -72,6 +46,35 @@ function NannyDash() {
           </div>
      </>
   )
+}
+
+const TableRow = ({nanny}) => {
+     const {firstname, lastname, phone, email, address, salary, agreementOptions, booked} = nanny;
+     return (
+          <tr>
+               <td>{`${firstname} ${lastname}`}</td>
+               <td>{phone}</td>
+               <td>{email}</td>
+               <td>{address}</td>
+               <td>{salary}</td>
+               <td>
+                    {
+                         agreementOptions.length ?  agreementOptions.join(",") : <span>Not Specified</span>
+                    }
+               </td>
+               <td><b>
+                    {
+                         booked ? "Booked" : "Available"
+                    }
+               </b></td>
+               <td>
+                    <AiFillEdit className='icon' />
+                    <AiOutlineMail className='icon' />
+                    <AiFillDelete className='icon' />
+               </td>
+
+          </tr>
+     )
 }
 
 export default NannyDash
