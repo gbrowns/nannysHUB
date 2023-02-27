@@ -35,10 +35,10 @@ function PaymentPage() {
         const res = checkout(paymentData)
 
         //console.log(res);
-        if (res.status !== 201){
+        /*if (res.status !== 201){
             setAlert("Oops, an error occured in the server!");
             return;
-        }
+        }*/
 
         setAlert("Payment succuss!!");
         //redirect to payment success page after 3 seconds
