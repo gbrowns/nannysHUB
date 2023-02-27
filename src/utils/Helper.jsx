@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { useToken } from '../auth/useToken';
 
 const BASE_URL = 'https://n-ar93.onrender.com/api';
 
@@ -139,6 +140,26 @@ export const checkout = async (data) => {
 
       }catch(error){
             console.log("Error", error);
+      }
+}
+
+// login user
+export const loginUser = async (data) => {
+
+      try{
+            const response = await fetch(`${BASE_URL}/auth/login`, {
+                  method: 'POST',
+                  headers: {
+                        'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(data)
+            })
+
+            const result = await response.json()
+            const {accessToken} = result.data;
+            return {accessToken, status: response.status};
+      }catch(error){
+            console.error("Error", error);
       }
 }
 

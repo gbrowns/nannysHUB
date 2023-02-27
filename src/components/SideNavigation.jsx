@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
+import {IoLogOutOutline} from 'react-icons/io5';
 
 //logo
 //side navigation
@@ -23,7 +24,10 @@ function SideNavigation() {
      <Link to='/admin/requests'>Requests</Link>
      <Link to='/admin/payments'>Payments</Link>
 
-     <button onClick={handleLogout}>Logout</button>
+      <button onClick={handleLogout}>
+        <IoLogOutOutline className='icon'/>
+        Logout
+      </button>
      <span>&copy; {year} | Nannies Hub </span>
     </div>
   )

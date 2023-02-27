@@ -12,7 +12,7 @@ function FindNannyPage() {
     const [prevPage, setPrevPage] = useState(1);
     const [nextPage, setNextPage] = useState(prevPage + 1);
     const [pageNo, setPageNo] = useState(1);
-    const limit = 8;
+    const limit = 10;
     const navigate = useNavigate();
 
     //const {prevPage, nextPage} = handlePaginateButton() 

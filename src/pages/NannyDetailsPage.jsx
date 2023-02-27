@@ -101,7 +101,7 @@ function NannyDetailsPage() {
             
             <div className="NannyDetails__content">
                 <div className='left'>
-                    <h3>Nanny's Name: {`${firstname} ${lastname}`}</h3>
+                    <h3>{`${firstname} ${lastname}`}</h3>
                     <p>Age: <b>{age}</b></p>
                     <p>Address: <b>{`${address} | ${location}`}</b></p>
                     <p>Gender: <b>{gender}</b></p>
@@ -109,12 +109,12 @@ function NannyDetailsPage() {
                     <p>Availability: <b>{availability}</b></p>
                     <p>Expected Salary: <b>{salary}</b></p>
                     <div>
-                        plot map here
+                        Map unavialable
                     </div>
 
                 </div>
                 <div className='right'>
-                    <h3>Request Form</h3>
+                    <h3>Request For Nanny</h3>
                     {
                         errorMsg &&  <span>{errorMsg}</span>
                     }

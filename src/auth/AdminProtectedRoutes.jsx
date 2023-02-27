@@ -3,7 +3,7 @@ import { useUser } from './useUser'
 
 
 export const AdminProtectedRoutes = ({ children }) => {
-      const admin = true//useUser();
+      const admin = useUser();
 
-      return admin ? <Outlet /> : <Navigate to='/login' />;
+      return admin ? <Outlet /> : <Navigate to='/auth/login' />;
 }
