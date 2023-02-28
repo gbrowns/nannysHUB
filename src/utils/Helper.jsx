@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { useToken } from '../auth/useToken';
 
-const BASE_URL = 'https://n-ar93.onrender.com/api';
+export const BASE_URL = 'https://n-ar93.onrender.com/api';
 
 export const getNannyData = (page=1, limit=10) => {
       //fetch data from server
@@ -166,7 +166,7 @@ export const getPaymentData = async (page=1, limit=10) => {
 
       }, [payments,page]);
       
-      //console.log(payments)
+      console.log(payments)
       return payments;
 }
 

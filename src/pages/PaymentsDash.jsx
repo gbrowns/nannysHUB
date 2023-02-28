@@ -2,13 +2,54 @@ import React from 'react'
 import { BiHide, BiArchiveIn } from 'react-icons/bi'
 import { AiFillDelete } from 'react-icons/ai'
 import SideNavigation from '../components/SideNavigation'
-import { getPaymentData } from '../utils/Helper'
+import { useEffect, useState } from 'react'
+
+import { BASE_URL } from '../utils/Helper'
 
 function PaymentsDash() {
 
-     const payments = getPaymentData();
+     const [payments, setPayments] = useState([]);
+     //get token from local storage
+     const token = localStorage.getItem('token');
+     
 
-     console.log(payments)
+     useEffect(() => {
+          let mounted = true;
+
+          const fetchData = async () => {
+               try{
+                    const response = await fetch(`${BASE_URL}/mpesa/payments`, {
+                         method: "GET",
+                         headers: {
+                                   'Content-Type': 'application/json',
+                                   'x-access-token': token
+                         }
+                    });
+
+                    const result = await response.json();
+
+                    if(mounted){
+                         setPayments(result.data.results);
+                    }
+               }catch(err){
+                    console.log("Error",err)
+               }
+          }
+
+          if (!payments.length) {
+               fetchData();  
+          }
+
+          return () => {
+               mounted = false;
+     
+          }
+
+     }, [payments]);
+
+     console.log(payments);
+
+
   return (
 
      <>
@@ -18,17 +59,20 @@ function PaymentsDash() {
                <h1>Payments</h1>
 
                <table>
-
-                    <tr>
-                         <th>Code</th>
-                         <th>Date</th>
-                         <th>Amount Recieved</th>
-                         <th>Phone</th>
-                         <th>Action</th>
-                    </tr>
+                    <thead>
+                         <tr>
+                              <th>Code</th>
+                              <th>Date</th>
+                              <th>Amount Recieved</th>
+                              <th>Phone</th>
+                              <th>Action</th>
+                         </tr>
+                    </thead>
 
                     <tbody>
-                         
+                         {
+                              payments.length ? payments.map(payment => <TableRow key={payment._id} payment={payment} />) : <tr><td colSpan='8'>Loading Payments...</td></tr>
+                         }
                     </tbody>
 
                </table>
@@ -57,7 +101,7 @@ const TableRow = ({payment}) => {
                <td>{date}</td>
                <td>{amount}</td>
                <td>{phone}</td>
-               <td>{status}</td>
+               
                <td>
                     <BiHide className='icon' />
                     <BiArchiveIn className='icon' />

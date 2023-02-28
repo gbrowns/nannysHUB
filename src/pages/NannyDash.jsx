@@ -29,7 +29,7 @@ function NannyDash() {
 
                     <tbody>
                          {
-                              approvedNannies.length ? approvedNannies.map(nanny => <TableRow key={nanny.id} nanny={nanny} />) : <tr><td colSpan='8'>Loading Nannies...</td></tr>
+                              approvedNannies.length ? approvedNannies.map(nanny => <TableRow key={nanny._id} nanny={nanny} />) : <tr><td colSpan='8'>Loading Nannies...</td></tr>
                          }
                     </tbody>
 

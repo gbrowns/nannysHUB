@@ -44,7 +44,7 @@ function PaymentPage() {
         setTimeout(() => {
             setAlert("Payment succuss!!");
             navigate('/payment-success');
-        }, 6000);
+        }, 10000);
     }
 
     const handleChange = (e) => {

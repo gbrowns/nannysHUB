@@ -4,7 +4,52 @@ import { AiFillDelete, AiOutlineMail  } from 'react-icons/ai'
 import { GrConnect } from 'react-icons/gr'
 import SideNavigation from '../components/SideNavigation'
 
+import { useEffect, useState } from 'react'
+
+import { BASE_URL } from '../utils/Helper'
+
 function RequestsDash() {
+
+     const [requests, setRequests] = useState([]);
+     //get token from local storage
+     const token = localStorage.getItem('token');
+
+     useEffect(() => {
+          let mounted = true;
+
+          const fetchData = async () => {
+               try{
+                    const response = await fetch(`${BASE_URL}/orders`, {
+                         method: "GET",
+                         headers: {
+                                   'Content-Type': 'application/json',
+                                   'x-access-token': token
+                         }
+                    });
+
+                    const result = await response.json();
+
+                    if(mounted){
+                         setRequests(result.data.results);
+                    }
+               }catch(err){
+                    console.log("Error",err)
+               }
+          }
+
+          if (!requests.length) {
+               fetchData();  
+          }
+
+          return () => {
+               mounted = false;
+     
+          }
+
+     }, [requests]);
+
+     //console.log(requests);
+
   return (
      <>
           <SideNavigation />
@@ -12,45 +57,22 @@ function RequestsDash() {
                <h1>Request For Nannies</h1>
 
                <table>
-
-                    <tr>
-                         <th>Client Name</th>
-                         <th>Phone</th>
-                         <th>Location</th>
-                         <th>Requesting</th>
-                         <th>Date</th>
-                         <th>Message</th>
-                         <th>Action</th>
-                    </tr>
+                    <thead>
+                         <tr>
+                              <th>Client Name</th>
+                              <th>Phone</th>
+                              <th>Email</th>
+                              <th>Status</th>
+                              <th>Date</th>
+                              <th>Message</th>
+                              <th>Action</th>
+                         </tr>
+                    </thead>
 
                     <tbody>
-                         <tr>
-                              <td>John Doe</td>
-                              <td>+254712345677</td>
-                              <td>Karen</td>
-                              <td>Hadija</td>
-                              <td>12-12-2022</td>
-                              <td><b>View</b></td>
-                              <td>
-                                   <GrConnect className='icon' />
-                                   <AiOutlineMail className='icon' />
-                                   <AiFillDelete className='icon' />
-                              </td>
-                         </tr>
-                         <tr>
-                              <td>Tina Wayne</td>
-                              <td>+254712345677</td>
-                              <td>Juja</td>
-                              <td>Kingstone</td>
-                              <td>12-12-2022</td>
-                              <td><b>View</b></td>
-                              <td>
-                                   <GrConnect className='icon' />
-                                   <AiOutlineMail className='icon' />
-                                   <AiFillDelete className='icon' />
-                              </td>
-                         </tr>
-
+                         {
+                              requests.length ? requests.map(request => <TableRow key={request._id} request={request} />) : <tr><td colSpan='8'>Loading Requests...</td></tr>
+                         }
 
                     </tbody>
 
@@ -68,6 +90,36 @@ function RequestsDash() {
           </div>
      </>
   )
+}
+
+const TableRow = ({request}) => {
+     const {fullname, email, phone, message, createAt, paid} = request;
+     console.log(request);
+
+     return (
+          <tr>
+               <td>{fullname}</td>
+               <td>{phone}</td>
+               <td>{email}</td>
+               <td>
+                    {
+                         paid ? "Paid" : "Not Paid"    
+                    }
+               </td>
+               <td>{createAt}</td>
+               <td>
+                    {
+                         message.length > 20 ? "View" : "No Message"
+                    }
+               </td>
+               
+               <td>
+                    <BiHide className='icon' />
+                    <BiArchiveIn className='icon' />
+                    <AiFillDelete className='icon' />
+               </td>
+          </tr>
+     )
 }
 
 export default RequestsDash
