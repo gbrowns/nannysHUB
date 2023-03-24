@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import { useToken } from '../auth/useToken';
 
-export const BASE_URL = window.location.hostname === 'localhost' ?
+export const BASE_URL = 'https://n-ar93.onrender.com/api';
+/*window.location.hostname === 'localhost' ?
                          'http://localhost:8000/api' : 
-                         'https://n-ar93.onrender.com/api'
+                         'https://n-ar93.onrender.com/api'*/
 
 export const getNannyData = () => {
       //fetch data from server
