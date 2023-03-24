@@ -97,7 +97,7 @@ function RequestsDash() {
 }
 
 const TableRow = ({request}) => {
-     const {fullname, email, phone, message, createAt, paid} = request;
+     const {fullname, email, phone, message, createAt, paid, paymentCode} = request;
 
      return (
           <tr>
@@ -106,13 +106,13 @@ const TableRow = ({request}) => {
                <td>{email}</td>
                <td>
                     {
-                         paid ? "Paid" : "Not Paid"    
+                         paid ? paymentCode : "Not Paid"    
                     }
                </td>
                <td>{createAt}</td>
                <td>
                     {
-                         message.length > 20 ? "View" : "No Message"
+                         message ? "View" : "No Message"
                     }
                </td>
                

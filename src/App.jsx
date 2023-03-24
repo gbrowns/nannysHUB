@@ -38,7 +38,7 @@ function App() {
 
         <Route path="/auth/login" element={<AdminLoginPage />} /> 
 
-        <Route path="/payment-success" element={<SuccessPaymentPage />} />  
+        <Route path="/:nannyID/payment-success" element={<SuccessPaymentPage />} />  
         <Route path="/nanny/verify/:nannyID" element={<VerifyUserPage />} />  
         <Route path="/checkout/:nannyID" element={<PaymentPage />} />  
 

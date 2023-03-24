@@ -39,7 +39,7 @@ function PaymentPage() {
         //redirect to payment success page after 3 seconds
         setTimeout(() => {
             setAlert("Payment succuss!!");
-            navigate('/payment-success');
+            navigate(`/${nannyID}/payment-success`);
         }, 10000);
     }
 

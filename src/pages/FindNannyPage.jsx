@@ -94,7 +94,7 @@ const Nannies = ({nannies, handleClick}) => {
         <>
             {
                 nannies.map((nanny) => {
-                    const { _id:id, firstname, lastname, age, address, location, jobOptions, availability, agreementOptions, salary } = nanny;
+                    const { _id:id, firstname, lastname, age, address, location, jobOptions, verified, agreementOptions, salary } = nanny;
             
             
                     return (
@@ -113,10 +113,15 @@ const Nannies = ({nannies, handleClick}) => {
                             </div>
                             <div className="controls">
                                 <input type="button" value={`${firstname}'s details`} />
-                                <span>
-                                    <MdVerified className="icon" />
-                                    Verified
-                                </span>
+
+                                {
+                                    verified ? 
+                                        <span>
+                                            <MdVerified className="icon" />
+                                            Verified
+                                        </span> :
+                                    <span>Not Verified</span>
+                                }
                                 
                             </div>
                         </div>
