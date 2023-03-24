@@ -15,6 +15,11 @@ function SuccessPaymentPage() {
     e.preventDefault();
     setSuccessPayment(true);
 
+    if (!code) {
+      setAlertText("Enter receipt code from your mpesa message")
+      return;
+    }
+
     //post to backend
     const res = await fetch(`${BASE_URL}/mpesa/confirm`, {
       method: "POST",
