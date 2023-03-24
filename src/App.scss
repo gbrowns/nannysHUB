@@ -10,6 +10,24 @@
 //ADMIN
 //admins dashboard styles
 
+//GLOBAL STYLES
+.alert-container{
+  position: absolute;
+  top: 1rem;
+  width: 40%;
+  border-radius: 5px;
+  background-color: #d7d6d6;
+  font-size: .8rem;
+
+  span{
+    padding: .4rem 1rem;
+    display: block;
+    color: #000;
+  }
+
+}
+
+
 //side nav
 .sidebar{
   position: fixed;

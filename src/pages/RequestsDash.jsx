@@ -71,7 +71,11 @@ function RequestsDash() {
 
                     <tbody>
                          {
-                              requests.length ? requests.map(request => <TableRow key={request._id} request={request} />) : <tr><td colSpan='8'>Loading Requests...</td></tr>
+                              requests.length ? 
+                                   requests.length === 0 ? 
+                                        <tr><td colSpan='9'>No Requests</td></tr> :
+                                        requests.map(request => <TableRow key={request._id} request={request} />) : 
+                              <tr><td colSpan='8'>Loading Requests...</td></tr>
                          }
 
                     </tbody>
@@ -94,7 +98,6 @@ function RequestsDash() {
 
 const TableRow = ({request}) => {
      const {fullname, email, phone, message, createAt, paid} = request;
-     console.log(request);
 
      return (
           <tr>

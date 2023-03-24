@@ -3,7 +3,7 @@ import { useToken } from '../auth/useToken';
 
 export const BASE_URL = 'https://n-ar93.onrender.com/api';
 
-export const getNannyData = (page=1, limit=10) => {
+export const getNannyData = () => {
       //fetch data from server
       const [nannyData, setNannyData] = useState([]);
 
@@ -13,7 +13,7 @@ export const getNannyData = (page=1, limit=10) => {
             const fetchData = async () => {
                   try{
                         //console.log("toServer:", page, limit)
-                        const response = await fetch(`${BASE_URL}/nannies?page=${page}&limit=${limit}`);
+                        const response = await fetch(`${BASE_URL}/nannies`);
                         const result = await response.json();
 
                         if(mounted){
@@ -32,7 +32,7 @@ export const getNannyData = (page=1, limit=10) => {
       
             }
 
-      }, [nannyData,page]);
+      }, [nannyData]);
 
       return nannyData;
 }
@@ -126,7 +126,7 @@ export const updateNanny = async (id, data) => {
 /////////////////////////////////////////////////////////////////////////////////
 
 //get payment data
-export const getPaymentData = async (page=1, limit=10) => {
+export const getPaymentData = async () => {
 
       const [payments, setPayments] = useState([]);
       //get token from local storage
@@ -137,7 +137,7 @@ export const getPaymentData = async (page=1, limit=10) => {
 
             const fetchData = async () => {
                   try{
-                        const response = await fetch(`${BASE_URL}/mpesa/payments?page=${page}&limit=${limit}`, {
+                        const response = await fetch(`${BASE_URL}/mpesa/payments`, {
                               method: "GET",
                               headers: {
                                     'Content-Type': 'application/json',
@@ -164,7 +164,7 @@ export const getPaymentData = async (page=1, limit=10) => {
       
             }
 
-      }, [payments,page]);
+      }, [payments]);
       
       console.log(payments)
       return payments;
@@ -174,7 +174,7 @@ export const getPaymentData = async (page=1, limit=10) => {
 /////////////////////////////////////////////////////////////////////////////////////////
 
 //get orders data
-export const getOrdersData = async (page=1, limit=10) => {
+export const getOrdersData = async () => {
 
       const [orders, setOrders] = useState([]);
 
@@ -186,7 +186,7 @@ export const getOrdersData = async (page=1, limit=10) => {
 
             const fetchData = async () => {
                   try{
-                        const response = await fetch(`${BASE_URL}/orders?page=${page}&limit=${limit}`, {
+                        const response = await fetch(`${BASE_URL}/orders`, {
                               method: "GET",
                               headers: {
                                     'Content-Type': 'application/json',
@@ -213,7 +213,7 @@ export const getOrdersData = async (page=1, limit=10) => {
       
             }
 
-      })
+      }, [orders]);
       
       return orders;
       
